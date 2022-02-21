@@ -29,6 +29,7 @@ interface Props {
   top?: number;
   color?: string;
   margin?: string;
+  padding?: string;
   justifyContent?: string;
   cursor?: string;
   border?: string;
@@ -170,7 +171,7 @@ const LineCoreFrame = styled.div<Props>`
 const LineAdditionalFrame = styled.div<Props>`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: ${(props) => (props.justifyContent ? props.justifyContent : "")};
   align-items: center;
 
   width: ${(props) => (props.width ? props.width : "")};
@@ -198,7 +199,9 @@ const PlainTextFrame = styled.div<Props>`
   flex-direction: row;
   justify-content: center;
 
+  width: ${(props) => (props.width ? props.width : "")};
   margin: ${(props) => (props.margin ? props.margin : "")};
+  padding: ${(props) => (props.padding ? props.padding : "")};
 `;
 const InputTextFrame = styled.div<Props>`
   display: flex;
@@ -212,7 +215,7 @@ const InputTextFrame = styled.div<Props>`
 const PlainTextComponent = styled.span<Props>`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: ${(props) => (props.justifyContent ? props.justifyContent : "")};
 
   font-family: ${(props) =>
     props.type === "title"
@@ -566,13 +569,11 @@ const Select = observer((props: any) => {
                       </PlainTextFrame>
                     </LineCoreFrame>
                     <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
-                      <InputTextFrame className="InputTextFrame" width={"100%"}>
-                        <InputTextComponent
-                          className="InputTextComponent"
-                          width={"100%"}
-                          placeholder="사업장 등록증 상 기재된 상호를 입력해 주세요."
-                        ></InputTextComponent>
-                      </InputTextFrame>
+                      <PlainTextFrame className="PlainTextFrame" padding={"0px 10px 0px 10px"}>
+                        <PlainTextComponent className="PlainTextComponent" type="content">
+                          박평우
+                        </PlainTextComponent>
+                      </PlainTextFrame>
                     </LineAdditionalFrame>
                   </LineComponent>
                   <LineComponent
@@ -589,13 +590,11 @@ const Select = observer((props: any) => {
                       </PlainTextFrame>
                     </LineCoreFrame>
                     <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
-                      <InputTextFrame className="InputTextFrame" width={"100%"}>
-                        <InputTextComponent
-                          className="InputTextComponent"
-                          width={"100%"}
-                          placeholder="-없이 숫자만 입력해 주세요."
-                        ></InputTextComponent>
-                      </InputTextFrame>
+                      <PlainTextFrame className="PlainTextFrame" padding={"0px 10px 0px 10px"}>
+                        <PlainTextComponent className="PlainTextComponent" type="content">
+                          1992년 11월 05일
+                        </PlainTextComponent>
+                      </PlainTextFrame>
                     </LineAdditionalFrame>
                   </LineComponent>
                   <LineComponent
@@ -612,13 +611,11 @@ const Select = observer((props: any) => {
                       </PlainTextFrame>
                     </LineCoreFrame>
                     <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
-                      <InputTextFrame className="InputTextFrame" width={"100%"}>
-                        <InputTextComponent
-                          className="InputTextComponent"
-                          width={"100%"}
-                          placeholder="-없이 숫자만 입력해 주세요."
-                        ></InputTextComponent>
-                      </InputTextFrame>
+                      <PlainTextFrame className="PlainTextFrame" padding={"0px 10px 0px 10px"}>
+                        <PlainTextComponent className="PlainTextComponent" type="content">
+                          010-7149-3357
+                        </PlainTextComponent>
+                      </PlainTextFrame>
                     </LineAdditionalFrame>
                   </LineComponent>
                   <LineComponent

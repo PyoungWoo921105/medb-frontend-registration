@@ -29,6 +29,7 @@ interface Props {
   top?: number;
   color?: string;
   margin?: string;
+  padding?: string;
   justifyContent?: string;
   cursor?: string;
   border?: string;
