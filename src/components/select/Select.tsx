@@ -43,7 +43,6 @@ const Body = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
 `;
 
 const Header = styled.header`
@@ -61,9 +60,13 @@ const LogoFrame = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 150px;
+
+  padding: 0px 20px 0px 20px;
 `;
 const LogoImageComponent = styled.img`
   width: 100%;
+
+  margin: 15px 0px 15px 0px;
 `;
 
 const Container = styled.div`
@@ -278,7 +281,7 @@ const CompanyInformationComponent = styled.span`
 
   color: #c7c7c7;
 
-  margin: 15px 0px 15px 0px;
+  margin: 10px 0px 10px 0px;
 `;
 
 const Select = observer((props: any) => {

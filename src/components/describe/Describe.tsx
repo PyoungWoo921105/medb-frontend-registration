@@ -43,7 +43,6 @@ const Body = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
 `;
 
 const Header = styled.header`
@@ -53,7 +52,6 @@ const Header = styled.header`
 const HeaderContent = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
 `;
 const LogoFrame = styled.div`
@@ -61,9 +59,13 @@ const LogoFrame = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 80px;
+
+  padding: 0px 20px 0px 20px;
 `;
 const LogoImageComponent = styled.img`
   width: 100%;
+
+  margin: 15px 0px 15px 0px;
 `;
 
 const Container = styled.div`
@@ -327,7 +329,7 @@ const CompanyInformationComponent = styled.span`
 
   color: #c7c7c7;
 
-  margin: 15px 0px 15px 0px;
+  margin: 10px 0px 10px 0px;
 `;
 
 const Select = observer((props: any) => {
@@ -399,7 +401,7 @@ const Select = observer((props: any) => {
             <ContentFrame className="ContentFrame">
               <Frame className="Frame">
                 <TitleFrame className="TitleFrame">
-                  <LineComponent className="LineComponent" margin="20px 0px 10px 0px" justifyContent="space-between">
+                  <LineComponent className="LineComponent" margin="10px 0px 5px 0px" justifyContent="space-between">
                     <LineCoreFrame className="LineCoreFrame">
                       <PlainTextFrame className="PlainTextFrame" margin="0px 10px 0px 10px">
                         <PlainTextComponent className="PlainTextComponent" type="title">
@@ -516,7 +518,7 @@ const Select = observer((props: any) => {
                     <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
                       <PlainTextFrame className="PlainTextFrame">
                         <PlainTextComponent className="PlainTextComponent" type="content">
-                          *사업자 등록증 사본
+                          사업자 등록증 사본
                         </PlainTextComponent>
                       </PlainTextFrame>
                     </LineCoreFrame>
@@ -535,7 +537,7 @@ const Select = observer((props: any) => {
               </Frame>
               <Frame className="Frame">
                 <TitleFrame className="TitleFrame">
-                  <LineComponent className="LineComponent" margin="20px 0px 10px 0px" justifyContent="space-between">
+                  <LineComponent className="LineComponent" margin="10px 0px 5px 0px" justifyContent="space-between">
                     <LineCoreFrame className="LineCoreFrame">
                       <PlainTextFrame className="PlainTextFrame" margin="0px 10px 0px 10px">
                         <PlainTextComponent className="PlainTextComponent" type="title">
@@ -582,6 +584,29 @@ const Select = observer((props: any) => {
                     <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
                       <PlainTextFrame className="PlainTextFrame">
                         <PlainTextComponent className="PlainTextComponent" type="content">
+                          생년월일
+                        </PlainTextComponent>
+                      </PlainTextFrame>
+                    </LineCoreFrame>
+                    <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
+                      <InputTextFrame className="InputTextFrame" width={"100%"}>
+                        <InputTextComponent
+                          className="InputTextComponent"
+                          width={"100%"}
+                          placeholder="-없이 숫자만 입력해 주세요."
+                        ></InputTextComponent>
+                      </InputTextFrame>
+                    </LineAdditionalFrame>
+                  </LineComponent>
+                  <LineComponent
+                    className="LineComponent"
+                    margin="10px 0px 10px 0px"
+                    justifyContent="space-between"
+                    height={"35px"}
+                  >
+                    <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
+                      <PlainTextFrame className="PlainTextFrame">
+                        <PlainTextComponent className="PlainTextComponent" type="content">
                           휴대폰 번호
                         </PlainTextComponent>
                       </PlainTextFrame>
@@ -614,30 +639,7 @@ const Select = observer((props: any) => {
                         <InputTextComponent
                           className="InputTextComponent"
                           width={"100%"}
-                          placeholder="-없이 숫자만 입력해 주세요."
-                        ></InputTextComponent>
-                      </InputTextFrame>
-                    </LineAdditionalFrame>
-                  </LineComponent>
-                  <LineComponent
-                    className="LineComponent"
-                    margin="10px 0px 10px 0px"
-                    justifyContent="space-between"
-                    height={"35px"}
-                  >
-                    <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
-                      <PlainTextFrame className="PlainTextFrame">
-                        <PlainTextComponent className="PlainTextComponent" type="content">
-                          생년월일
-                        </PlainTextComponent>
-                      </PlainTextFrame>
-                    </LineCoreFrame>
-                    <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
-                      <InputTextFrame className="InputTextFrame" width={"100%"}>
-                        <InputTextComponent
-                          className="InputTextComponent"
-                          width={"100%"}
-                          placeholder="-없이 숫자만 입력해 주세요."
+                          placeholder="이메일을 입력해 주세요."
                         ></InputTextComponent>
                       </InputTextFrame>
                     </LineAdditionalFrame>
