@@ -1,10 +1,12 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+/* import logo from './logo.svg';
+import './App.css'; */
+import { BrowserRouter } from "react-router-dom";
+import Frame from "./components/common/Frame";
 
 function App() {
   return (
-    <div className="App">
+    /* <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -19,7 +21,10 @@ function App() {
           Learn React
         </a>
       </header>
-    </div>
+    </div> */
+    <BrowserRouter>
+      <Frame></Frame>
+    </BrowserRouter>
   );
 }
 
