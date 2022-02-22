@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { observer } from "mobx-react";
 
 import LogoImageIcon from "../../../assets/icons/LogoImageIcon.png";
+import CircledQuestionMarkIcon from "../../../assets/icons/CircledQuestionMarkIcon.svg";
 
 import useStore from "../../../data/useStore";
 import { useRef } from "react";
@@ -156,6 +157,25 @@ const InputTextFrame = styled.div<Props>`
   width: ${(props) => (props.width ? props.width : "")};
   margin: ${(props) => (props.margin ? props.margin : "")};
   height: 30px;
+`;
+const CheckboxFrame = styled.div<Props>`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  width: ${(props) => (props.width ? props.width : "")};
+  min-width: ${(props) => (props.minWidth ? props.minWidth : "")};
+  margin: ${(props) => (props.margin ? props.margin : "")};
+
+  cursor: pointer;
+`;
+const CheckboxComponent = styled.img`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
 `;
 const PlainTextComponent = styled.span<Props>`
   display: flex;
@@ -596,7 +616,19 @@ const HospitalJoinSecondPage = observer((props: any) => {
                       </PlainTextComponent>
                     </PlainTextFrame>
                   </LineCoreFrame>
-                  <LineAdditionalFrame className="LineAdditionalFrame"></LineAdditionalFrame>
+                  <LineAdditionalFrame className="LineAdditionalFrame">
+                    <PlainTextFrame className="PlainTextFrame" margin="0px 10px 0px 10px">
+                      <PlainTextComponent className="PlainTextComponent" designType="additional">
+                        정산 주기: 월 2회 / 정산 수수료 2.65%
+                      </PlainTextComponent>
+                    </PlainTextFrame>
+                    <CheckboxFrame className="CheckboxFrame" minWidth="15px" width="15px">
+                      <CheckboxComponent
+                        className="CheckboxComponent"
+                        src={CircledQuestionMarkIcon}
+                      ></CheckboxComponent>
+                    </CheckboxFrame>
+                  </LineAdditionalFrame>
                 </LineComponent>
               </TitleFrame>
               <DelimiterFrame className="DelimiterFrame">
