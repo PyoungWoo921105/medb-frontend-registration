@@ -7,7 +7,10 @@ import CommonAgreePage from "../agree/common/CommonAgreePage";
 import HospitalAgreePage from "../agree/hospital/HospitalAgreePage";
 import PharmacyAgreePage from "../agree/pharmacy/PharmacyAgreePage";
 import DoctorAgreePage from "../agree/doctor/DoctorAgreePage";
-import JoinPage from "../join/JoinPage";
+import HospitalJoinPage from "../join/common/HospitalJoinPage";
+import PharmacyJoinPage from "../join/pharmacy/PharmacyJoinPage";
+import DoctorJoinPage from "../join/doctor/DoctorJoinPage";
+
 import useStore from "../../data/useStore";
 
 const Frame = styled.div``;
@@ -39,7 +42,9 @@ const RootPage = observer(() => {
       <Route path="/hospital/agree" component={HospitalAgreePage}></Route>
       <Route path="/pharmacy/agree" component={PharmacyAgreePage}></Route>
       <Route path="/doctor/agree" component={DoctorAgreePage}></Route>
-      <Route path="/join" component={JoinPage}></Route>
+      <Route path="/hospital/join" component={HospitalJoinPage}></Route>
+      <Route path="/pharmacy/join" component={PharmacyJoinPage}></Route>
+      <Route path="/doctor/join" component={DoctorJoinPage}></Route>
     </Frame>
   );
 });
