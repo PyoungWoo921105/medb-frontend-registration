@@ -288,7 +288,7 @@ const DoctorJoinFirstPage = observer((props: any) => {
   const CommonData = useStore().CommonData;
 
   const onClickGoButton = () => {
-    history.push({ pathname: "/doctor/join-2" });
+    history.push({ pathname: "/doctor/join/2" });
   };
   const onClickBackButton = () => {
     window.history.back();
@@ -311,251 +311,249 @@ const DoctorJoinFirstPage = observer((props: any) => {
       </Header>
       <Container className="Container">
         <Content className="Content">
-          {CommonData.selectType ? (
-            <ContentFrame className="ContentFrame">
-              <Frame className="Frame">
-                <TitleFrame className="TitleFrame">
-                  <LineComponent className="LineComponent" margin="10px 0px 5px 0px" justifyContent="space-between">
-                    <LineCoreFrame className="LineCoreFrame">
-                      <PlainTextFrame className="PlainTextFrame" margin="0px 10px 0px 10px">
-                        <PlainTextComponent className="PlainTextComponent" type="title">
-                          사업자 정보
-                        </PlainTextComponent>
-                      </PlainTextFrame>
-                    </LineCoreFrame>
-                    <LineAdditionalFrame className="LineAdditionalFrame"></LineAdditionalFrame>
-                  </LineComponent>
-                </TitleFrame>
-                <DelimiterFrame className="DelimiterFrame">
-                  <DelimiterComponent className="DelimiterComponent" margin="0px 0px 0px 0px"></DelimiterComponent>
-                </DelimiterFrame>
-                <FieldFrame className="FieldFrame">
-                  <LineComponent
-                    className="LineComponent"
-                    margin="10px 0px 10px 0px"
-                    justifyContent="space-between"
-                    height={"35px"}
-                  >
-                    <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
-                      <PlainTextFrame className="PlainTextFrame">
-                        <PlainTextComponent className="PlainTextComponent" type="content">
-                          *사업자 상호
-                        </PlainTextComponent>
-                      </PlainTextFrame>
-                    </LineCoreFrame>
-                    <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
-                      <InputTextFrame className="InputTextFrame" width={"100%"}>
-                        <InputTextComponent
-                          className="InputTextComponent"
-                          width={"100%"}
-                          placeholder="사업장 등록증 상 기재된 상호를 입력해 주세요."
-                        ></InputTextComponent>
-                      </InputTextFrame>
-                    </LineAdditionalFrame>
-                  </LineComponent>
-                  <LineComponent
-                    className="LineComponent"
-                    margin="10px 0px 10px 0px"
-                    justifyContent="space-between"
-                    height={"35px"}
-                  >
-                    <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
-                      <PlainTextFrame className="PlainTextFrame">
-                        <PlainTextComponent className="PlainTextComponent" type="content">
-                          *사업자 등록번호
-                        </PlainTextComponent>
-                      </PlainTextFrame>
-                    </LineCoreFrame>
-                    <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
-                      <InputTextFrame className="InputTextFrame" width={"100%"}>
-                        <InputTextComponent
-                          className="InputTextComponent"
-                          width={"100%"}
-                          placeholder="-없이 숫자만 입력해 주세요."
-                        ></InputTextComponent>
-                      </InputTextFrame>
-                    </LineAdditionalFrame>
-                  </LineComponent>
-                  <LineComponent
-                    className="LineComponent"
-                    margin="10px 0px 10px 0px"
-                    justifyContent="space-between"
-                    height={"35px"}
-                  >
-                    <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
-                      <PlainTextFrame className="PlainTextFrame">
-                        <PlainTextComponent className="PlainTextComponent" type="content">
-                          *사업자 주소
-                        </PlainTextComponent>
-                      </PlainTextFrame>
-                    </LineCoreFrame>
-                    <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
-                      <InputTextFrame className="InputTextFrame" width={"100%"}>
-                        <InputTextComponent className="InputTextComponent" width={"100%"}></InputTextComponent>
-                      </InputTextFrame>
-                      <InputButtonFrame className="InputButtonFrame" minWidth="70px">
-                        <InputButtonComponent className="InputButtonComponent" margin="0px 0px 0px 5px">
-                          주소 찾기
-                        </InputButtonComponent>
-                      </InputButtonFrame>
-                    </LineAdditionalFrame>
-                  </LineComponent>
-                  <LineComponent
-                    className="LineComponent"
-                    margin="10px 0px 10px 0px"
-                    justifyContent="space-between"
-                    height={"35px"}
-                  >
-                    <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
-                      <PlainTextFrame className="PlainTextFrame">
-                        <PlainTextComponent className="PlainTextComponent" type="content">
-                          법인 번호
-                        </PlainTextComponent>
-                      </PlainTextFrame>
-                    </LineCoreFrame>
-                    <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
-                      <InputTextFrame className="InputTextFrame" width={"100%"}>
-                        <InputTextComponent
-                          className="InputTextComponent"
-                          width={"100%"}
-                          placeholder="법인인 경우에만 -없이 숫자만 입력해 주세요."
-                        ></InputTextComponent>
-                      </InputTextFrame>
-                    </LineAdditionalFrame>
-                  </LineComponent>
-                  <LineComponent
-                    className="LineComponent"
-                    margin="10px 0px 10px 0px"
-                    justifyContent="space-between"
-                    height={"35px"}
-                  >
-                    <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
-                      <PlainTextFrame className="PlainTextFrame">
-                        <PlainTextComponent className="PlainTextComponent" type="content">
-                          사업자 등록증 사본
-                        </PlainTextComponent>
-                      </PlainTextFrame>
-                    </LineCoreFrame>
-                    <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
-                      <InputTextFrame className="InputTextFrame" width={"100%"}>
-                        <InputTextComponent className="InputTextComponent" width={"100%"}></InputTextComponent>
-                      </InputTextFrame>
-                      <InputButtonFrame className="InputButtonFrame" minWidth="70px">
-                        <InputButtonComponent className="InputButtonComponent" margin="0px 0px 0px 5px">
-                          파일 찾기
-                        </InputButtonComponent>
-                      </InputButtonFrame>
-                    </LineAdditionalFrame>
-                  </LineComponent>
-                </FieldFrame>
-              </Frame>
-              <Frame className="Frame">
-                <TitleFrame className="TitleFrame">
-                  <LineComponent className="LineComponent" margin="10px 0px 5px 0px" justifyContent="space-between">
-                    <LineCoreFrame className="LineCoreFrame">
-                      <PlainTextFrame className="PlainTextFrame" margin="0px 10px 0px 10px">
-                        <PlainTextComponent className="PlainTextComponent" type="title">
-                          대표자 정보
-                        </PlainTextComponent>
-                      </PlainTextFrame>
-                    </LineCoreFrame>
-                    <LineAdditionalFrame className="LineAdditionalFrame"></LineAdditionalFrame>
-                  </LineComponent>
-                </TitleFrame>
-                <DelimiterFrame className="DelimiterFrame">
-                  <DelimiterComponent className="DelimiterComponent" margin="0px 0px 0px 0px"></DelimiterComponent>
-                </DelimiterFrame>
-                <FieldFrame className="FieldFrame">
-                  <LineComponent
-                    className="LineComponent"
-                    margin="10px 0px 10px 0px"
-                    justifyContent="space-between"
-                    height={"35px"}
-                  >
-                    <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
-                      <PlainTextFrame className="PlainTextFrame">
-                        <PlainTextComponent className="PlainTextComponent" type="content">
-                          성명
-                        </PlainTextComponent>
-                      </PlainTextFrame>
-                    </LineCoreFrame>
-                    <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
-                      <PlainTextFrame className="PlainTextFrame" padding={"0px 10px 0px 10px"}>
-                        <PlainTextComponent className="PlainTextComponent" type="content">
-                          박평우
-                        </PlainTextComponent>
-                      </PlainTextFrame>
-                    </LineAdditionalFrame>
-                  </LineComponent>
-                  <LineComponent
-                    className="LineComponent"
-                    margin="10px 0px 10px 0px"
-                    justifyContent="space-between"
-                    height={"35px"}
-                  >
-                    <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
-                      <PlainTextFrame className="PlainTextFrame">
-                        <PlainTextComponent className="PlainTextComponent" type="content">
-                          생년월일
-                        </PlainTextComponent>
-                      </PlainTextFrame>
-                    </LineCoreFrame>
-                    <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
-                      <PlainTextFrame className="PlainTextFrame" padding={"0px 10px 0px 10px"}>
-                        <PlainTextComponent className="PlainTextComponent" type="content">
-                          1992년 11월 05일
-                        </PlainTextComponent>
-                      </PlainTextFrame>
-                    </LineAdditionalFrame>
-                  </LineComponent>
-                  <LineComponent
-                    className="LineComponent"
-                    margin="10px 0px 10px 0px"
-                    justifyContent="space-between"
-                    height={"35px"}
-                  >
-                    <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
-                      <PlainTextFrame className="PlainTextFrame">
-                        <PlainTextComponent className="PlainTextComponent" type="content">
-                          휴대폰 번호
-                        </PlainTextComponent>
-                      </PlainTextFrame>
-                    </LineCoreFrame>
-                    <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
-                      <PlainTextFrame className="PlainTextFrame" padding={"0px 10px 0px 10px"}>
-                        <PlainTextComponent className="PlainTextComponent" type="content">
-                          010-7149-3357
-                        </PlainTextComponent>
-                      </PlainTextFrame>
-                    </LineAdditionalFrame>
-                  </LineComponent>
-                  <LineComponent
-                    className="LineComponent"
-                    margin="10px 0px 10px 0px"
-                    justifyContent="space-between"
-                    height={"35px"}
-                  >
-                    <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
-                      <PlainTextFrame className="PlainTextFrame">
-                        <PlainTextComponent className="PlainTextComponent" type="content">
-                          *이메일
-                        </PlainTextComponent>
-                      </PlainTextFrame>
-                    </LineCoreFrame>
-                    <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
-                      <InputTextFrame className="InputTextFrame" width={"100%"}>
-                        <InputTextComponent
-                          className="InputTextComponent"
-                          width={"100%"}
-                          placeholder="이메일을 입력해 주세요."
-                        ></InputTextComponent>
-                      </InputTextFrame>
-                    </LineAdditionalFrame>
-                  </LineComponent>
-                </FieldFrame>
-              </Frame>
-            </ContentFrame>
-          ) : null}
+          <ContentFrame className="ContentFrame">
+            <Frame className="Frame">
+              <TitleFrame className="TitleFrame">
+                <LineComponent className="LineComponent" margin="10px 0px 5px 0px" justifyContent="space-between">
+                  <LineCoreFrame className="LineCoreFrame">
+                    <PlainTextFrame className="PlainTextFrame" margin="0px 10px 0px 10px">
+                      <PlainTextComponent className="PlainTextComponent" type="title">
+                        사업자 정보
+                      </PlainTextComponent>
+                    </PlainTextFrame>
+                  </LineCoreFrame>
+                  <LineAdditionalFrame className="LineAdditionalFrame"></LineAdditionalFrame>
+                </LineComponent>
+              </TitleFrame>
+              <DelimiterFrame className="DelimiterFrame">
+                <DelimiterComponent className="DelimiterComponent" margin="0px 0px 0px 0px"></DelimiterComponent>
+              </DelimiterFrame>
+              <FieldFrame className="FieldFrame">
+                <LineComponent
+                  className="LineComponent"
+                  margin="10px 0px 10px 0px"
+                  justifyContent="space-between"
+                  height={"35px"}
+                >
+                  <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
+                    <PlainTextFrame className="PlainTextFrame">
+                      <PlainTextComponent className="PlainTextComponent" type="content">
+                        *사업자 상호
+                      </PlainTextComponent>
+                    </PlainTextFrame>
+                  </LineCoreFrame>
+                  <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
+                    <InputTextFrame className="InputTextFrame" width={"100%"}>
+                      <InputTextComponent
+                        className="InputTextComponent"
+                        width={"100%"}
+                        placeholder="사업장 등록증 상 기재된 상호를 입력해 주세요."
+                      ></InputTextComponent>
+                    </InputTextFrame>
+                  </LineAdditionalFrame>
+                </LineComponent>
+                <LineComponent
+                  className="LineComponent"
+                  margin="10px 0px 10px 0px"
+                  justifyContent="space-between"
+                  height={"35px"}
+                >
+                  <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
+                    <PlainTextFrame className="PlainTextFrame">
+                      <PlainTextComponent className="PlainTextComponent" type="content">
+                        *사업자 등록번호
+                      </PlainTextComponent>
+                    </PlainTextFrame>
+                  </LineCoreFrame>
+                  <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
+                    <InputTextFrame className="InputTextFrame" width={"100%"}>
+                      <InputTextComponent
+                        className="InputTextComponent"
+                        width={"100%"}
+                        placeholder="-없이 숫자만 입력해 주세요."
+                      ></InputTextComponent>
+                    </InputTextFrame>
+                  </LineAdditionalFrame>
+                </LineComponent>
+                <LineComponent
+                  className="LineComponent"
+                  margin="10px 0px 10px 0px"
+                  justifyContent="space-between"
+                  height={"35px"}
+                >
+                  <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
+                    <PlainTextFrame className="PlainTextFrame">
+                      <PlainTextComponent className="PlainTextComponent" type="content">
+                        *사업자 주소
+                      </PlainTextComponent>
+                    </PlainTextFrame>
+                  </LineCoreFrame>
+                  <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
+                    <InputTextFrame className="InputTextFrame" width={"100%"}>
+                      <InputTextComponent className="InputTextComponent" width={"100%"}></InputTextComponent>
+                    </InputTextFrame>
+                    <InputButtonFrame className="InputButtonFrame" minWidth="70px">
+                      <InputButtonComponent className="InputButtonComponent" margin="0px 0px 0px 5px">
+                        주소 찾기
+                      </InputButtonComponent>
+                    </InputButtonFrame>
+                  </LineAdditionalFrame>
+                </LineComponent>
+                <LineComponent
+                  className="LineComponent"
+                  margin="10px 0px 10px 0px"
+                  justifyContent="space-between"
+                  height={"35px"}
+                >
+                  <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
+                    <PlainTextFrame className="PlainTextFrame">
+                      <PlainTextComponent className="PlainTextComponent" type="content">
+                        법인 번호
+                      </PlainTextComponent>
+                    </PlainTextFrame>
+                  </LineCoreFrame>
+                  <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
+                    <InputTextFrame className="InputTextFrame" width={"100%"}>
+                      <InputTextComponent
+                        className="InputTextComponent"
+                        width={"100%"}
+                        placeholder="법인인 경우에만 -없이 숫자만 입력해 주세요."
+                      ></InputTextComponent>
+                    </InputTextFrame>
+                  </LineAdditionalFrame>
+                </LineComponent>
+                <LineComponent
+                  className="LineComponent"
+                  margin="10px 0px 10px 0px"
+                  justifyContent="space-between"
+                  height={"35px"}
+                >
+                  <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
+                    <PlainTextFrame className="PlainTextFrame">
+                      <PlainTextComponent className="PlainTextComponent" type="content">
+                        사업자 등록증 사본
+                      </PlainTextComponent>
+                    </PlainTextFrame>
+                  </LineCoreFrame>
+                  <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
+                    <InputTextFrame className="InputTextFrame" width={"100%"}>
+                      <InputTextComponent className="InputTextComponent" width={"100%"}></InputTextComponent>
+                    </InputTextFrame>
+                    <InputButtonFrame className="InputButtonFrame" minWidth="70px">
+                      <InputButtonComponent className="InputButtonComponent" margin="0px 0px 0px 5px">
+                        파일 찾기
+                      </InputButtonComponent>
+                    </InputButtonFrame>
+                  </LineAdditionalFrame>
+                </LineComponent>
+              </FieldFrame>
+            </Frame>
+            <Frame className="Frame">
+              <TitleFrame className="TitleFrame">
+                <LineComponent className="LineComponent" margin="10px 0px 5px 0px" justifyContent="space-between">
+                  <LineCoreFrame className="LineCoreFrame">
+                    <PlainTextFrame className="PlainTextFrame" margin="0px 10px 0px 10px">
+                      <PlainTextComponent className="PlainTextComponent" type="title">
+                        대표자 정보
+                      </PlainTextComponent>
+                    </PlainTextFrame>
+                  </LineCoreFrame>
+                  <LineAdditionalFrame className="LineAdditionalFrame"></LineAdditionalFrame>
+                </LineComponent>
+              </TitleFrame>
+              <DelimiterFrame className="DelimiterFrame">
+                <DelimiterComponent className="DelimiterComponent" margin="0px 0px 0px 0px"></DelimiterComponent>
+              </DelimiterFrame>
+              <FieldFrame className="FieldFrame">
+                <LineComponent
+                  className="LineComponent"
+                  margin="10px 0px 10px 0px"
+                  justifyContent="space-between"
+                  height={"35px"}
+                >
+                  <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
+                    <PlainTextFrame className="PlainTextFrame">
+                      <PlainTextComponent className="PlainTextComponent" type="content">
+                        성명
+                      </PlainTextComponent>
+                    </PlainTextFrame>
+                  </LineCoreFrame>
+                  <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
+                    <PlainTextFrame className="PlainTextFrame" padding={"0px 10px 0px 10px"}>
+                      <PlainTextComponent className="PlainTextComponent" type="content">
+                        박평우
+                      </PlainTextComponent>
+                    </PlainTextFrame>
+                  </LineAdditionalFrame>
+                </LineComponent>
+                <LineComponent
+                  className="LineComponent"
+                  margin="10px 0px 10px 0px"
+                  justifyContent="space-between"
+                  height={"35px"}
+                >
+                  <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
+                    <PlainTextFrame className="PlainTextFrame">
+                      <PlainTextComponent className="PlainTextComponent" type="content">
+                        생년월일
+                      </PlainTextComponent>
+                    </PlainTextFrame>
+                  </LineCoreFrame>
+                  <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
+                    <PlainTextFrame className="PlainTextFrame" padding={"0px 10px 0px 10px"}>
+                      <PlainTextComponent className="PlainTextComponent" type="content">
+                        1992년 11월 05일
+                      </PlainTextComponent>
+                    </PlainTextFrame>
+                  </LineAdditionalFrame>
+                </LineComponent>
+                <LineComponent
+                  className="LineComponent"
+                  margin="10px 0px 10px 0px"
+                  justifyContent="space-between"
+                  height={"35px"}
+                >
+                  <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
+                    <PlainTextFrame className="PlainTextFrame">
+                      <PlainTextComponent className="PlainTextComponent" type="content">
+                        휴대폰 번호
+                      </PlainTextComponent>
+                    </PlainTextFrame>
+                  </LineCoreFrame>
+                  <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
+                    <PlainTextFrame className="PlainTextFrame" padding={"0px 10px 0px 10px"}>
+                      <PlainTextComponent className="PlainTextComponent" type="content">
+                        010-7149-3357
+                      </PlainTextComponent>
+                    </PlainTextFrame>
+                  </LineAdditionalFrame>
+                </LineComponent>
+                <LineComponent
+                  className="LineComponent"
+                  margin="10px 0px 10px 0px"
+                  justifyContent="space-between"
+                  height={"35px"}
+                >
+                  <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
+                    <PlainTextFrame className="PlainTextFrame">
+                      <PlainTextComponent className="PlainTextComponent" type="content">
+                        *이메일
+                      </PlainTextComponent>
+                    </PlainTextFrame>
+                  </LineCoreFrame>
+                  <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
+                    <InputTextFrame className="InputTextFrame" width={"100%"}>
+                      <InputTextComponent
+                        className="InputTextComponent"
+                        width={"100%"}
+                        placeholder="이메일을 입력해 주세요."
+                      ></InputTextComponent>
+                    </InputTextFrame>
+                  </LineAdditionalFrame>
+                </LineComponent>
+              </FieldFrame>
+            </Frame>
+          </ContentFrame>
           <ButtonFrame className="ButtonFrame">
             <ApplyButtonComponent
               className="ApplyButtonComponent"
