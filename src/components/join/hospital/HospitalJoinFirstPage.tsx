@@ -322,14 +322,14 @@ const HospitalJoinFirstPage = observer((props: any) => {
     }
     if (
       HospitalData.businessLicenseImageData?.name === event.target.files[0].name ||
-      HospitalData.businessTempLicenseImageData?.name === event.target.files[0].name
+      HospitalData.tempBusinessLicenseImageData?.name === event.target.files[0].name
     ) {
       window.alert("사업자 등록증 업로드 이름 중복 오류");
       return;
     }
 
     HospitalData.setBusinessLicenseImageData({ name: event.target.files[0].name, url: undefined });
-    HospitalData.setBusinessLicneseImageFileData(event.target.files[0]);
+    HospitalData.setBusinessLicenseImageFileData(event.target.files[0]);
 
     event.target.value = "";
   };

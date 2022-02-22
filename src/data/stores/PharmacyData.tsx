@@ -23,11 +23,11 @@ export interface PharmacyDataType {
   businessLicenseImageData: undefined | { name: string; url: undefined | string };
   setBusinessLicenseImageData: (e: undefined | { name: string; url: undefined | string }) => void;
   /* Temp for Initialization */
-  businessTempLicenseImageData: undefined | { name: string; url: undefined | string };
-  setBusinessTempLicenseImageData: (e: undefined | { name: string; url: undefined | string }) => void;
+  tempBusinessLicenseImageData: undefined | { name: string; url: undefined | string };
+  setTempBusinessLicenseImageData: (e: undefined | { name: string; url: undefined | string }) => void;
   /* Business License Image File */
-  businessLicneseImageFileData: undefined | File;
-  setBusinessLicneseImageFileData: (e: undefined | File) => void;
+  businessLicenseImageFileData: undefined | File;
+  setBusinessLicenseImageFileData: (e: undefined | File) => void;
   /* Delegator Email */
   delegatorEmailData: undefined | string;
   setDelegatorEmailData: (e: undefined | string) => void;
@@ -74,14 +74,14 @@ const PharmacyData = observable<PharmacyDataType>({
     this.businessLicenseImageData = e;
   },
   /* Temp for Initialization */
-  businessTempLicenseImageData: undefined,
-  setBusinessTempLicenseImageData(e: undefined | { name: string; url: undefined | string }) {
-    this.businessTempLicenseImageData = e;
+  tempBusinessLicenseImageData: undefined,
+  setTempBusinessLicenseImageData(e: undefined | { name: string; url: undefined | string }) {
+    this.tempBusinessLicenseImageData = e;
   },
   /* Business License Image File */
-  businessLicneseImageFileData: undefined,
-  setBusinessLicneseImageFileData(e: undefined | File) {
-    this.businessLicneseImageFileData = e;
+  businessLicenseImageFileData: undefined,
+  setBusinessLicenseImageFileData(e: undefined | File) {
+    this.businessLicenseImageFileData = e;
   },
   /* Delegator Email */
   delegatorEmailData: undefined,
