@@ -59,6 +59,8 @@ export interface HospitalDataType {
   /* Bank Name */
   bankNameData: undefined | string;
   setBankNameData: (e: undefined | string) => void;
+  customBankNameData: undefined | string;
+  setCustomBankNameData: (e: undefined | string) => void;
   /* Bank Account Number*/
   bankAccountNumberData: undefined | string;
   setBankAccountNumberData: (e: undefined | string) => void;
@@ -179,6 +181,10 @@ const HospitalData = observable<HospitalDataType>({
   bankNameData: undefined,
   setBankNameData(e: undefined | string) {
     this.bankNameData = e;
+  },
+  customBankNameData: undefined,
+  setCustomBankNameData(e: undefined | string) {
+    this.customBankNameData = e;
   },
   /* Bank Account Number*/
   bankAccountNumberData: undefined,

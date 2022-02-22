@@ -245,6 +245,26 @@ const InputButtonFrame = styled.div<Props>`
   margin: ${(props) => (props.margin ? props.margin : "")};
   height: 30px;
 `;
+const SelectTextComponent = styled.select<Props>`
+  font-family: "Spoqa Han Sans Neo";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  color: #a8a8a8;
+
+  width: ${(props) => (props.width ? props.width : "")};
+  padding: 0px 10px 0px 10px;
+`;
+const OptionTextComponent = styled.option<Props>`
+  font-family: "Spoqa Han Sans Neo";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  color: #a8a8a8;
+
+  width: ${(props) => (props.width ? props.width : "")};
+  padding: 0px 10px 0px 10px;
+`;
 const InputButtonComponent = styled.button<Props>`
   width: 100%;
   margin: ${(props) => (props.margin ? props.margin : "")};
@@ -420,6 +440,36 @@ const PharmacyJoinSecondPage = observer((props: any) => {
   ]);
 
   /*  */
+
+  const bankNameListData = [
+    "직접입력",
+    "경남은행",
+    "광주은행",
+    "국민은행",
+    "기업은행",
+    "농협은행",
+    "대구은행",
+    "도이치은행",
+    "뱅크오브아메리카",
+    "부산은행",
+    "산립조합중앙회",
+    "산업은행",
+    "새마을금고",
+    "수협은행",
+    "신한은행",
+    "신협중앙회",
+    "우리은행",
+    "우체국",
+    "저축은행",
+    "전북은행",
+    "SC제일은행",
+    "제주은행",
+    "카카오뱅크",
+    "케이뱅크",
+    "토스뱅크",
+    "하나은행",
+    "한국씨티은행",
+  ];
 
   return (
     <Body className="Body">
@@ -650,15 +700,50 @@ const PharmacyJoinSecondPage = observer((props: any) => {
                   </LineCoreFrame>
                   <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
                     <InputTextFrame className="InputTextFrame" width={"100%"}>
-                      <InputTextComponent
-                        className="InputTextComponent"
+                      <SelectTextComponent
+                        className="SelectTextComponent"
                         width={"100%"}
                         value={PharmacyData.bankNameData ? PharmacyData.bankNameData : ""}
                         onChange={(event) => PharmacyData.setBankNameData(event.target.value)}
-                      ></InputTextComponent>
+                      >
+                        {bankNameListData.map((bankNameData, key) => {
+                          return (
+                            <OptionTextComponent className="OptionTextComponent" key={key} value={bankNameData}>
+                              {bankNameData}
+                            </OptionTextComponent>
+                          );
+                        })}
+                      </SelectTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
                 </LineComponent>
+                {!PharmacyData.bankNameData || PharmacyData.bankNameData === "직접입력" ? (
+                  <LineComponent
+                    className="LineComponent"
+                    margin="10px 0px 10px 0px"
+                    justifyContent="space-between"
+                    height={"35px"}
+                    flexDirection={"column"}
+                  >
+                    <LineCoreFrame className="LineCoreFrame" minWidth={"140px"}>
+                      <PlainTextFrame className="PlainTextFrame">
+                        <PlainTextComponent className="PlainTextComponent" designType="content">
+                          *입금 계좌 은행 직접입력
+                        </PlainTextComponent>
+                      </PlainTextFrame>
+                    </LineCoreFrame>
+                    <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
+                      <InputTextFrame className="InputTextFrame" width={"100%"}>
+                        <InputTextComponent
+                          className="InputTextComponent"
+                          width={"100%"}
+                          value={PharmacyData.customBankNameData ? PharmacyData.customBankNameData : ""}
+                          onChange={(event) => PharmacyData.setCustomBankNameData(event.target.value)}
+                        ></InputTextComponent>
+                      </InputTextFrame>
+                    </LineAdditionalFrame>
+                  </LineComponent>
+                ) : null}
                 <LineComponent
                   className="LineComponent"
                   margin="10px 0px 10px 0px"
