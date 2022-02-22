@@ -287,7 +287,7 @@ const DoctorJoinFirstPage = observer((props: any) => {
   const CommonData = useStore().CommonData;
 
   const onClickGoButton = () => {
-    history.push({ pathname: "/doctor/join_2" });
+    history.push({ pathname: "/doctor/join-2" });
   };
   const onClickBackButton = () => {
     window.history.back();

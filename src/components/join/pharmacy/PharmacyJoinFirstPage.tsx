@@ -287,7 +287,7 @@ const PharmacyJoinFirstPage = observer((props: any) => {
   const CommonData = useStore().CommonData;
 
   const onClickGoButton = () => {
-    history.push({ pathname: "/pharmacy/join_2" });
+    history.push({ pathname: "/pharmacy/join-2" });
   };
   const onClickBackButton = () => {
     window.history.back();

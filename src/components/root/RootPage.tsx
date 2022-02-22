@@ -42,9 +42,9 @@ const RootPage = observer(() => {
       <Route path="/hospital/agree" component={HospitalAgreePage}></Route>
       <Route path="/pharmacy/agree" component={PharmacyAgreePage}></Route>
       <Route path="/doctor/agree" component={DoctorAgreePage}></Route>
-      <Route path="/hospital/join_1" component={HospitalJoinFirstPage}></Route>
-      <Route path="/pharmacy/join_1" component={PharmacyJoinFirstPage}></Route>
-      <Route path="/doctor/join_1" component={DoctorJoinFirstPage}></Route>
+      <Route path="/hospital/join-1" component={HospitalJoinFirstPage}></Route>
+      <Route path="/pharmacy/join-1" component={PharmacyJoinFirstPage}></Route>
+      <Route path="/doctor/join-1" component={DoctorJoinFirstPage}></Route>
     </Frame>
   );
 });

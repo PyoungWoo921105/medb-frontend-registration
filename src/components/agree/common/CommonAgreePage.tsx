@@ -334,9 +334,9 @@ const CommonAgreePage = observer((props: any) => {
 
   const onClickGoButton = () => {
     if (CommonData.selectType === "hospital") {
-      history.push({ pathname: "/hospital/join_1" });
+      history.push({ pathname: "/hospital/join-1" });
     } else if (CommonData.selectType === "pharmacy") {
-      history.push({ pathname: "/pharmacy/join_1" });
+      history.push({ pathname: "/pharmacy/join-1" });
     }
   };
 
