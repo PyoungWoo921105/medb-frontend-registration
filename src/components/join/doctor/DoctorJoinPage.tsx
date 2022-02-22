@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { observer } from "mobx-react";
 
-import LogoImageIcon from "./../../../assets/icons/LogoImageIcon.png";
+import LogoImageIcon from "../../../assets/icons/LogoImageIcon.png";
 
 import useStore from "../../../data/useStore";
 

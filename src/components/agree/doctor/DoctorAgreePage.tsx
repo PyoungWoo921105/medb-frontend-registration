@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { observer } from "mobx-react";
 
-import LogoImageIcon from "./../../../assets/icons/LogoImageIcon.png";
-import onClickNotCheckedCircleIcon from "./../../../assets/icons/onClickNotCheckedCircleIcon.svg";
-import onClickCheckedCircleIcon from "./../../../assets/icons/onClickCheckedCircleIcon.svg";
-import onClickNotCheckedIcon from "./../../../assets/icons/onClickNotCheckedIcon.svg";
-import onClickCheckedIcon from "./../../../assets/icons/onClickCheckedIcon.svg";
+import LogoImageIcon from "../../../assets/icons/LogoImageIcon.png";
+import onClickNotCheckedCircleIcon from "../../../assets/icons/onClickNotCheckedCircleIcon.svg";
+import onClickCheckedCircleIcon from "../../../assets/icons/onClickCheckedCircleIcon.svg";
+import onClickNotCheckedIcon from "../../../assets/icons/onClickNotCheckedIcon.svg";
+import onClickCheckedIcon from "../../../assets/icons/onClickCheckedIcon.svg";
 
 import useStore from "../../../data/useStore";
 
