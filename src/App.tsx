@@ -2,7 +2,7 @@ import React from "react";
 /* import logo from './logo.svg';
 import './App.css'; */
 import { BrowserRouter } from "react-router-dom";
-import Frame from "./components/common/Frame";
+import RootPage from "./components/root/RootPage";
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
       </header>
     </div> */
     <BrowserRouter>
-      <Frame></Frame>
+      <RootPage></RootPage>
     </BrowserRouter>
   );
 }

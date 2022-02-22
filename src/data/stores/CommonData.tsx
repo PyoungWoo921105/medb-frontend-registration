@@ -1,14 +1,20 @@
 import { observable } from "mobx";
 
 export interface CommonDataType {
-  registerSelectData: string;
-  setRegisterSelectData: (e: string) => void;
+  URLType: string;
+  setURLType: (e: string) => void;
+  selectType: string;
+  setSelectType: (e: string) => void;
 }
 
 const CommonData = observable<CommonDataType>({
-  registerSelectData: "",
-  setRegisterSelectData(e: string) {
-    this.registerSelectData = e;
+  URLType: "",
+  setURLType(e: string) {
+    this.URLType = e;
+  },
+  selectType: "",
+  setSelectType(e: string) {
+    this.selectType = e;
   },
 });
 

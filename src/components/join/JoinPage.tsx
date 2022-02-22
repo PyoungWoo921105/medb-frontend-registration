@@ -1,16 +1,8 @@
-import React, { useState /* , { useState } */ } from "react";
-/* import { useHistory } from "react-router-dom"; */
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { observer } from "mobx-react";
 
-/* import useStore from "../../data/useStore"; */
-
-/* import LoadingAnimation from "./../../assets/animations/LoadingAnimation.svg"; */
 import LogoImageIcon from "./../../assets/icons/LogoImageIcon.png";
-import onClickNotCheckedCircleIcon from "./../../assets/icons/onClickNotCheckedCircleIcon.svg";
-import onClickCheckedCircleIcon from "./../../assets/icons/onClickCheckedCircleIcon.svg";
-import onClickNotCheckedIcon from "./../../assets/icons/onClickNotCheckedIcon.svg";
-import onClickCheckedIcon from "./../../assets/icons/onClickCheckedIcon.svg";
 
 import useStore from "../../data/useStore";
 
@@ -79,42 +71,7 @@ const Content = styled.div`
   align-items: center;
   justify-content: center;
 `;
-const MessageFrame = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-`;
-const MessageComponent = styled.span`
-  font-family: "Spoqa Han Sans Neo";
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
 
-  margin: 15px 0px 15px 0px;
-`;
-const SelectFrame = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-`;
-const SelectButtonComponent = styled.button<Props>`
-  border: 1px solid #0d985b;
-  box-sizing: border-box;
-  border-radius: 4px;
-  width: 140px;
-  height: 50px;
-
-  margin: 15px 15px 15px 15px;
-  background-color: ${(props) => (props.backgroundColor ? props.backgroundColor : "")};
-
-  font-family: "Spoqa Han Sans Neo";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  text-align: center;
-  color: #00b264;
-  color: ${(props) => (props.color ? props.color : "")};
-`;
 const ContentFrame = styled.div`
   display: flex;
   flex-direction: column;
@@ -176,24 +133,7 @@ const LineAdditionalFrame = styled.div<Props>`
 
   width: ${(props) => (props.width ? props.width : "")};
 `;
-const PlainInputFrame = styled.div<Props>`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
 
-  width: ${(props) => (props.width ? props.width : "")};
-  margin: ${(props) => (props.margin ? props.margin : "")};
-
-  cursor: pointer;
-`;
-const PlainInputComponent = styled.img`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-
-  width: 100%;
-  height: 100%;
-`;
 const PlainTextFrame = styled.div<Props>`
   display: flex;
   flex-direction: row;
@@ -286,10 +226,10 @@ const ButtonFrame = styled.div`
   justify-content: center;
 `;
 const ApplyButtonComponent = styled.button<Props>`
-  border: 1px solid #0d985b;
+  border: ${(props) => (props.border ? props.border : "")};
   box-sizing: border-box;
   border-radius: 4px;
-  width: 340px;
+  width: ${(props) => (props.width ? props.width : "")};
   height: 50px;
 
   margin: 15px 15px 15px 15px;
@@ -300,8 +240,9 @@ const ApplyButtonComponent = styled.button<Props>`
   font-weight: 500;
   font-size: 16px;
   text-align: center;
-  color: #00b264;
   color: ${(props) => (props.color ? props.color : "")};
+
+  cursor: ${(props) => (props.cursor ? props.cursor : "")};
 `;
 
 const Footer = styled.div`
@@ -335,7 +276,7 @@ const CompanyInformationComponent = styled.span`
   margin: 10px 0px 10px 0px;
 `;
 
-const Select = observer((props: any) => {
+const JoinPage = observer((props: any) => {
   const { match, location, history } = props;
   console.log(match);
   console.log(location);
@@ -345,49 +286,18 @@ const Select = observer((props: any) => {
 
   const CommonData = useStore().CommonData;
 
-  const onClickSelectHospital = () => {
-    if (CommonData.registerSelectData === "hospital") {
-      CommonData.setRegisterSelectData("");
-    } else if (CommonData.registerSelectData === "pharmacy") {
-      CommonData.setRegisterSelectData("hospital");
-    } else {
-      CommonData.setRegisterSelectData("hospital");
-    }
-  };
-  const onClickSelectPharmacy = () => {
-    if (CommonData.registerSelectData === "pharmacy") {
-      CommonData.setRegisterSelectData("");
-    } else if (CommonData.registerSelectData === "hospital") {
-      CommonData.setRegisterSelectData("pharmacy");
-    } else {
-      CommonData.setRegisterSelectData("pharmacy");
-    }
-  };
-
-  const [check, setCheck] = useState({ first: false, second: false, third: false });
-
-  const onClickCheckButton = (props: any) => {
-    const { key } = props;
-    console.log(key);
-    if (key === 0) {
-      if (check.first && check.second && check.third) {
-        setCheck({ first: false, second: false, third: false });
-      } else {
-        setCheck({ first: true, second: true, third: true });
-      }
-    } else if (key === 1) {
-      setCheck({ ...check, first: !check.first });
-    } else if (key === 2) {
-      setCheck({ ...check, second: !check.second });
-    } else if (key === 3) {
-      setCheck({ ...check, third: !check.third });
-    }
-  };
-
-  const onClickVerifyButton = () => {
-    console.log("A");
+  const onClickGoButton = () => {
     history.push({ pathname: "/describe" });
   };
+  const onClickBackButton = () => {
+    window.history.back();
+  };
+
+  useEffect(() => {
+    if (CommonData.selectType === "hospital") {
+    } else if (CommonData.selectType === "pharmacy") {
+    }
+  }, [CommonData.selectType]);
 
   return (
     <Body className="Body">
@@ -400,7 +310,7 @@ const Select = observer((props: any) => {
       </Header>
       <Container className="Container">
         <Content className="Content">
-          {CommonData.registerSelectData ? (
+          {CommonData.selectType ? (
             <ContentFrame className="ContentFrame">
               <Frame className="Frame">
                 <TitleFrame className="TitleFrame">
@@ -645,19 +555,32 @@ const Select = observer((props: any) => {
               </Frame>
             </ContentFrame>
           ) : null}
-          {CommonData.registerSelectData ? (
-            <ButtonFrame className="ButtonFrame">
-              <ApplyButtonComponent
-                className="ApplyButtonComponent"
-                backgroundColor={check.first && check.second && check.third ? "#00B264" : "transparent"}
-                color={check.first && check.second && check.third ? "#FFFFFF" : "#00B264"}
-                cursor={check.first && check.second && check.third ? "pointer" : ""}
-                onClick={check.first && check.second && check.third ? onClickVerifyButton : () => {}}
-              >
-                본인인증하기
-              </ApplyButtonComponent>
-            </ButtonFrame>
-          ) : null}
+          <ButtonFrame className="ButtonFrame">
+            <ApplyButtonComponent
+              className="ApplyButtonComponent"
+              width={"100px"}
+              border={"1px solid #B1B1B1"}
+              backgroundColor={"#B1B1B1"}
+              color={"#FFFFFF"}
+              cursor={"pointer"}
+              onClick={onClickBackButton}
+            >
+              이전
+            </ApplyButtonComponent>
+            <ApplyButtonComponent
+              className="ApplyButtonComponent"
+              width={"210px"}
+              border={"1px solid #0D985B"}
+              /* TODO */
+              backgroundColor={false ? "#00B264" : "transparent"}
+              color={false ? "#FFFFFF" : "#00B264"}
+              cursor={false ? "pointer" : ""}
+              onClick={false ? onClickGoButton : () => {}}
+            >
+              다음 (1/
+              {CommonData.selectType === "hospital" ? 4 : CommonData.selectType === "pharmacy" ? 3 : 1})
+            </ApplyButtonComponent>
+          </ButtonFrame>
         </Content>
       </Container>
       <Footer className="Footer">
@@ -674,4 +597,4 @@ const Select = observer((props: any) => {
     </Body>
   );
 });
-export default Select;
+export default JoinPage;

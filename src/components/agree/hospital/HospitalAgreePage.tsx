@@ -1,18 +1,14 @@
-import React, { useState /* , { useState } */ } from "react";
-/* import { useHistory } from "react-router-dom"; */
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { observer } from "mobx-react";
 
-/* import useStore from "../../data/useStore"; */
+import LogoImageIcon from "./../../../assets/icons/LogoImageIcon.png";
+import onClickNotCheckedCircleIcon from "./../../../assets/icons/onClickNotCheckedCircleIcon.svg";
+import onClickCheckedCircleIcon from "./../../../assets/icons/onClickCheckedCircleIcon.svg";
+import onClickNotCheckedIcon from "./../../../assets/icons/onClickNotCheckedIcon.svg";
+import onClickCheckedIcon from "./../../../assets/icons/onClickCheckedIcon.svg";
 
-/* import LoadingAnimation from "./../../assets/animations/LoadingAnimation.svg"; */
-import LogoImageIcon from "./../../assets/icons/LogoImageIcon.png";
-import onClickNotCheckedCircleIcon from "./../../assets/icons/onClickNotCheckedCircleIcon.svg";
-import onClickCheckedCircleIcon from "./../../assets/icons/onClickCheckedCircleIcon.svg";
-import onClickNotCheckedIcon from "./../../assets/icons/onClickNotCheckedIcon.svg";
-import onClickCheckedIcon from "./../../assets/icons/onClickCheckedIcon.svg";
-
-import useStore from "../../data/useStore";
+import useStore from "../../../data/useStore";
 
 interface Props {
   display?: string;
@@ -44,6 +40,8 @@ const Body = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  padding: 100px 0px 0px 0px;
 `;
 
 const Header = styled.header`
@@ -74,7 +72,7 @@ const Container = styled.div`
   position: relative;
   width: 100%;
 `;
-const Content = styled.div`
+const ContainterContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -113,8 +111,9 @@ const SelectButtonComponent = styled.button<Props>`
   font-weight: 500;
   font-size: 16px;
   text-align: center;
-  color: #00b264;
   color: ${(props) => (props.color ? props.color : "")};
+
+  cursor: ${(props) => (props.cursor ? props.cursor : "")};
 `;
 const ContentFrame = styled.div`
   display: flex;
@@ -235,11 +234,11 @@ const ButtonFrame = styled.div`
   flex-direction: row;
   justify-content: center;
 `;
-const ApplyButtonComponent = styled.button<Props>`
-  border: 1px solid #0d985b;
+const ButtonComponent = styled.button<Props>`
+  border: ${(props) => (props.border ? props.border : "")};
   box-sizing: border-box;
   border-radius: 4px;
-  width: 340px;
+  width: ${(props) => (props.width ? props.width : "")};
   height: 50px;
 
   margin: 15px 15px 15px 15px;
@@ -250,8 +249,9 @@ const ApplyButtonComponent = styled.button<Props>`
   font-weight: 500;
   font-size: 16px;
   text-align: center;
-  color: #00b264;
   color: ${(props) => (props.color ? props.color : "")};
+
+  cursor: ${(props) => (props.cursor ? props.cursor : "")};
 `;
 
 const Footer = styled.div`
@@ -285,58 +285,41 @@ const CompanyInformationComponent = styled.span`
   margin: 10px 0px 10px 0px;
 `;
 
-const Select = observer((props: any) => {
+const HospitalAgreePage = observer((props: any) => {
   const { match, location, history } = props;
   console.log(match);
   console.log(location);
   console.log(history);
 
-  /* const location = useLocation(); */
-
   const CommonData = useStore().CommonData;
 
-  const onClickSelectHospital = () => {
-    if (CommonData.registerSelectData === "hospital") {
-      CommonData.setRegisterSelectData("");
-    } else if (CommonData.registerSelectData === "pharmacy") {
-      CommonData.setRegisterSelectData("hospital");
-    } else {
-      CommonData.setRegisterSelectData("hospital");
-    }
-  };
-  const onClickSelectPharmacy = () => {
-    if (CommonData.registerSelectData === "pharmacy") {
-      CommonData.setRegisterSelectData("");
-    } else if (CommonData.registerSelectData === "hospital") {
-      CommonData.setRegisterSelectData("pharmacy");
-    } else {
-      CommonData.setRegisterSelectData("pharmacy");
-    }
-  };
+  useEffect(() => {
+    CommonData.setSelectType("hospital");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const [check, setCheck] = useState({ first: false, second: false, third: false });
+  const [agreeCheck, setAgreeCheck] = useState({ first: false, second: false, third: false });
 
   const onClickCheckButton = (props: any) => {
     const { key } = props;
     console.log(key);
     if (key === 0) {
-      if (check.first && check.second && check.third) {
-        setCheck({ first: false, second: false, third: false });
+      if (agreeCheck.first && agreeCheck.second && agreeCheck.third) {
+        setAgreeCheck({ first: false, second: false, third: false });
       } else {
-        setCheck({ first: true, second: true, third: true });
+        setAgreeCheck({ first: true, second: true, third: true });
       }
     } else if (key === 1) {
-      setCheck({ ...check, first: !check.first });
+      setAgreeCheck({ ...agreeCheck, first: !agreeCheck.first });
     } else if (key === 2) {
-      setCheck({ ...check, second: !check.second });
+      setAgreeCheck({ ...agreeCheck, second: !agreeCheck.second });
     } else if (key === 3) {
-      setCheck({ ...check, third: !check.third });
+      setAgreeCheck({ ...agreeCheck, third: !agreeCheck.third });
     }
   };
 
-  const onClickVerifyButton = () => {
-    console.log("A");
-    history.push({ pathname: "/describe" });
+  const onClickGoButton = () => {
+    history.push({ pathname: "/join" });
   };
 
   return (
@@ -349,31 +332,18 @@ const Select = observer((props: any) => {
         </HeaderContent>
       </Header>
       <Container className="Container">
-        <Content className="Content">
-          <MessageFrame className="MessageFrame">
-            <MessageComponent className="MessageComponent">가입 유형을 선택해 주세요.</MessageComponent>
-          </MessageFrame>
+        <ContainterContent className="ContainterContent">
           <SelectFrame className="SelectFrame">
             <SelectButtonComponent
               className="SelectButtonComponent"
-              onClick={onClickSelectHospital}
-              backgroundColor={CommonData.registerSelectData === "hospital" ? "#00B264" : "transparent"}
-              color={CommonData.registerSelectData === "hospital" ? "#FFFFFF" : "#00B264"}
-              margin="15px 30px 15px 15px"
+              backgroundColor={CommonData.selectType === "hospital" ? "#00B264" : "transparent"}
+              color={CommonData.selectType === "hospital" ? "#FFFFFF" : "#00B264"}
+              margin="15px 15px 15px 15px"
             >
               병원
             </SelectButtonComponent>
-            <SelectButtonComponent
-              className="SelectButtonComponent"
-              onClick={onClickSelectPharmacy}
-              backgroundColor={CommonData.registerSelectData === "pharmacy" ? "#00B264" : "transparent"}
-              color={CommonData.registerSelectData === "pharmacy" ? "#FFFFFF" : "#00B264"}
-              margin="15px 15px 15px 30px"
-            >
-              약국
-            </SelectButtonComponent>
           </SelectFrame>
-          {CommonData.registerSelectData ? (
+          {CommonData.selectType ? (
             <ContentFrame className="ContentFrame">
               <AgreementFrame className="AgreementFrame">
                 <AgreementTitleFrame className="AgreementTitleFrame">
@@ -392,7 +362,7 @@ const Select = observer((props: any) => {
                         <AgreementCheckboxInputComponent
                           className="AgreementCheckboxInputComponent"
                           src={
-                            check.first && check.second && check.third
+                            agreeCheck.first && agreeCheck.second && agreeCheck.third
                               ? onClickCheckedCircleIcon
                               : onClickNotCheckedCircleIcon
                           }
@@ -428,7 +398,7 @@ const Select = observer((props: any) => {
                       >
                         <AgreementCheckboxInputComponent
                           className="AgreementCheckboxInputComponent"
-                          src={check.first ? onClickCheckedIcon : onClickNotCheckedIcon}
+                          src={agreeCheck.first ? onClickCheckedIcon : onClickNotCheckedIcon}
                         ></AgreementCheckboxInputComponent>
                       </AgreementCheckboxInputFrame>
                       <AgreementCheckboxTextFrame className="AgreementCheckboxTextFrame">
@@ -459,7 +429,7 @@ const Select = observer((props: any) => {
                       >
                         <AgreementCheckboxInputComponent
                           className="AgreementCheckboxInputComponent"
-                          src={check.second ? onClickCheckedIcon : onClickNotCheckedIcon}
+                          src={agreeCheck.second ? onClickCheckedIcon : onClickNotCheckedIcon}
                         ></AgreementCheckboxInputComponent>
                       </AgreementCheckboxInputFrame>
                       <AgreementCheckboxTextFrame className="AgreementCheckboxTextFrame">
@@ -490,7 +460,7 @@ const Select = observer((props: any) => {
                       >
                         <AgreementCheckboxInputComponent
                           className="AgreementCheckboxInputComponent"
-                          src={check.third ? onClickCheckedIcon : onClickNotCheckedIcon}
+                          src={agreeCheck.third ? onClickCheckedIcon : onClickNotCheckedIcon}
                         ></AgreementCheckboxInputComponent>
                       </AgreementCheckboxInputFrame>
                       <AgreementCheckboxTextFrame className="AgreementCheckboxTextFrame">
@@ -511,20 +481,22 @@ const Select = observer((props: any) => {
               </AgreementFrame>
             </ContentFrame>
           ) : null}
-          {CommonData.registerSelectData ? (
+          {CommonData.selectType ? (
             <ButtonFrame className="ButtonFrame">
-              <ApplyButtonComponent
-                className="ApplyButtonComponent"
-                backgroundColor={check.first && check.second && check.third ? "#00B264" : "transparent"}
-                color={check.first && check.second && check.third ? "#FFFFFF" : "#00B264"}
-                cursor={check.first && check.second && check.third ? "pointer" : ""}
-                onClick={check.first && check.second && check.third ? onClickVerifyButton : () => {}}
+              <ButtonComponent
+                className="ButtonComponent"
+                width={"340px"}
+                border={"1px solid #0d985b"}
+                backgroundColor={agreeCheck.first && agreeCheck.second && agreeCheck.third ? "#00B264" : "transparent"}
+                color={agreeCheck.first && agreeCheck.second && agreeCheck.third ? "#FFFFFF" : "#00B264"}
+                cursor={agreeCheck.first && agreeCheck.second && agreeCheck.third ? "pointer" : ""}
+                onClick={agreeCheck.first && agreeCheck.second && agreeCheck.third ? onClickGoButton : () => {}}
               >
                 본인인증하기
-              </ApplyButtonComponent>
+              </ButtonComponent>
             </ButtonFrame>
           ) : null}
-        </Content>
+        </ContainterContent>
       </Container>
       <Footer className="Footer">
         <FooterContent className="FooterContent">
@@ -540,4 +512,4 @@ const Select = observer((props: any) => {
     </Body>
   );
 });
-export default Select;
+export default HospitalAgreePage;
