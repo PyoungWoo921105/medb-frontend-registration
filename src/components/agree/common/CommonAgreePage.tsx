@@ -173,6 +173,7 @@ const AgreementCheckboxInputFrame = styled.div<Props>`
   justify-content: center;
 
   width: ${(props) => (props.width ? props.width : "")};
+  min-width: ${(props) => (props.minWidth ? props.minWidth : "")};
   margin: ${(props) => (props.margin ? props.margin : "")};
 
   cursor: pointer;
@@ -334,9 +335,9 @@ const CommonAgreePage = observer((props: any) => {
 
   const onClickGoButton = () => {
     if (CommonData.selectType === "hospital") {
-      history.push({ pathname: "/hospital/join-1" });
+      history.push({ pathname: "/hospital/join/1" });
     } else if (CommonData.selectType === "pharmacy") {
-      history.push({ pathname: "/pharmacy/join-1" });
+      history.push({ pathname: "/pharmacy/join/1" });
     }
   };
 
@@ -389,6 +390,7 @@ const CommonAgreePage = observer((props: any) => {
                       <AgreementCheckboxInputFrame
                         className="AgreementCheckboxInputFrame"
                         width={"20px"}
+                        minWidth={"20px"}
                         margin="0px 10px 0px 10px"
                         onClick={() => onClickCheckButton({ key: 0 })}
                       >
@@ -426,6 +428,7 @@ const CommonAgreePage = observer((props: any) => {
                       <AgreementCheckboxInputFrame
                         className="AgreementCheckboxInputFrame"
                         width={"15px"}
+                        minWidth={"15px"}
                         margin="0px 10px 0px 10px"
                         onClick={() => onClickCheckButton({ key: 1 })}
                       >
@@ -457,6 +460,7 @@ const CommonAgreePage = observer((props: any) => {
                       <AgreementCheckboxInputFrame
                         className="AgreementCheckboxInputFrame"
                         width={"15px"}
+                        minWidth={"15px"}
                         margin="0px 10px 0px 10px"
                         onClick={() => onClickCheckButton({ key: 2 })}
                       >
@@ -488,6 +492,7 @@ const CommonAgreePage = observer((props: any) => {
                       <AgreementCheckboxInputFrame
                         className="AgreementCheckboxInputFrame"
                         width={"15px"}
+                        minWidth={"15px"}
                         margin="0px 10px 0px 10px"
                         onClick={() => onClickCheckButton({ key: 3 })}
                       >
