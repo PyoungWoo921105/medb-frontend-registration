@@ -7,9 +7,9 @@ import CommonAgreePage from "../agree/common/CommonAgreePage";
 import HospitalAgreePage from "../agree/hospital/HospitalAgreePage";
 import PharmacyAgreePage from "../agree/pharmacy/PharmacyAgreePage";
 import DoctorAgreePage from "../agree/doctor/DoctorAgreePage";
-import HospitalJoinPage from "../join/hospital/HospitalJoinPage";
-import PharmacyJoinPage from "../join/pharmacy/PharmacyJoinPage";
-import DoctorJoinPage from "../join/doctor/DoctorJoinPage";
+import HospitalJoinFirstPage from "../join/hospital/HospitalJoinFirstPage";
+import PharmacyJoinFirstPage from "../join/pharmacy/PharmacyJoinFirstPage";
+import DoctorJoinFirstPage from "../join/doctor/DoctorJoinFirstPage";
 
 import useStore from "../../data/useStore";
 
@@ -42,9 +42,9 @@ const RootPage = observer(() => {
       <Route path="/hospital/agree" component={HospitalAgreePage}></Route>
       <Route path="/pharmacy/agree" component={PharmacyAgreePage}></Route>
       <Route path="/doctor/agree" component={DoctorAgreePage}></Route>
-      <Route path="/hospital/join" component={HospitalJoinPage}></Route>
-      <Route path="/pharmacy/join" component={PharmacyJoinPage}></Route>
-      <Route path="/doctor/join" component={DoctorJoinPage}></Route>
+      <Route path="/hospital/join_1" component={HospitalJoinFirstPage}></Route>
+      <Route path="/pharmacy/join_1" component={PharmacyJoinFirstPage}></Route>
+      <Route path="/doctor/join_1" component={DoctorJoinFirstPage}></Route>
     </Frame>
   );
 });

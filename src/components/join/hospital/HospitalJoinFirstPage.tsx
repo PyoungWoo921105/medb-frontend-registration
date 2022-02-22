@@ -276,7 +276,7 @@ const CompanyInformationComponent = styled.span`
   margin: 10px 0px 10px 0px;
 `;
 
-const PharmacyJoinPage = observer((props: any) => {
+const HospitalJoinFirstPage = observer((props: any) => {
   const { match, location, history } = props;
   console.log(match);
   console.log(location);
@@ -287,7 +287,7 @@ const PharmacyJoinPage = observer((props: any) => {
   const CommonData = useStore().CommonData;
 
   const onClickGoButton = () => {
-    history.push({ pathname: "/describe" });
+    history.push({ pathname: "/hospital/join_2" });
   };
   const onClickBackButton = () => {
     window.history.back();
@@ -597,4 +597,4 @@ const PharmacyJoinPage = observer((props: any) => {
     </Body>
   );
 });
-export default PharmacyJoinPage;
+export default HospitalJoinFirstPage;

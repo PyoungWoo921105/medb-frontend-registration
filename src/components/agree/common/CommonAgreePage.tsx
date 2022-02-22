@@ -333,7 +333,11 @@ const CommonAgreePage = observer((props: any) => {
   };
 
   const onClickGoButton = () => {
-    history.push({ pathname: "/join" });
+    if (CommonData.selectType === "hospital") {
+      history.push({ pathname: "/hospital/join_1" });
+    } else if (CommonData.selectType === "pharmacy") {
+      history.push({ pathname: "/pharmacy/join_1" });
+    }
   };
 
   return (
