@@ -7,7 +7,7 @@ import CommonAgreePage from "../agree/common/CommonAgreePage";
 import HospitalAgreePage from "../agree/hospital/HospitalAgreePage";
 import PharmacyAgreePage from "../agree/pharmacy/PharmacyAgreePage";
 import DoctorAgreePage from "../agree/doctor/DoctorAgreePage";
-import HospitalJoinPage from "../join/common/HospitalJoinPage";
+import HospitalJoinPage from "../join/hospital/HospitalJoinPage";
 import PharmacyJoinPage from "../join/pharmacy/PharmacyJoinPage";
 import DoctorJoinPage from "../join/doctor/DoctorJoinPage";
 

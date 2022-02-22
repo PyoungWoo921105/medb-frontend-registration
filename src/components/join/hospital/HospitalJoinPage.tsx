@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { observer } from "mobx-react";
 
-import LogoImageIcon from "./../../assets/icons/LogoImageIcon.png";
+import LogoImageIcon from "./../../../assets/icons/LogoImageIcon.png";
 
-import useStore from "../../data/useStore";
+import useStore from "../../../data/useStore";
 
 interface Props {
   display?: string;
@@ -276,7 +276,7 @@ const CompanyInformationComponent = styled.span`
   margin: 10px 0px 10px 0px;
 `;
 
-const JoinPage = observer((props: any) => {
+const HospitalJoinPage = observer((props: any) => {
   const { match, location, history } = props;
   console.log(match);
   console.log(location);
@@ -597,4 +597,4 @@ const JoinPage = observer((props: any) => {
     </Body>
   );
 });
-export default JoinPage;
+export default HospitalJoinPage;
