@@ -138,7 +138,7 @@ const LineAdditionalFrame = styled.div<Props>`
 
 const PlainTextFrame = styled.div<Props>`
   display: flex;
-  flex-direction: row;
+  flex-direction: ${(props) => (props.flexDirection ? props.flexDirection : "")};
   justify-content: center;
 
   width: ${(props) => (props.width ? props.width : "")};
@@ -663,7 +663,6 @@ const PharmacyJoinFirstPage = observer((props: any) => {
               className="ApplyButtonComponent"
               width={"210px"}
               border={"1px solid #0D985B"}
-              /* TODO */
               backgroundColor={PharmacyData.joinFirstPageValidateCheckFlagData ? "#00B264" : "transparent"}
               color={PharmacyData.joinFirstPageValidateCheckFlagData ? "#FFFFFF" : "#00B264"}
               cursor={PharmacyData.joinFirstPageValidateCheckFlagData ? "pointer" : ""}

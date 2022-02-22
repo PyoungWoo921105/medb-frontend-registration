@@ -7,7 +7,7 @@ import LogoImageIcon from "../../../assets/icons/LogoImageIcon.png";
 import useStore from "../../../data/useStore";
 
 import DaumPostCode from "react-daum-postcode";
-import { GetPharmacyCoordinate } from "../../../services/pharmacy/GetPharmacyCoordinate";
+import { GetPharmacyBusinessCoordinate } from "../../../services/pharmacy/GetPharmacyBusinessCoordinate";
 
 interface Props {
   display?: string;
@@ -140,7 +140,7 @@ const LineAdditionalFrame = styled.div<Props>`
 
 const PlainTextFrame = styled.div<Props>`
   display: flex;
-  flex-direction: row;
+  flex-direction: ${(props) => (props.flexDirection ? props.flexDirection : "")};
   justify-content: center;
 
   width: ${(props) => (props.width ? props.width : "")};
@@ -298,14 +298,14 @@ const SearchAddressPage = observer((props: any) => {
     }
     console.log(data);
     const GetPharmacyCoordinateFunction = async () => {
-      const GetPharmacyCoordinateData = {
+      const GetPharmacyBusinessCoordinateData = {
         address: data.jibunAddress
           ? data.jibunAddress
           : data.roadAddress
           ? data.roadAddress
           : "서울 강남구 역삼동 736-36",
       };
-      const response = await GetPharmacyCoordinate(GetPharmacyCoordinateData);
+      const response = await GetPharmacyBusinessCoordinate(GetPharmacyBusinessCoordinateData);
       if (response.status === 200) {
       } else {
         window.alert("위도 및 경도 정보 불러오기 오류");

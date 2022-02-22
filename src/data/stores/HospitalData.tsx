@@ -50,12 +50,12 @@ export interface HospitalDataType {
   setManagerPhoneNumberData: (e: undefined | string) => void;
   /* Manager Address */
   managerAddressData: undefined | string;
-  setManmagerAddressData: (e: undefined | string) => void;
+  setManagerAddressData: (e: undefined | string) => void;
   managerLocationData: undefined | { longitude: number; latitude: number };
   setManagerLocationData: (e: undefined | { longitude: number; latitude: number }) => void;
   /* Get Coordinate */
   managerCurrentLocationData: undefined | { longitude: number; latitude: number };
-  setMangerCurrentLocationData: (e: undefined | { longitude: number; latitude: number }) => void;
+  setManagerCurrentLocationData: (e: undefined | { longitude: number; latitude: number }) => void;
   /* Bank Name */
   bankNameData: undefined | string;
   setBankNameData: (e: undefined | string) => void;
@@ -76,7 +76,7 @@ export interface HospitalDataType {
   setTempBankBookImageData: (e: undefined | { name: string; url: undefined | string }) => void;
   /* Bank Book Image File */
   bankBookImageFileData: undefined | File;
-  setbankBookImageFileData: (e: undefined | File) => void;
+  setBankBookImageFileData: (e: undefined | File) => void;
   /* Validate Check */
   joinSecondPageValidateCheckFlagData: undefined | boolean;
   setJoinSecondPageValidateCheckFlagData: (e: undefined | boolean) => void;
@@ -143,48 +143,78 @@ const HospitalData = observable<HospitalDataType>({
   /* Join Second Page */
   /* Manager Exist Check */
   managerExistCheckFlagData: undefined,
-  setManagerExistCheckFlagData(e: undefined | boolean) {},
+  setManagerExistCheckFlagData(e: undefined | boolean) {
+    this.managerExistCheckFlagData = e;
+  },
   /* Manager Name */
   managerNameData: undefined,
-  setManagerNameData(e: undefined | string) {},
+  setManagerNameData(e: undefined | string) {
+    this.managerNameData = e;
+  },
   /* Manager Email */
   managerEmailData: undefined,
-  setManagerEmailData(e: undefined | string) {},
+  setManagerEmailData(e: undefined | string) {
+    this.managerEmailData = e;
+  },
   /* Manager Phone Number */
   managerPhoneNumberData: undefined,
-  setManagerPhoneNumberData(e: undefined | string) {},
+  setManagerPhoneNumberData(e: undefined | string) {
+    this.managerPhoneNumberData = e;
+  },
   /* Manager Address */
   managerAddressData: undefined,
-  setManmagerAddressData(e: undefined | string) {},
+  setManagerAddressData(e: undefined | string) {
+    this.managerAddressData = e;
+  },
   managerLocationData: undefined,
-  setManagerLocationData(e: undefined | { longitude: number; latitude: number }) {},
+  setManagerLocationData(e: undefined | { longitude: number; latitude: number }) {
+    this.managerLocationData = e;
+  },
   /* Get Coordinate */
   managerCurrentLocationData: undefined,
-  setMangerCurrentLocationData(e: undefined | { longitude: number; latitude: number }) {},
+  setManagerCurrentLocationData(e: undefined | { longitude: number; latitude: number }) {
+    this.managerCurrentLocationData = e;
+  },
   /* Bank Name */
   bankNameData: undefined,
-  setBankNameData(e: undefined | string) {},
+  setBankNameData(e: undefined | string) {
+    this.bankNameData = e;
+  },
   /* Bank Account Number*/
   bankAccountNumberData: undefined,
-  setBankAccountNumberData(e: undefined | string) {},
+  setBankAccountNumberData(e: undefined | string) {
+    this.bankAccountNumberData = e;
+  },
   /* Bank Account Owner Name */
   bankAccountOwnerNameData: undefined,
-  setBankAccountOwnerNameData(e: undefined | string) {},
+  setBankAccountOwnerNameData(e: undefined | string) {
+    this.bankAccountOwnerNameData = e;
+  },
   /* Settlement Email */
   settlementEmailData: undefined,
-  setSettlementEmailData(e: undefined | string) {},
+  setSettlementEmailData(e: undefined | string) {
+    this.settlementEmailData = e;
+  },
   /* Bank Book Image */
   bankBookImageData: undefined,
-  setBankBookImageData(e: undefined | { name: string; url: undefined | string }) {},
+  setBankBookImageData(e: undefined | { name: string; url: undefined | string }) {
+    this.bankBookImageData = e;
+  },
   /* Temp for Initialization */
   tempBankBookImageData: undefined,
-  setTempBankBookImageData(e: undefined | { name: string; url: undefined | string }) {},
+  setTempBankBookImageData(e: undefined | { name: string; url: undefined | string }) {
+    this.tempBankBookImageData = e;
+  },
   /* Bank Book Image File */
   bankBookImageFileData: undefined,
-  setbankBookImageFileData(e: undefined | File) {},
+  setBankBookImageFileData(e: undefined | File) {
+    this.bankBookImageFileData = e;
+  },
   /* Validate Check */
   joinSecondPageValidateCheckFlagData: undefined,
-  setJoinSecondPageValidateCheckFlagData(e: undefined | boolean) {},
+  setJoinSecondPageValidateCheckFlagData(e: undefined | boolean) {
+    this.joinSecondPageValidateCheckFlagData = e;
+  },
   /*  */
 });
 

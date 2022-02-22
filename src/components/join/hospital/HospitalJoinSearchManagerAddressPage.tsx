@@ -7,7 +7,7 @@ import LogoImageIcon from "../../../assets/icons/LogoImageIcon.png";
 import useStore from "../../../data/useStore";
 
 import DaumPostCode from "react-daum-postcode";
-import { GetHospitalBusinessCoordinate } from "../../../services/hospital/GetHospitalBusinessCoordinate";
+import { GetHospitalManagerCoordinate } from "../../../services/hospital/GetHospitalManagerCoordinate";
 
 interface Props {
   display?: string;
@@ -259,7 +259,7 @@ const CompanyInformationComponent = styled.span`
   margin: 10px 0px 10px 0px;
 `;
 
-const HospitalJoinSearchBusinessAddressPage = observer((props: any) => {
+const HospitalJoinSearchManagerAddressPage = observer((props: any) => {
   const { match, location, history } = props;
   console.log(match);
   console.log(location);
@@ -298,14 +298,14 @@ const HospitalJoinSearchBusinessAddressPage = observer((props: any) => {
     }
     console.log(data);
     const GetHospitalCoordinateFunction = async () => {
-      const GetHospitalBusinessCoordinateData = {
+      const GetHospitalManagerCoordinateData = {
         address: data.jibunAddress
           ? data.jibunAddress
           : data.roadAddress
           ? data.roadAddress
           : "서울 강남구 역삼동 736-36",
       };
-      const response = await GetHospitalBusinessCoordinate(GetHospitalBusinessCoordinateData);
+      const response = await GetHospitalManagerCoordinate(GetHospitalManagerCoordinateData);
       if (response.status === 200) {
       } else {
         window.alert("위도 및 경도 정보 불러오기 오류");
@@ -322,13 +322,13 @@ const HospitalJoinSearchBusinessAddressPage = observer((props: any) => {
   } as any;
 
   const onClickGoButton = () => {
-    HospitalData.setBusinessAddressData(BroadAddressData + " " + ExtraAddressData);
-    HospitalData.setBusinessLocationData(HospitalData.businessCurrentLocationData);
-    HospitalData.setBusinessCurrentLocationData(undefined);
-    history.push({ pathname: "/hospital/join/1" });
+    HospitalData.setManagerAddressData(BroadAddressData + " " + ExtraAddressData);
+    HospitalData.setManagerLocationData(HospitalData.managerCurrentLocationData);
+    HospitalData.setManagerCurrentLocationData(undefined);
+    history.push({ pathname: "/hospital/join/2" });
   };
   const onClickBackButton = () => {
-    history.push({ pathname: "/hospital/join/1" });
+    history.push({ pathname: "/hospital/join/2" });
   };
 
   return (
@@ -455,4 +455,4 @@ const HospitalJoinSearchBusinessAddressPage = observer((props: any) => {
   );
 });
 
-export default HospitalJoinSearchBusinessAddressPage;
+export default HospitalJoinSearchManagerAddressPage;

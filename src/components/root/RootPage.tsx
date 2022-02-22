@@ -8,10 +8,12 @@ import HospitalAgreePage from "../agree/hospital/HospitalAgreePage";
 import PharmacyAgreePage from "../agree/pharmacy/PharmacyAgreePage";
 import DoctorAgreePage from "../agree/doctor/DoctorAgreePage";
 import HospitalJoinFirstPage from "../join/hospital/HospitalJoinFirstPage";
+import HospitalJoinSecondPage from "../join/hospital/HospitalJoinSecondPage";
 import PharmacyJoinFirstPage from "../join/pharmacy/PharmacyJoinFirstPage";
 import DoctorJoinFirstPage from "../join/doctor/DoctorJoinFirstPage";
 
 import HospitalJoinSearchBusinessAddressPage from "../join/hospital/HospitalJoinSearchBusinessAddressPage";
+import HospitalJoinSearchManagerAddressPage from "../join/hospital/HospitalJoinSearchManagerAddressPage";
 import PharmacyJoinSearchBusinessAddressPage from "../join/pharmacy/PharmacyJoinSearchBusinessAddressPage";
 
 import useStore from "../../data/useStore";
@@ -49,6 +51,9 @@ const RootPage = observer(() => {
       {/*  */}
       <Route path="/hospital/join/1" component={HospitalJoinFirstPage}></Route>
       <Route path="/hospital/join/serach-business-address" component={HospitalJoinSearchBusinessAddressPage}></Route>
+      <Route path="/hospital/join/2" component={HospitalJoinSecondPage}></Route>
+      <Route path="/hospital/join/serach-manager-address" component={HospitalJoinSearchManagerAddressPage}></Route>
+
       {/*  */}
       <Route path="/pharmacy/join/1" component={PharmacyJoinFirstPage}></Route>
       <Route path="/pharmacy/join/serach-business-address" component={PharmacyJoinSearchBusinessAddressPage}></Route>

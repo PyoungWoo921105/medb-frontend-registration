@@ -1,10 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { observer } from "mobx-react";
 
 import LogoImageIcon from "../../../assets/icons/LogoImageIcon.png";
-
-import useStore from "../../../data/useStore";
 
 interface Props {
   display?: string;
@@ -137,7 +135,7 @@ const LineAdditionalFrame = styled.div<Props>`
 
 const PlainTextFrame = styled.div<Props>`
   display: flex;
-  flex-direction: row;
+  flex-direction: ${(props) => (props.flexDirection ? props.flexDirection : "")};
   justify-content: center;
 
   width: ${(props) => (props.width ? props.width : "")};
@@ -285,20 +283,12 @@ const DoctorJoinFirstPage = observer((props: any) => {
 
   /* const location = useLocation(); */
 
-  const CommonData = useStore().CommonData;
-
   const onClickGoButton = () => {
     history.push({ pathname: "/doctor/join/2" });
   };
   const onClickBackButton = () => {
     window.history.back();
   };
-
-  useEffect(() => {
-    if (CommonData.selectType === "hospital") {
-    } else if (CommonData.selectType === "pharmacy") {
-    }
-  }, [CommonData.selectType]);
 
   return (
     <Body className="Body">
@@ -570,7 +560,6 @@ const DoctorJoinFirstPage = observer((props: any) => {
               className="ApplyButtonComponent"
               width={"210px"}
               border={"1px solid #0D985B"}
-              /* TODO */
               backgroundColor={false ? "#00B264" : "transparent"}
               color={false ? "#FFFFFF" : "#00B264"}
               cursor={false ? "pointer" : ""}

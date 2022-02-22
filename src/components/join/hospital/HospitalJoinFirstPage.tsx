@@ -138,7 +138,7 @@ const LineAdditionalFrame = styled.div<Props>`
 
 const PlainTextFrame = styled.div<Props>`
   display: flex;
-  flex-direction: row;
+  flex-direction: ${(props) => (props.flexDirection ? props.flexDirection : "")};
   justify-content: center;
 
   width: ${(props) => (props.width ? props.width : "")};
@@ -287,7 +287,6 @@ const HospitalJoinFirstPage = observer((props: any) => {
   console.log(location);
   console.log(history);
 
-  const CommonData = useStore().CommonData;
   const HospitalData = useStore().HospitalData;
 
   const onClickGoButton = () => {
@@ -296,12 +295,6 @@ const HospitalJoinFirstPage = observer((props: any) => {
   const onClickBackButton = () => {
     history.push({ pathname: "/common/agree" });
   };
-
-  useEffect(() => {
-    if (CommonData.selectType === "hospital") {
-    } else if (CommonData.selectType === "pharmacy") {
-    }
-  }, [CommonData.selectType]);
 
   /*  */
 
@@ -663,7 +656,6 @@ const HospitalJoinFirstPage = observer((props: any) => {
               className="ApplyButtonComponent"
               width={"210px"}
               border={"1px solid #0D985B"}
-              /* TODO */
               backgroundColor={HospitalData.joinFirstPageValidateCheckFlagData ? "#00B264" : "transparent"}
               color={HospitalData.joinFirstPageValidateCheckFlagData ? "#FFFFFF" : "#00B264"}
               cursor={HospitalData.joinFirstPageValidateCheckFlagData ? "pointer" : ""}
