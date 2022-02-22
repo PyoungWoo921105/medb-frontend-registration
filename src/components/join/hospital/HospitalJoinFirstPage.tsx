@@ -46,6 +46,7 @@ const HeaderContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 `;
 const LogoFrame = styled.div`
   display: flex;
@@ -58,7 +59,7 @@ const LogoFrame = styled.div`
 const LogoImageComponent = styled.img`
   width: 100%;
 
-  margin: 15px 0px 15px 0px;
+  margin: 20px 0px 20px 0px;
 `;
 
 const Container = styled.div`
