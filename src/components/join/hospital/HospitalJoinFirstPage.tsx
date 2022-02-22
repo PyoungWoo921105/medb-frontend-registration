@@ -29,7 +29,7 @@ interface Props {
   flexDirection?: string;
   flexWrap?: string;
 
-  type?: string;
+  designType?: string;
 }
 
 const Body = styled.div`
@@ -163,35 +163,47 @@ const PlainTextComponent = styled.span<Props>`
   justify-content: ${(props) => (props.justifyContent ? props.justifyContent : "")};
 
   font-family: ${(props) =>
-    props.type === "title"
+    props.designType === "title"
       ? "Spoqa Han Sans Neo"
-      : props.type === "content"
+      : props.designType === "content"
       ? "Spoqa Han Sans Neo"
-      : props.type === "additional"
+      : props.designType === "additional"
       ? "Spoqa Han Sans Neo"
       : ""};
   font-style: ${(props) =>
-    props.type === "title"
+    props.designType === "title"
       ? "normal"
-      : props.type === "content"
+      : props.designType === "content"
       ? "normal"
-      : props.type === "additional"
+      : props.designType === "additional"
       ? "Spoqa Han Sans Neo"
       : ""};
   font-weight: ${(props) =>
-    props.type === "title" ? "500" : props.type === "content" ? "normal" : props.type === "additional" ? "normal" : ""};
+    props.designType === "title"
+      ? "500"
+      : props.designType === "content"
+      ? "normal"
+      : props.designType === "additional"
+      ? "normal"
+      : ""};
   font-size: ${(props) =>
-    props.type === "title" ? "16px" : props.type === "content" ? "12px" : props.type === "additional" ? "12px" : ""};
+    props.designType === "title"
+      ? "16px"
+      : props.designType === "content"
+      ? "12px"
+      : props.designType === "additional"
+      ? "12px"
+      : ""};
   color: ${(props) =>
-    props.type === "title"
+    props.designType === "title"
       ? "#000000"
-      : props.type === "content"
+      : props.designType === "content"
       ? "#000000"
-      : props.type === "additional"
+      : props.designType === "additional"
       ? "#8D8D8D"
       : ""};
 
-  cursor: ${(props) => (props.type === "additional" ? "pointer" : "")};
+  cursor: ${(props) => (props.designType === "additional" ? "pointer" : "")};
 `;
 const InputTextComponent = styled.input<Props>`
   font-family: "Spoqa Han Sans Neo";
@@ -222,7 +234,13 @@ const InputButtonComponent = styled.button<Props>`
   font-weight: 500;
   font-size: 12px;
 
-  color: #000000;
+  color: ${(props) => (props.color ? props.color : "")};
+
+  background-color: ${(props) => (props.backgroundColor ? props.backgroundColor : "")};
+  border: ${(props) => (props.border ? props.border : "")};
+
+  box-sizing: border-box;
+  border-radius: 4px;
 `;
 
 const ButtonFrame = styled.div`
@@ -367,7 +385,7 @@ const HospitalJoinFirstPage = observer((props: any) => {
                 <LineComponent className="LineComponent" margin="10px 0px 5px 0px" justifyContent="space-between">
                   <LineCoreFrame className="LineCoreFrame">
                     <PlainTextFrame className="PlainTextFrame" margin="0px 10px 0px 10px">
-                      <PlainTextComponent className="PlainTextComponent" type="title">
+                      <PlainTextComponent className="PlainTextComponent" designType="title">
                         사업자 정보
                       </PlainTextComponent>
                     </PlainTextFrame>
@@ -387,7 +405,7 @@ const HospitalJoinFirstPage = observer((props: any) => {
                 >
                   <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
                     <PlainTextFrame className="PlainTextFrame">
-                      <PlainTextComponent className="PlainTextComponent" type="content">
+                      <PlainTextComponent className="PlainTextComponent" designType="content">
                         *사업자 상호
                       </PlainTextComponent>
                     </PlainTextFrame>
@@ -412,7 +430,7 @@ const HospitalJoinFirstPage = observer((props: any) => {
                 >
                   <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
                     <PlainTextFrame className="PlainTextFrame">
-                      <PlainTextComponent className="PlainTextComponent" type="content">
+                      <PlainTextComponent className="PlainTextComponent" designType="content">
                         *사업자 등록번호
                       </PlainTextComponent>
                     </PlainTextFrame>
@@ -437,7 +455,7 @@ const HospitalJoinFirstPage = observer((props: any) => {
                 >
                   <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
                     <PlainTextFrame className="PlainTextFrame">
-                      <PlainTextComponent className="PlainTextComponent" type="content">
+                      <PlainTextComponent className="PlainTextComponent" designType="content">
                         *사업자 주소
                       </PlainTextComponent>
                     </PlainTextFrame>
@@ -456,6 +474,8 @@ const HospitalJoinFirstPage = observer((props: any) => {
                         className="InputButtonComponent"
                         margin="0px 0px 0px 5px"
                         onClick={onClickSearchAddressButton}
+                        backgroundColor={"#E1E1E1"}
+                        border={"1px solid #E0E0E0"}
                       >
                         주소 찾기
                       </InputButtonComponent>
@@ -470,7 +490,7 @@ const HospitalJoinFirstPage = observer((props: any) => {
                 >
                   <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
                     <PlainTextFrame className="PlainTextFrame">
-                      <PlainTextComponent className="PlainTextComponent" type="content">
+                      <PlainTextComponent className="PlainTextComponent" designType="content">
                         법인 번호
                       </PlainTextComponent>
                     </PlainTextFrame>
@@ -495,7 +515,7 @@ const HospitalJoinFirstPage = observer((props: any) => {
                 >
                   <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
                     <PlainTextFrame className="PlainTextFrame">
-                      <PlainTextComponent className="PlainTextComponent" type="content">
+                      <PlainTextComponent className="PlainTextComponent" designType="content">
                         사업자 등록증 사본
                       </PlainTextComponent>
                     </PlainTextFrame>
@@ -524,6 +544,8 @@ const HospitalJoinFirstPage = observer((props: any) => {
                         className="InputButtonComponent"
                         margin="0px 0px 0px 5px"
                         onClick={onClickUploadImageRef}
+                        backgroundColor={"#E1E1E1"}
+                        border={"1px solid #E0E0E0"}
                       >
                         파일 찾기
                       </InputButtonComponent>
@@ -537,7 +559,7 @@ const HospitalJoinFirstPage = observer((props: any) => {
                 <LineComponent className="LineComponent" margin="10px 0px 5px 0px" justifyContent="space-between">
                   <LineCoreFrame className="LineCoreFrame">
                     <PlainTextFrame className="PlainTextFrame" margin="0px 10px 0px 10px">
-                      <PlainTextComponent className="PlainTextComponent" type="title">
+                      <PlainTextComponent className="PlainTextComponent" designType="title">
                         대표자 정보
                       </PlainTextComponent>
                     </PlainTextFrame>
@@ -557,14 +579,14 @@ const HospitalJoinFirstPage = observer((props: any) => {
                 >
                   <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
                     <PlainTextFrame className="PlainTextFrame">
-                      <PlainTextComponent className="PlainTextComponent" type="content">
+                      <PlainTextComponent className="PlainTextComponent" designType="content">
                         성명
                       </PlainTextComponent>
                     </PlainTextFrame>
                   </LineCoreFrame>
                   <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
                     <PlainTextFrame className="PlainTextFrame" padding={"0px 10px 0px 10px"}>
-                      <PlainTextComponent className="PlainTextComponent" type="content">
+                      <PlainTextComponent className="PlainTextComponent" designType="content">
                         박평우
                       </PlainTextComponent>
                     </PlainTextFrame>
@@ -578,14 +600,14 @@ const HospitalJoinFirstPage = observer((props: any) => {
                 >
                   <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
                     <PlainTextFrame className="PlainTextFrame">
-                      <PlainTextComponent className="PlainTextComponent" type="content">
+                      <PlainTextComponent className="PlainTextComponent" designType="content">
                         생년월일
                       </PlainTextComponent>
                     </PlainTextFrame>
                   </LineCoreFrame>
                   <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
                     <PlainTextFrame className="PlainTextFrame" padding={"0px 10px 0px 10px"}>
-                      <PlainTextComponent className="PlainTextComponent" type="content">
+                      <PlainTextComponent className="PlainTextComponent" designType="content">
                         1992년 11월 05일
                       </PlainTextComponent>
                     </PlainTextFrame>
@@ -599,14 +621,14 @@ const HospitalJoinFirstPage = observer((props: any) => {
                 >
                   <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
                     <PlainTextFrame className="PlainTextFrame">
-                      <PlainTextComponent className="PlainTextComponent" type="content">
+                      <PlainTextComponent className="PlainTextComponent" designType="content">
                         휴대폰 번호
                       </PlainTextComponent>
                     </PlainTextFrame>
                   </LineCoreFrame>
                   <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
                     <PlainTextFrame className="PlainTextFrame" padding={"0px 10px 0px 10px"}>
-                      <PlainTextComponent className="PlainTextComponent" type="content">
+                      <PlainTextComponent className="PlainTextComponent" designType="content">
                         010-7149-3357
                       </PlainTextComponent>
                     </PlainTextFrame>
@@ -620,7 +642,7 @@ const HospitalJoinFirstPage = observer((props: any) => {
                 >
                   <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
                     <PlainTextFrame className="PlainTextFrame">
-                      <PlainTextComponent className="PlainTextComponent" type="content">
+                      <PlainTextComponent className="PlainTextComponent" designType="content">
                         *이메일
                       </PlainTextComponent>
                     </PlainTextFrame>

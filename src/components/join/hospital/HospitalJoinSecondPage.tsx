@@ -29,7 +29,7 @@ interface Props {
   flexDirection?: string;
   flexWrap?: string;
 
-  type?: string;
+  designType?: string;
 }
 
 const Body = styled.div`
@@ -163,35 +163,47 @@ const PlainTextComponent = styled.span<Props>`
   justify-content: ${(props) => (props.justifyContent ? props.justifyContent : "")};
 
   font-family: ${(props) =>
-    props.type === "title"
+    props.designType === "title"
       ? "Spoqa Han Sans Neo"
-      : props.type === "content"
+      : props.designType === "content"
       ? "Spoqa Han Sans Neo"
-      : props.type === "additional"
+      : props.designType === "additional"
       ? "Spoqa Han Sans Neo"
       : ""};
   font-style: ${(props) =>
-    props.type === "title"
+    props.designType === "title"
       ? "normal"
-      : props.type === "content"
+      : props.designType === "content"
       ? "normal"
-      : props.type === "additional"
+      : props.designType === "additional"
       ? "Spoqa Han Sans Neo"
       : ""};
   font-weight: ${(props) =>
-    props.type === "title" ? "500" : props.type === "content" ? "normal" : props.type === "additional" ? "normal" : ""};
+    props.designType === "title"
+      ? "500"
+      : props.designType === "content"
+      ? "normal"
+      : props.designType === "additional"
+      ? "normal"
+      : ""};
   font-size: ${(props) =>
-    props.type === "title" ? "16px" : props.type === "content" ? "12px" : props.type === "additional" ? "12px" : ""};
+    props.designType === "title"
+      ? "16px"
+      : props.designType === "content"
+      ? "12px"
+      : props.designType === "additional"
+      ? "12px"
+      : ""};
   color: ${(props) =>
-    props.type === "title"
+    props.designType === "title"
       ? "#000000"
-      : props.type === "content"
+      : props.designType === "content"
       ? "#000000"
-      : props.type === "additional"
+      : props.designType === "additional"
       ? "#8D8D8D"
       : ""};
 
-  cursor: ${(props) => (props.type === "additional" ? "pointer" : "")};
+  cursor: ${(props) => (props.designType === "additional" ? "pointer" : "")};
 `;
 const InputTextComponent = styled.input<Props>`
   font-family: "Spoqa Han Sans Neo";
@@ -222,7 +234,27 @@ const InputButtonComponent = styled.button<Props>`
   font-weight: 500;
   font-size: 12px;
 
-  color: #000000;
+  color: ${(props) => (props.color ? props.color : "")};
+
+  background-color: ${(props) =>
+    props.backgroundColor
+      ? props.backgroundColor
+      : props.designType === "true"
+      ? "#00B264"
+      : props.designType === "false"
+      ? "#E1E1E1"
+      : ""};
+  border: ${(props) =>
+    props.backgroundColor
+      ? props.backgroundColor
+      : props.designType === "true"
+      ? "1px solid #0D985B"
+      : props.designType === "false"
+      ? "1px solid #E0E0E0"
+      : ""};
+
+  box-sizing: border-box;
+  border-radius: 4px;
 `;
 
 const ButtonFrame = styled.div`
@@ -332,7 +364,7 @@ const HospitalJoinSecondPage = observer((props: any) => {
 
   useEffect(() => {
     if (
-      HospitalData.managerExistCheckFlagData &&
+      HospitalData.managerExistData &&
       HospitalData.managerNameData &&
       HospitalData.managerEmailData &&
       HospitalData.managerPhoneNumberData &&
@@ -344,6 +376,7 @@ const HospitalJoinSecondPage = observer((props: any) => {
     ) {
       HospitalData.setJoinSecondPageValidateCheckFlagData(true);
     } else if (
+      !HospitalData.managerExistData &&
       HospitalData.bankNameData &&
       HospitalData.bankAccountNumberData &&
       HospitalData.bankAccountOwnerNameData &&
@@ -354,7 +387,7 @@ const HospitalJoinSecondPage = observer((props: any) => {
       HospitalData.setJoinSecondPageValidateCheckFlagData(false);
     }
   }, [
-    HospitalData.managerExistCheckFlagData,
+    HospitalData.managerExistData,
     HospitalData.managerNameData,
     HospitalData.managerEmailData,
     HospitalData.managerPhoneNumberData,
@@ -385,7 +418,7 @@ const HospitalJoinSecondPage = observer((props: any) => {
                 <LineComponent className="LineComponent" margin="10px 0px 5px 0px" justifyContent="space-between">
                   <LineCoreFrame className="LineCoreFrame">
                     <PlainTextFrame className="PlainTextFrame" margin="0px 10px 0px 10px">
-                      <PlainTextComponent className="PlainTextComponent" type="title">
+                      <PlainTextComponent className="PlainTextComponent" designType="title">
                         운영자 정보
                       </PlainTextComponent>
                     </PlainTextFrame>
@@ -403,108 +436,154 @@ const HospitalJoinSecondPage = observer((props: any) => {
                   justifyContent="space-between"
                   height={"35px"}
                 >
-                  <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
+                  <LineCoreFrame className="LineCoreFrame" minWidth={"160px"}>
                     <PlainTextFrame className="PlainTextFrame">
-                      <PlainTextComponent className="PlainTextComponent" type="content">
-                        *성명
+                      <PlainTextComponent className="PlainTextComponent" designType="content">
+                        병원에 별도 운영자가 있나요?
                       </PlainTextComponent>
                     </PlainTextFrame>
                   </LineCoreFrame>
-                  <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
-                    <InputTextFrame className="InputTextFrame" width={"100%"}>
-                      <InputTextComponent
-                        className="InputTextComponent"
-                        width={"100%"}
-                        placeholder="이름을 입력해 주세요."
-                        value={HospitalData.managerNameData ? HospitalData.managerNameData : ""}
-                        onChange={(event) => HospitalData.setManagerNameData(event.target.value)}
-                      ></InputTextComponent>
-                    </InputTextFrame>
-                  </LineAdditionalFrame>
-                </LineComponent>
-                <LineComponent
-                  className="LineComponent"
-                  margin="10px 0px 10px 0px"
-                  justifyContent="space-between"
-                  height={"35px"}
-                >
-                  <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
-                    <PlainTextFrame className="PlainTextFrame">
-                      <PlainTextComponent className="PlainTextComponent" type="content">
-                        *이메일
-                      </PlainTextComponent>
-                    </PlainTextFrame>
-                  </LineCoreFrame>
-                  <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
-                    <InputTextFrame className="InputTextFrame" width={"100%"}>
-                      <InputTextComponent
-                        className="InputTextComponent"
-                        width={"100%"}
-                        placeholder="이메일을 입력해 주세요."
-                        value={HospitalData.managerEmailData ? HospitalData.managerEmailData : ""}
-                        onChange={(event) => HospitalData.setManagerEmailData(event.target.value)}
-                      ></InputTextComponent>
-                    </InputTextFrame>
-                  </LineAdditionalFrame>
-                </LineComponent>
-                <LineComponent
-                  className="LineComponent"
-                  margin="10px 0px 10px 0px"
-                  justifyContent="space-between"
-                  height={"35px"}
-                >
-                  <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
-                    <PlainTextFrame className="PlainTextFrame">
-                      <PlainTextComponent className="PlainTextComponent" type="content">
-                        *휴대폰 번호
-                      </PlainTextComponent>
-                    </PlainTextFrame>
-                  </LineCoreFrame>
-                  <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
-                    <InputTextFrame className="InputTextFrame" width={"100%"}>
-                      <InputTextComponent
-                        className="InputTextComponent"
-                        width={"100%"}
-                        placeholder="-없이 숫자만 입력해 주세요."
-                        value={HospitalData.managerPhoneNumberData ? HospitalData.managerPhoneNumberData : ""}
-                        onChange={(event) => HospitalData.setManagerPhoneNumberData(event.target.value)}
-                      ></InputTextComponent>
-                    </InputTextFrame>
-                  </LineAdditionalFrame>
-                </LineComponent>
-                <LineComponent
-                  className="LineComponent"
-                  margin="10px 0px 10px 0px"
-                  justifyContent="space-between"
-                  height={"35px"}
-                >
-                  <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
-                    <PlainTextFrame className="PlainTextFrame">
-                      <PlainTextComponent className="PlainTextComponent" type="content">
-                        *우편물 수령 주소
-                      </PlainTextComponent>
-                    </PlainTextFrame>
-                  </LineCoreFrame>
-                  <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
-                    <InputTextFrame className="InputTextFrame" width={"100%"}>
-                      <InputTextComponent
-                        className="InputTextComponent"
-                        width={"100%"}
-                        value={HospitalData.managerAddressData ? HospitalData.managerAddressData : ""}
-                        disabled={true}
-                      ></InputTextComponent>
-                    </InputTextFrame>
+                  <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"} justifyContent={"right"}>
                     <InputButtonFrame className="InputButtonFrame" minWidth="70px">
                       <InputButtonComponent
                         className="InputButtonComponent"
                         margin="0px 0px 0px 5px"
-                        onClick={onClickSearchAddressButton}
+                        onClick={() => HospitalData.setManagerExistData(true)}
+                        designType={HospitalData.managerExistData ? "true" : "false"}
                       >
-                        주소 찾기
+                        예
+                      </InputButtonComponent>
+                    </InputButtonFrame>
+                    <InputButtonFrame className="InputButtonFrame" minWidth="70px">
+                      <InputButtonComponent
+                        className="InputButtonComponent"
+                        margin="0px 0px 0px 5px"
+                        onClick={() => HospitalData.setManagerExistData(false)}
+                        designType={HospitalData.managerExistData ? "false" : "true"}
+                      >
+                        아니오
                       </InputButtonComponent>
                     </InputButtonFrame>
                   </LineAdditionalFrame>
                 </LineComponent>
+                {HospitalData.managerExistData ? (
+                  <LineComponent
+                    className="LineComponent"
+                    margin="10px 0px 10px 0px"
+                    justifyContent="space-between"
+                    height={"35px"}
+                  >
+                    <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
+                      <PlainTextFrame className="PlainTextFrame">
+                        <PlainTextComponent className="PlainTextComponent" designType="content">
+                          *성명
+                        </PlainTextComponent>
+                      </PlainTextFrame>
+                    </LineCoreFrame>
+                    <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
+                      <InputTextFrame className="InputTextFrame" width={"100%"}>
+                        <InputTextComponent
+                          className="InputTextComponent"
+                          width={"100%"}
+                          placeholder="이름을 입력해 주세요."
+                          value={HospitalData.managerNameData ? HospitalData.managerNameData : ""}
+                          onChange={(event) => HospitalData.setManagerNameData(event.target.value)}
+                        ></InputTextComponent>
+                      </InputTextFrame>
+                    </LineAdditionalFrame>
+                  </LineComponent>
+                ) : null}
+                {HospitalData.managerExistData ? (
+                  <LineComponent
+                    className="LineComponent"
+                    margin="10px 0px 10px 0px"
+                    justifyContent="space-between"
+                    height={"35px"}
+                  >
+                    <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
+                      <PlainTextFrame className="PlainTextFrame">
+                        <PlainTextComponent className="PlainTextComponent" designType="content">
+                          *이메일
+                        </PlainTextComponent>
+                      </PlainTextFrame>
+                    </LineCoreFrame>
+                    <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
+                      <InputTextFrame className="InputTextFrame" width={"100%"}>
+                        <InputTextComponent
+                          className="InputTextComponent"
+                          width={"100%"}
+                          placeholder="이메일을 입력해 주세요."
+                          value={HospitalData.managerEmailData ? HospitalData.managerEmailData : ""}
+                          onChange={(event) => HospitalData.setManagerEmailData(event.target.value)}
+                        ></InputTextComponent>
+                      </InputTextFrame>
+                    </LineAdditionalFrame>
+                  </LineComponent>
+                ) : null}
+                {HospitalData.managerExistData ? (
+                  <LineComponent
+                    className="LineComponent"
+                    margin="10px 0px 10px 0px"
+                    justifyContent="space-between"
+                    height={"35px"}
+                  >
+                    <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
+                      <PlainTextFrame className="PlainTextFrame">
+                        <PlainTextComponent className="PlainTextComponent" designType="content">
+                          *휴대폰 번호
+                        </PlainTextComponent>
+                      </PlainTextFrame>
+                    </LineCoreFrame>
+                    <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
+                      <InputTextFrame className="InputTextFrame" width={"100%"}>
+                        <InputTextComponent
+                          className="InputTextComponent"
+                          width={"100%"}
+                          placeholder="-없이 숫자만 입력해 주세요."
+                          value={HospitalData.managerPhoneNumberData ? HospitalData.managerPhoneNumberData : ""}
+                          onChange={(event) => HospitalData.setManagerPhoneNumberData(event.target.value)}
+                        ></InputTextComponent>
+                      </InputTextFrame>
+                    </LineAdditionalFrame>
+                  </LineComponent>
+                ) : null}
+                {HospitalData.managerExistData ? (
+                  <LineComponent
+                    className="LineComponent"
+                    margin="10px 0px 10px 0px"
+                    justifyContent="space-between"
+                    height={"35px"}
+                  >
+                    <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
+                      <PlainTextFrame className="PlainTextFrame">
+                        <PlainTextComponent className="PlainTextComponent" designType="content">
+                          *우편물 수령 주소
+                        </PlainTextComponent>
+                      </PlainTextFrame>
+                    </LineCoreFrame>
+                    <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
+                      <InputTextFrame className="InputTextFrame" width={"100%"}>
+                        <InputTextComponent
+                          className="InputTextComponent"
+                          width={"100%"}
+                          value={HospitalData.managerAddressData ? HospitalData.managerAddressData : ""}
+                          disabled={true}
+                        ></InputTextComponent>
+                      </InputTextFrame>
+                      <InputButtonFrame className="InputButtonFrame" minWidth="70px">
+                        <InputButtonComponent
+                          className="InputButtonComponent"
+                          margin="0px 0px 0px 5px"
+                          onClick={onClickSearchAddressButton}
+                          backgroundColor={"#E1E1E1"}
+                          border={"1px solid #E0E0E0"}
+                        >
+                          주소 찾기
+                        </InputButtonComponent>
+                      </InputButtonFrame>
+                    </LineAdditionalFrame>
+                  </LineComponent>
+                ) : null}
               </FieldFrame>
             </Frame>
             <Frame className="Frame">
@@ -512,7 +591,7 @@ const HospitalJoinSecondPage = observer((props: any) => {
                 <LineComponent className="LineComponent" margin="10px 0px 5px 0px" justifyContent="space-between">
                   <LineCoreFrame className="LineCoreFrame">
                     <PlainTextFrame className="PlainTextFrame" margin="0px 10px 0px 10px">
-                      <PlainTextComponent className="PlainTextComponent" type="title">
+                      <PlainTextComponent className="PlainTextComponent" designType="title">
                         정산 정보
                       </PlainTextComponent>
                     </PlainTextFrame>
@@ -532,7 +611,7 @@ const HospitalJoinSecondPage = observer((props: any) => {
                 >
                   <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
                     <PlainTextFrame className="PlainTextFrame">
-                      <PlainTextComponent className="PlainTextComponent" type="content">
+                      <PlainTextComponent className="PlainTextComponent" designType="content">
                         *입금 계좌 은행
                       </PlainTextComponent>
                     </PlainTextFrame>
@@ -556,7 +635,7 @@ const HospitalJoinSecondPage = observer((props: any) => {
                 >
                   <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
                     <PlainTextFrame className="PlainTextFrame">
-                      <PlainTextComponent className="PlainTextComponent" type="content">
+                      <PlainTextComponent className="PlainTextComponent" designType="content">
                         *입금 계좌번호
                       </PlainTextComponent>
                     </PlainTextFrame>
@@ -581,7 +660,7 @@ const HospitalJoinSecondPage = observer((props: any) => {
                 >
                   <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
                     <PlainTextFrame className="PlainTextFrame">
-                      <PlainTextComponent className="PlainTextComponent" type="content">
+                      <PlainTextComponent className="PlainTextComponent" designType="content">
                         *예금주
                       </PlainTextComponent>
                     </PlainTextFrame>
@@ -606,10 +685,10 @@ const HospitalJoinSecondPage = observer((props: any) => {
                 >
                   <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
                     <PlainTextFrame className="PlainTextFrame" flexDirection="column">
-                      <PlainTextComponent className="PlainTextComponent" type="content">
+                      <PlainTextComponent className="PlainTextComponent" designType="content">
                         *세금 계산서
                       </PlainTextComponent>
-                      <PlainTextComponent className="PlainTextComponent" type="content">
+                      <PlainTextComponent className="PlainTextComponent" designType="content">
                         수령 이메일
                       </PlainTextComponent>
                     </PlainTextFrame>
@@ -634,7 +713,7 @@ const HospitalJoinSecondPage = observer((props: any) => {
                 >
                   <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
                     <PlainTextFrame className="PlainTextFrame">
-                      <PlainTextComponent className="PlainTextComponent" type="content">
+                      <PlainTextComponent className="PlainTextComponent" designType="content">
                         통장 사본
                       </PlainTextComponent>
                     </PlainTextFrame>
@@ -663,6 +742,8 @@ const HospitalJoinSecondPage = observer((props: any) => {
                         className="InputButtonComponent"
                         margin="0px 0px 0px 5px"
                         onClick={onClickUploadImageRef}
+                        backgroundColor={"#E1E1E1"}
+                        border={"1px solid #E0E0E0"}
                       >
                         파일 찾기
                       </InputButtonComponent>

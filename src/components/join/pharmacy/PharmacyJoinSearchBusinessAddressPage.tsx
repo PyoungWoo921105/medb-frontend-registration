@@ -31,7 +31,7 @@ interface Props {
   flexDirection?: string;
   flexWrap?: string;
 
-  type?: string;
+  designType?: string;
 }
 
 const Body = styled.div`
@@ -162,35 +162,47 @@ const PlainTextComponent = styled.span<Props>`
   justify-content: ${(props) => (props.justifyContent ? props.justifyContent : "")};
 
   font-family: ${(props) =>
-    props.type === "title"
+    props.designType === "title"
       ? "Spoqa Han Sans Neo"
-      : props.type === "content"
+      : props.designType === "content"
       ? "Spoqa Han Sans Neo"
-      : props.type === "additional"
+      : props.designType === "additional"
       ? "Spoqa Han Sans Neo"
       : ""};
   font-style: ${(props) =>
-    props.type === "title"
+    props.designType === "title"
       ? "normal"
-      : props.type === "content"
+      : props.designType === "content"
       ? "normal"
-      : props.type === "additional"
+      : props.designType === "additional"
       ? "Spoqa Han Sans Neo"
       : ""};
   font-weight: ${(props) =>
-    props.type === "title" ? "500" : props.type === "content" ? "normal" : props.type === "additional" ? "normal" : ""};
+    props.designType === "title"
+      ? "500"
+      : props.designType === "content"
+      ? "normal"
+      : props.designType === "additional"
+      ? "normal"
+      : ""};
   font-size: ${(props) =>
-    props.type === "title" ? "16px" : props.type === "content" ? "12px" : props.type === "additional" ? "12px" : ""};
+    props.designType === "title"
+      ? "16px"
+      : props.designType === "content"
+      ? "12px"
+      : props.designType === "additional"
+      ? "12px"
+      : ""};
   color: ${(props) =>
-    props.type === "title"
+    props.designType === "title"
       ? "#000000"
-      : props.type === "content"
+      : props.designType === "content"
       ? "#000000"
-      : props.type === "additional"
+      : props.designType === "additional"
       ? "#8D8D8D"
       : ""};
 
-  cursor: ${(props) => (props.type === "additional" ? "pointer" : "")};
+  cursor: ${(props) => (props.designType === "additional" ? "pointer" : "")};
 `;
 const InputTextComponent = styled.input<Props>`
   font-family: "Spoqa Han Sans Neo";
@@ -348,7 +360,7 @@ const SearchAddressPage = observer((props: any) => {
                 <LineComponent className="LineComponent" margin="10px 0px 5px 0px" justifyContent="space-between">
                   <LineCoreFrame className="LineCoreFrame">
                     <PlainTextFrame className="PlainTextFrame" margin="0px 10px 0px 10px">
-                      <PlainTextComponent className="PlainTextComponent" type="title">
+                      <PlainTextComponent className="PlainTextComponent" designType="title">
                         주소 찾기
                       </PlainTextComponent>
                     </PlainTextFrame>
@@ -371,7 +383,7 @@ const SearchAddressPage = observer((props: any) => {
                 >
                   <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
                     <PlainTextFrame className="PlainTextFrame">
-                      <PlainTextComponent className="PlainTextComponent" type="content">
+                      <PlainTextComponent className="PlainTextComponent" designType="content">
                         *주소
                       </PlainTextComponent>
                     </PlainTextFrame>
@@ -395,7 +407,7 @@ const SearchAddressPage = observer((props: any) => {
                 >
                   <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
                     <PlainTextFrame className="PlainTextFrame">
-                      <PlainTextComponent className="PlainTextComponent" type="content">
+                      <PlainTextComponent className="PlainTextComponent" designType="content">
                         *상세 주소
                       </PlainTextComponent>
                     </PlainTextFrame>

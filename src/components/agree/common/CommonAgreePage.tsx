@@ -32,7 +32,7 @@ interface Props {
   flexDirection?: string;
   flexWrap?: string;
 
-  type?: string;
+  designType?: string;
 }
 
 const Body = styled.div`
@@ -199,35 +199,47 @@ const AgreementCheckboxTextComponent = styled.span<Props>`
   justify-content: center;
 
   font-family: ${(props) =>
-    props.type === "title"
+    props.designType === "title"
       ? "Spoqa Han Sans Neo"
-      : props.type === "content"
+      : props.designType === "content"
       ? "Spoqa Han Sans Neo"
-      : props.type === "additional"
+      : props.designType === "additional"
       ? "Spoqa Han Sans Neo"
       : ""};
   font-style: ${(props) =>
-    props.type === "title"
+    props.designType === "title"
       ? "normal"
-      : props.type === "content"
+      : props.designType === "content"
       ? "normal"
-      : props.type === "additional"
+      : props.designType === "additional"
       ? "Spoqa Han Sans Neo"
       : ""};
   font-weight: ${(props) =>
-    props.type === "title" ? "500" : props.type === "content" ? "normal" : props.type === "additional" ? "normal" : ""};
+    props.designType === "title"
+      ? "500"
+      : props.designType === "content"
+      ? "normal"
+      : props.designType === "additional"
+      ? "normal"
+      : ""};
   font-size: ${(props) =>
-    props.type === "title" ? "16px" : props.type === "content" ? "12px" : props.type === "additional" ? "12px" : ""};
+    props.designType === "title"
+      ? "16px"
+      : props.designType === "content"
+      ? "12px"
+      : props.designType === "additional"
+      ? "12px"
+      : ""};
   color: ${(props) =>
-    props.type === "title"
+    props.designType === "title"
       ? "#000000"
-      : props.type === "content"
+      : props.designType === "content"
       ? "#000000"
-      : props.type === "additional"
+      : props.designType === "additional"
       ? "#8D8D8D"
       : ""};
 
-  cursor: ${(props) => (props.type === "additional" ? "pointer" : "")};
+  cursor: ${(props) => (props.designType === "additional" ? "pointer" : "")};
 `;
 
 const ButtonFrame = styled.div`
@@ -404,7 +416,7 @@ const CommonAgreePage = observer((props: any) => {
                         ></AgreementCheckboxInputComponent>
                       </AgreementCheckboxInputFrame>
                       <AgreementCheckboxTextFrame className="AgreementCheckboxTextFrame">
-                        <AgreementCheckboxTextComponent className="AgreementCheckboxTextComponent" type="title">
+                        <AgreementCheckboxTextComponent className="AgreementCheckboxTextComponent" designType="title">
                           약관 전체 동의
                         </AgreementCheckboxTextComponent>
                       </AgreementCheckboxTextFrame>
@@ -438,14 +450,17 @@ const CommonAgreePage = observer((props: any) => {
                         ></AgreementCheckboxInputComponent>
                       </AgreementCheckboxInputFrame>
                       <AgreementCheckboxTextFrame className="AgreementCheckboxTextFrame">
-                        <AgreementCheckboxTextComponent className="AgreementCheckboxTextComponent" type="content">
+                        <AgreementCheckboxTextComponent className="AgreementCheckboxTextComponent" designType="content">
                           (필수) 메듭 서비스 이용약관
                         </AgreementCheckboxTextComponent>
                       </AgreementCheckboxTextFrame>
                     </AgreementLineCoreFrame>
                     <AgreementLineAdditionalFrame className="AgreementLineAdditionalFrame">
                       <AgreementCheckboxTextFrame className="AgreementCheckboxTextFrame">
-                        <AgreementCheckboxTextComponent className="AgreementCheckboxTextComponent" type="additional">
+                        <AgreementCheckboxTextComponent
+                          className="AgreementCheckboxTextComponent"
+                          designType="additional"
+                        >
                           상세보기
                         </AgreementCheckboxTextComponent>
                       </AgreementCheckboxTextFrame>
@@ -470,14 +485,17 @@ const CommonAgreePage = observer((props: any) => {
                         ></AgreementCheckboxInputComponent>
                       </AgreementCheckboxInputFrame>
                       <AgreementCheckboxTextFrame className="AgreementCheckboxTextFrame">
-                        <AgreementCheckboxTextComponent className="AgreementCheckboxTextComponent" type="content">
+                        <AgreementCheckboxTextComponent className="AgreementCheckboxTextComponent" designType="content">
                           (필수) 개인정보 수집·이용 동의
                         </AgreementCheckboxTextComponent>
                       </AgreementCheckboxTextFrame>
                     </AgreementLineCoreFrame>
                     <AgreementLineAdditionalFrame className="AgreementLineAdditionalFrame">
                       <AgreementCheckboxTextFrame className="AgreementCheckboxTextFrame">
-                        <AgreementCheckboxTextComponent className="AgreementCheckboxTextComponent" type="additional">
+                        <AgreementCheckboxTextComponent
+                          className="AgreementCheckboxTextComponent"
+                          designType="additional"
+                        >
                           상세보기
                         </AgreementCheckboxTextComponent>
                       </AgreementCheckboxTextFrame>
@@ -502,14 +520,17 @@ const CommonAgreePage = observer((props: any) => {
                         ></AgreementCheckboxInputComponent>
                       </AgreementCheckboxInputFrame>
                       <AgreementCheckboxTextFrame className="AgreementCheckboxTextFrame">
-                        <AgreementCheckboxTextComponent className="AgreementCheckboxTextComponent" type="content">
+                        <AgreementCheckboxTextComponent className="AgreementCheckboxTextComponent" designType="content">
                           (필수) 개인정보 취급·위탁
                         </AgreementCheckboxTextComponent>
                       </AgreementCheckboxTextFrame>
                     </AgreementLineCoreFrame>
                     <AgreementLineAdditionalFrame className="AgreementLineAdditionalFrame">
                       <AgreementCheckboxTextFrame className="AgreementCheckboxTextFrame">
-                        <AgreementCheckboxTextComponent className="AgreementCheckboxTextComponent" type="additional">
+                        <AgreementCheckboxTextComponent
+                          className="AgreementCheckboxTextComponent"
+                          designType="additional"
+                        >
                           상세보기
                         </AgreementCheckboxTextComponent>
                       </AgreementCheckboxTextFrame>

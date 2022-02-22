@@ -37,8 +37,8 @@ export interface HospitalDataType {
   /*  */
   /* Join Second Page */
   /* Manager Exist Check */
-  managerExistCheckFlagData: undefined | boolean;
-  setManagerExistCheckFlagData: (e: undefined | boolean) => void;
+  managerExistData: undefined | boolean;
+  setManagerExistData: (e: undefined | boolean) => void;
   /* Manager Name */
   managerNameData: undefined | string;
   setManagerNameData: (e: undefined | string) => void;
@@ -142,9 +142,9 @@ const HospitalData = observable<HospitalDataType>({
   /*  */
   /* Join Second Page */
   /* Manager Exist Check */
-  managerExistCheckFlagData: undefined,
-  setManagerExistCheckFlagData(e: undefined | boolean) {
-    this.managerExistCheckFlagData = e;
+  managerExistData: undefined,
+  setManagerExistData(e: undefined | boolean) {
+    this.managerExistData = e;
   },
   /* Manager Name */
   managerNameData: undefined,
