@@ -31,9 +31,9 @@ export interface PharmacyDataType {
   /* Delegator Email */
   delegatorEmailData: undefined | string;
   setDelegatorEmailData: (e: undefined | string) => void;
-  /* Validation Check */
-  joinFirstPageValidationCheckFlagData: undefined | boolean;
-  setJoinFirstPageValidationCheckFlagData: (e: undefined | boolean) => void;
+  /* Validate Check */
+  joinFirstPageValidateCheckFlagData: undefined | boolean;
+  setJoinFirstPageValidateCheckFlagData: (e: undefined | boolean) => void;
   /*  */
 }
 
@@ -88,10 +88,10 @@ const PharmacyData = observable<PharmacyDataType>({
   setDelegatorEmailData(e: undefined | string) {
     this.delegatorEmailData = e;
   },
-  /* Validation Check */
-  joinFirstPageValidationCheckFlagData: undefined,
-  setJoinFirstPageValidationCheckFlagData(e: undefined | boolean) {
-    this.joinFirstPageValidationCheckFlagData = e;
+  /* Validate Check */
+  joinFirstPageValidateCheckFlagData: undefined,
+  setJoinFirstPageValidateCheckFlagData(e: undefined | boolean) {
+    this.joinFirstPageValidateCheckFlagData = e;
   },
   /*  */
 });

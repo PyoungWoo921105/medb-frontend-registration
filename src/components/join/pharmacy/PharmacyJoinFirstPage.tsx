@@ -343,9 +343,9 @@ const PharmacyJoinFirstPage = observer((props: any) => {
       PharmacyData.businessAddressData &&
       PharmacyData.delegatorEmailData
     ) {
-      PharmacyData.setJoinFirstPageValidationCheckFlagData(true);
+      PharmacyData.setJoinFirstPageValidateCheckFlagData(true);
     } else {
-      PharmacyData.setJoinFirstPageValidationCheckFlagData(false);
+      PharmacyData.setJoinFirstPageValidateCheckFlagData(false);
     }
   }, [
     PharmacyData.businessNameData,
@@ -664,10 +664,10 @@ const PharmacyJoinFirstPage = observer((props: any) => {
               width={"210px"}
               border={"1px solid #0D985B"}
               /* TODO */
-              backgroundColor={PharmacyData.joinFirstPageValidationCheckFlagData ? "#00B264" : "transparent"}
-              color={PharmacyData.joinFirstPageValidationCheckFlagData ? "#FFFFFF" : "#00B264"}
-              cursor={PharmacyData.joinFirstPageValidationCheckFlagData ? "pointer" : ""}
-              onClick={PharmacyData.joinFirstPageValidationCheckFlagData ? onClickGoButton : () => {}}
+              backgroundColor={PharmacyData.joinFirstPageValidateCheckFlagData ? "#00B264" : "transparent"}
+              color={PharmacyData.joinFirstPageValidateCheckFlagData ? "#FFFFFF" : "#00B264"}
+              cursor={PharmacyData.joinFirstPageValidateCheckFlagData ? "pointer" : ""}
+              onClick={PharmacyData.joinFirstPageValidateCheckFlagData ? onClickGoButton : () => {}}
             >
               다음 (1/3)
             </ApplyButtonComponent>

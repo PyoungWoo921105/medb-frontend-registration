@@ -343,9 +343,9 @@ const HospitalJoinFirstPage = observer((props: any) => {
       HospitalData.businessAddressData &&
       HospitalData.delegatorEmailData
     ) {
-      HospitalData.setJoinFirstPageValidationCheckFlagData(true);
+      HospitalData.setJoinFirstPageValidateCheckFlagData(true);
     } else {
-      HospitalData.setJoinFirstPageValidationCheckFlagData(false);
+      HospitalData.setJoinFirstPageValidateCheckFlagData(false);
     }
   }, [
     HospitalData.businessNameData,
@@ -664,10 +664,10 @@ const HospitalJoinFirstPage = observer((props: any) => {
               width={"210px"}
               border={"1px solid #0D985B"}
               /* TODO */
-              backgroundColor={HospitalData.joinFirstPageValidationCheckFlagData ? "#00B264" : "transparent"}
-              color={HospitalData.joinFirstPageValidationCheckFlagData ? "#FFFFFF" : "#00B264"}
-              cursor={HospitalData.joinFirstPageValidationCheckFlagData ? "pointer" : ""}
-              onClick={HospitalData.joinFirstPageValidationCheckFlagData ? onClickGoButton : () => {}}
+              backgroundColor={HospitalData.joinFirstPageValidateCheckFlagData ? "#00B264" : "transparent"}
+              color={HospitalData.joinFirstPageValidateCheckFlagData ? "#FFFFFF" : "#00B264"}
+              cursor={HospitalData.joinFirstPageValidateCheckFlagData ? "pointer" : ""}
+              onClick={HospitalData.joinFirstPageValidateCheckFlagData ? onClickGoButton : () => {}}
             >
               다음 (1/4)
             </ApplyButtonComponent>
