@@ -11,6 +11,9 @@ import HospitalJoinFirstPage from "../join/hospital/HospitalJoinFirstPage";
 import PharmacyJoinFirstPage from "../join/pharmacy/PharmacyJoinFirstPage";
 import DoctorJoinFirstPage from "../join/doctor/DoctorJoinFirstPage";
 
+import HospitalJoinSearchBusinessAddressPage from "../join/hospital/HospitalJoinSearchBusinessAddressPage";
+import PharmacyJoinSearchBusinessAddressPage from "../join/pharmacy/PharmacyJoinSearchBusinessAddressPage";
+
 import useStore from "../../data/useStore";
 
 const Frame = styled.div``;
@@ -38,13 +41,20 @@ const RootPage = observer(() => {
   return (
     <Frame className="Frame">
       <Route exact path="/"></Route>
+      {/*  */}
       <Route path="/common/agree" component={CommonAgreePage}></Route>
       <Route path="/hospital/agree" component={HospitalAgreePage}></Route>
       <Route path="/pharmacy/agree" component={PharmacyAgreePage}></Route>
       <Route path="/doctor/agree" component={DoctorAgreePage}></Route>
-      <Route path="/hospital/join-1" component={HospitalJoinFirstPage}></Route>
-      <Route path="/pharmacy/join-1" component={PharmacyJoinFirstPage}></Route>
-      <Route path="/doctor/join-1" component={DoctorJoinFirstPage}></Route>
+      {/*  */}
+      <Route path="/hospital/join/1" component={HospitalJoinFirstPage}></Route>
+      <Route path="/hospital/join/serach-business-address" component={HospitalJoinSearchBusinessAddressPage}></Route>
+      {/*  */}
+      <Route path="/pharmacy/join/1" component={PharmacyJoinFirstPage}></Route>
+      <Route path="/pharmacy/join/serach-business-address" component={PharmacyJoinSearchBusinessAddressPage}></Route>
+      {/*  */}
+      <Route path="/doctor/join/1" component={DoctorJoinFirstPage}></Route>
+      {/*  */}
     </Frame>
   );
 });
