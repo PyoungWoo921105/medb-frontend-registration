@@ -160,6 +160,7 @@ const AgreementCheckboxInputFrame = styled.div<Props>`
   justify-content: center;
 
   width: ${(props) => (props.width ? props.width : "")};
+  min-width: ${(props) => (props.minWidth ? props.minWidth : "")};
   margin: ${(props) => (props.margin ? props.margin : "")};
 
   cursor: pointer;
@@ -306,7 +307,7 @@ const HospitalAgreePage = observer((props: any) => {
   };
 
   const onClickGoButton = () => {
-    history.push({ pathname: "/hospital/join-1" });
+    history.push({ pathname: "/hospital/join/1" });
   };
 
   return (
@@ -343,6 +344,7 @@ const HospitalAgreePage = observer((props: any) => {
                       <AgreementCheckboxInputFrame
                         className="AgreementCheckboxInputFrame"
                         width={"20px"}
+                        minWidth={"20px"}
                         margin="0px 10px 0px 10px"
                         onClick={() => onClickCheckButton({ key: 0 })}
                       >
@@ -380,6 +382,7 @@ const HospitalAgreePage = observer((props: any) => {
                       <AgreementCheckboxInputFrame
                         className="AgreementCheckboxInputFrame"
                         width={"15px"}
+                        minWidth={"15px"}
                         margin="0px 10px 0px 10px"
                         onClick={() => onClickCheckButton({ key: 1 })}
                       >
@@ -411,6 +414,7 @@ const HospitalAgreePage = observer((props: any) => {
                       <AgreementCheckboxInputFrame
                         className="AgreementCheckboxInputFrame"
                         width={"15px"}
+                        minWidth={"15px"}
                         margin="0px 10px 0px 10px"
                         onClick={() => onClickCheckButton({ key: 2 })}
                       >
@@ -442,6 +446,7 @@ const HospitalAgreePage = observer((props: any) => {
                       <AgreementCheckboxInputFrame
                         className="AgreementCheckboxInputFrame"
                         width={"15px"}
+                        minWidth={"15px"}
                         margin="0px 10px 0px 10px"
                         onClick={() => onClickCheckButton({ key: 3 })}
                       >
