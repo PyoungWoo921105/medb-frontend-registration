@@ -576,8 +576,7 @@ const DoctorJoinFirstPage = observer((props: any) => {
               cursor={false ? "pointer" : ""}
               onClick={false ? onClickGoButton : () => {}}
             >
-              다음 (1/
-              {CommonData.selectType === "hospital" ? 4 : CommonData.selectType === "pharmacy" ? 3 : 1})
+              다음 (1/2)
             </ApplyButtonComponent>
           </ButtonFrame>
         </Content>
