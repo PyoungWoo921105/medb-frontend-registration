@@ -83,6 +83,40 @@ export interface PharmacyDataType {
   joinSecondPageValidateCheckFlagData: undefined | boolean;
   setJoinSecondPageValidateCheckFlagData: (e: undefined | boolean) => void;
   /*  */
+  /* Join Third Page */
+  /* Account ID */
+  accountIDData: undefined | string;
+  setAccountIDData: (e: undefined | string) => void;
+  /* Account ID Validate Check*/
+  accountIDDataValidateFlagData: undefined | boolean;
+  setAccountIDDataValidateFlagData: (e: undefined | boolean) => void;
+  /* Account Password */
+  accountPasswordData: undefined | string;
+  setAccountPasswordData: (e: undefined | string) => void;
+  /* Confirmed Account Password */
+  confirmedAccountPasswordData: undefined | string;
+  setConfirmedAccountPasswordData: (e: undefined | string) => void;
+  /* Pharmacy Name */
+  pharmacyNameData: undefined | string;
+  setPharmacyNameData: (e: undefined | string) => void;
+  /* Pharmacy Phone Number */
+  pharmacyPhoneNumberData: undefined | string;
+  setPharmacyPhoneNumberData: (e: undefined | string) => void;
+  /* Pharmacy Fax Number */
+  pharmacyFaxNumberData: undefined | string;
+  setPharmacyFaxNNumberData: (e: undefined | string) => void;
+  /* Pharmacy Address */
+  pharmacyAddressData: undefined | string;
+  setPharmacyAddressData: (e: undefined | string) => void;
+  pharmacyLocationData: undefined | { longitude: number; latitude: number };
+  setPharmacyLocationData: (e: undefined | { longitude: number; latitude: number }) => void;
+  /* Get Coordinate */
+  pharmacyCurrentLocationData: undefined | { longitude: number; latitude: number };
+  setPharmacyCurrentLocationData: (e: undefined | { longitude: number; latitude: number }) => void;
+  /* Validate Check */
+  joinThirdPageValidateCheckFlagData: undefined | boolean;
+  setJoinThirdPageValidateCheckFlagData: (e: undefined | boolean) => void;
+  /*  */
 }
 
 const PharmacyData = observable<PharmacyDataType>({
@@ -220,6 +254,62 @@ const PharmacyData = observable<PharmacyDataType>({
   joinSecondPageValidateCheckFlagData: undefined,
   setJoinSecondPageValidateCheckFlagData(e: undefined | boolean) {
     this.joinSecondPageValidateCheckFlagData = e;
+  },
+  /*  */
+  /* Join Third Page */
+  /* Account ID */
+  accountIDData: undefined,
+  setAccountIDData(e: undefined | string) {
+    this.accountIDData = e;
+  },
+  /* Account ID Validate Check*/
+  accountIDDataValidateFlagData: undefined,
+  setAccountIDDataValidateFlagData(e: undefined | boolean) {
+    this.accountIDDataValidateFlagData = e;
+  },
+  /* Account Password */
+  accountPasswordData: undefined,
+  setAccountPasswordData(e: undefined | string) {
+    this.accountPasswordData = e;
+  },
+  /* Confirmed Account Password */
+  confirmedAccountPasswordData: undefined,
+  setConfirmedAccountPasswordData(e: undefined | string) {
+    this.confirmedAccountPasswordData = e;
+  },
+  /* Pharmacy Name */
+  pharmacyNameData: undefined,
+  setPharmacyNameData(e: undefined | string) {
+    this.pharmacyNameData = e;
+  },
+  /* Pharmacy Phone Number */
+  pharmacyPhoneNumberData: undefined,
+  setPharmacyPhoneNumberData(e: undefined | string) {
+    this.pharmacyPhoneNumberData = e;
+  },
+  /* Pharmacy Fax Number */
+  pharmacyFaxNumberData: undefined,
+  setPharmacyFaxNNumberData(e: undefined | string) {
+    this.pharmacyFaxNumberData = e;
+  },
+  /* Pharmacy Address */
+  pharmacyAddressData: undefined,
+  setPharmacyAddressData(e: undefined | string) {
+    this.pharmacyAddressData = e;
+  },
+  pharmacyLocationData: undefined,
+  setPharmacyLocationData(e: undefined | { longitude: number; latitude: number }) {
+    this.pharmacyLocationData = e;
+  },
+  /* Get Coordinate */
+  pharmacyCurrentLocationData: undefined,
+  setPharmacyCurrentLocationData(e: undefined | { longitude: number; latitude: number }) {
+    this.pharmacyCurrentLocationData = e;
+  },
+  /* Validate Check */
+  joinThirdPageValidateCheckFlagData: undefined,
+  setJoinThirdPageValidateCheckFlagData(e: undefined | boolean) {
+    this.joinThirdPageValidateCheckFlagData = e;
   },
   /*  */
 });
