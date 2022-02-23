@@ -165,6 +165,7 @@ const CheckboxFrame = styled.div<Props>`
 
   width: ${(props) => (props.width ? props.width : "")};
   min-width: ${(props) => (props.minWidth ? props.minWidth : "")};
+  max-width: ${(props) => (props.maxWidth ? props.maxWidth : "")};
   margin: ${(props) => (props.margin ? props.margin : "")};
 
   cursor: pointer;

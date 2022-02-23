@@ -304,7 +304,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
   const PharmacyData = useStore().PharmacyData;
 
   const onClickGoButton = () => {
-    history.push({ pathname: "/pharmacy/join/fourthStep" });
+    /* TODO */
   };
   const onClickBackButton = () => {
     history.push({ pathname: "/pharmacy/join/secondStep" });
