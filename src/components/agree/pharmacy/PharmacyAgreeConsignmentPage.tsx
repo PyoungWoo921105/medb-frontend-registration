@@ -399,7 +399,7 @@ const PharmacyAgreePage = observer((props: any) => {
                       </AgreementCheckboxInputFrame>
                       <AgreementCheckboxTextFrame className="AgreementCheckboxTextFrame">
                         <AgreementCheckboxTextComponent className="AgreementCheckboxTextComponent" designType="content">
-                          (필수) 메듭 의료기관 개인정보처리 위탁 계약서
+                          (필수) 메듭 약국 개인정보처리 위탁 계약서
                         </AgreementCheckboxTextComponent>
                       </AgreementCheckboxTextFrame>
                     </AgreementLineCoreFrame>
