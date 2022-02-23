@@ -299,8 +299,6 @@ const DoctorJoinFirstStepPage = observer((props: any) => {
   console.log(location);
   console.log(history);
 
-  /* const location = useLocation(); */
-
   const onClickGoButton = () => {
     history.push({ pathname: "/doctor/join/2" });
   };

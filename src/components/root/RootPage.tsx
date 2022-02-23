@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Route, useHistory } from "react-router-dom";
+import { Route, useHistory, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { observer } from "mobx-react";
 
@@ -32,21 +32,48 @@ const Frame = styled.div``;
 
 const RootPage = observer(() => {
   const history = useHistory();
+  const location = useLocation();
 
   const CommonData = useStore().CommonData;
 
   useEffect(() => {
-    /* TODO */
-    if (CommonData.URLType === "hospital") {
+    if (location.pathname === "/common") {
+      CommonData.setURLType("common");
+      history.push({ pathname: "/common/agree" });
+    } else if (location.pathname === "/hospital") {
+      CommonData.setURLType("hospital");
       history.push({ pathname: "/hospital/agree" });
-    } else if (CommonData.URLType === "pharmacy") {
+    } else if (location.pathname === "/pharmacy") {
+      CommonData.setURLType("pharmacy");
       history.push({ pathname: "/pharmacy/agree" });
-    } else if (CommonData.URLType === "doctor") {
-      /* TODO */
+    } else if (location.pathname === "/doctor") {
+      CommonData.setURLType("doctor");
       history.push({ pathname: "/doctor/agree" });
-    } else {
+    } /*  */ else if (location.pathname === "/hospital/consignment") {
+      CommonData.setURLType("hospital");
+      history.push({ pathname: "/hospital/consignment" });
+      console.log(location.search);
+      const query = new URLSearchParams(location.search);
+      console.log(query.get("hospitalCode"));
+    } else if (location.pathname === "/pharmacy/consignment") {
+      CommonData.setURLType("pharmacy");
+      history.push({ pathname: "/pharmacy/consignment" });
+      console.log(location.search);
+      const query = new URLSearchParams(location.search);
+      console.log(query.get("pharamcyCode"));
+    } else if (location.pathname === "/doctor/consignment") {
+      CommonData.setURLType("doctor");
+      history.push({ pathname: "/doctor/agree/consignment" });
+      console.log(location.search);
+      const query = new URLSearchParams(location.search);
+      console.log(query.get("doctorCode"));
+      console.log(query.get("hospitalName"));
+    } /*  */ else {
+      CommonData.setURLType("/common");
       history.push({ pathname: "/common/agree" });
     }
+    console.log(location.pathname);
+    console.log(history);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -58,6 +85,9 @@ const RootPage = observer(() => {
       <Route path="/hospital/agree" component={HospitalAgreePage}></Route>
       <Route path="/pharmacy/agree" component={PharmacyAgreePage}></Route>
       <Route path="/doctor/agree" component={DoctorAgreePage}></Route>
+      {/*  */}
+      {/* <Route path="/hospital/agree/consignment" component={HospitalAgreeConsignmentPage}></Route>
+      <Route path="/pharmacy/agree/consignment" component={PharmacyAgreeConsignmentPage}></Route> */}
       {/*  */}
       <Route path="/hospital/join/firstStep" component={HospitalJoinFirstStepPage}></Route>
       <Route path="/hospital/join/businessAddress" component={HospitalJoinSearchBusinessAddressPage}></Route>
