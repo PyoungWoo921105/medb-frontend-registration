@@ -8,6 +8,9 @@ import HospitalAgreePage from "../agree/hospital/HospitalAgreePage";
 import PharmacyAgreePage from "../agree/pharmacy/PharmacyAgreePage";
 import DoctorAgreePage from "../agree/doctor/DoctorAgreePage";
 
+import HospitalAgreeConsignmentPage from "../agree/hospital/HospitalAgreeConsignmentPage";
+import PharmacyAgreeConsignmentPage from "../agree/pharmacy/PharmacyAgreeConsignmentPage";
+
 import HospitalJoinFirstStepPage from "../join/hospital/HospitalJoinFirstStepPage";
 import HospitalJoinSecondStepPage from "../join/hospital/HospitalJoinSecondStepPage";
 import HospitalJoinThirdStepPage from "../join/hospital/HospitalJoinThirdStepPage";
@@ -35,6 +38,8 @@ const RootPage = observer(() => {
   const location = useLocation();
 
   const CommonData = useStore().CommonData;
+  const HospitalData = useStore().HospitalData;
+  const PharmacyData = useStore().PharmacyData;
 
   useEffect(() => {
     if (location.pathname === "/common") {
@@ -49,25 +54,25 @@ const RootPage = observer(() => {
     } else if (location.pathname === "/doctor") {
       CommonData.setURLType("doctor");
       history.push({ pathname: "/doctor/agree" });
+      console.log(location.search);
+      const query = new URLSearchParams(location.search);
+      console.log(query.get("doctorCode"));
+      console.log(query.get("hospitalName"));
+      /* TODO */
     } /*  */ else if (location.pathname === "/hospital/consignment") {
       CommonData.setURLType("hospital");
       history.push({ pathname: "/hospital/consignment" });
       console.log(location.search);
       const query = new URLSearchParams(location.search);
       console.log(query.get("hospitalCode"));
+      HospitalData.setHospitalCodeData(query.get("hospitalCode"));
     } else if (location.pathname === "/pharmacy/consignment") {
       CommonData.setURLType("pharmacy");
       history.push({ pathname: "/pharmacy/consignment" });
       console.log(location.search);
       const query = new URLSearchParams(location.search);
-      console.log(query.get("pharamcyCode"));
-    } else if (location.pathname === "/doctor/consignment") {
-      CommonData.setURLType("doctor");
-      history.push({ pathname: "/doctor/agree/consignment" });
-      console.log(location.search);
-      const query = new URLSearchParams(location.search);
-      console.log(query.get("doctorCode"));
-      console.log(query.get("hospitalName"));
+      console.log(query.get("pharmacyCode"));
+      PharmacyData.setPharmacyCodeData(query.get("pharmacyCode"));
     } /*  */ else {
       CommonData.setURLType("/common");
       history.push({ pathname: "/common/agree" });
@@ -86,8 +91,8 @@ const RootPage = observer(() => {
       <Route path="/pharmacy/agree" component={PharmacyAgreePage}></Route>
       <Route path="/doctor/agree" component={DoctorAgreePage}></Route>
       {/*  */}
-      {/* <Route path="/hospital/agree/consignment" component={HospitalAgreeConsignmentPage}></Route>
-      <Route path="/pharmacy/agree/consignment" component={PharmacyAgreeConsignmentPage}></Route> */}
+      <Route path="/hospital/consignment" component={HospitalAgreeConsignmentPage}></Route>
+      <Route path="/pharmacy/consignment" component={PharmacyAgreeConsignmentPage}></Route>
       {/*  */}
       <Route path="/hospital/join/firstStep" component={HospitalJoinFirstStepPage}></Route>
       <Route path="/hospital/join/businessAddress" component={HospitalJoinSearchBusinessAddressPage}></Route>

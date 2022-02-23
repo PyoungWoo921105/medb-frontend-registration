@@ -1,6 +1,10 @@
 import { observable } from "mobx";
 
 export interface HospitalDataType {
+  /* Agree Consignment Page */
+  /* Identifier */
+  hospitalCodeData: undefined | null | string;
+  setHospitalCodeData: (e: undefined | null | string) => void;
   /* Join First Page */
   /* Business Name */
   businessNameData: undefined | string;
@@ -120,6 +124,12 @@ export interface HospitalDataType {
 }
 
 const HospitalData = observable<HospitalDataType>({
+  /* Agree Consignment Page */
+  /* Identifier */
+  hospitalCodeData: null,
+  setHospitalCodeData(e: undefined | null | string) {
+    this.hospitalCodeData = e;
+  },
   /* Join First Page */
   /* Business Name */
   businessNameData: undefined,

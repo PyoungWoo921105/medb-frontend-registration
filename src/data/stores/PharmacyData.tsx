@@ -1,6 +1,10 @@
 import { observable } from "mobx";
 
 export interface PharmacyDataType {
+  /* Agree Consignment Page */
+  /* Identifier */
+  pharmacyCodeData: undefined | null | string;
+  setPharmacyCodeData: (e: undefined | null | string) => void;
   /* Join First Page */
   /* Business Name */
   businessNameData: undefined | string;
@@ -120,6 +124,12 @@ export interface PharmacyDataType {
 }
 
 const PharmacyData = observable<PharmacyDataType>({
+  /* Agree Consignment Page */
+  /* Identifier */
+  pharmacyCodeData: null,
+  setPharmacyCodeData(e: undefined | null | string) {
+    this.pharmacyCodeData = e;
+  },
   /* Join First Page */
   /* Business Name */
   businessNameData: undefined,
