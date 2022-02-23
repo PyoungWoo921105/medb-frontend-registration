@@ -309,7 +309,7 @@ const PharmacyJoinFirstPage = observer((props: any) => {
   const PharmacyData = useStore().PharmacyData;
 
   const onClickGoButton = () => {
-    history.push({ pathname: "/pharmacy/join/2" });
+    history.push({ pathname: "/pharmacy/join/secondStep" });
   };
   const onClickBackButton = () => {
     history.push({ pathname: "/common/agree" });
@@ -324,7 +324,7 @@ const PharmacyJoinFirstPage = observer((props: any) => {
   /*  */
 
   const onClickSearchAddressButton = () => {
-    history.push({ pathname: "/pharmacy/join/serach-business-address" });
+    history.push({ pathname: "/pharmacy/join/businessAddress" });
   };
 
   /*  */

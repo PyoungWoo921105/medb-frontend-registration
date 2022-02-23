@@ -304,16 +304,16 @@ const PharmacyJoinThirdPage = observer((props: any) => {
   const PharmacyData = useStore().PharmacyData;
 
   const onClickGoButton = () => {
-    history.push({ pathname: "/pharmacy/join/4" });
+    history.push({ pathname: "/pharmacy/join/fourthStep" });
   };
   const onClickBackButton = () => {
-    history.push({ pathname: "/pharmacy/join/2" });
+    history.push({ pathname: "/pharmacy/join/secondStep" });
   };
 
   /*  */
 
   const onClickSearchAddressButton = () => {
-    history.push({ pathname: "/pharmacy/join/serach-pharmacy-address" });
+    history.push({ pathname: "/pharmacy/join/pharmacyAddress" });
   };
 
   /*  */

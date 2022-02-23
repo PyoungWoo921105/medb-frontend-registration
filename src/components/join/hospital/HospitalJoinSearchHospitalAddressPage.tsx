@@ -337,10 +337,10 @@ const HospitalJoinSearchHospitalAddressPage = observer((props: any) => {
     HospitalData.setHospitalAddressData(BroadAddressData + " " + ExtraAddressData);
     HospitalData.setHospitalLocationData(HospitalData.hospitalCurrentLocationData);
     HospitalData.setHospitalCurrentLocationData(undefined);
-    history.push({ pathname: "/hospital/join/3" });
+    history.push({ pathname: "/hospital/join/thirdStep" });
   };
   const onClickBackButton = () => {
-    history.push({ pathname: "/hospital/join/3" });
+    history.push({ pathname: "/hospital/join/thirdStep" });
   };
 
   return (

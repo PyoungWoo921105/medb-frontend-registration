@@ -337,10 +337,10 @@ const PharmacyJoinSearchManagerAddressPage = observer((props: any) => {
     PharmacyData.setManagerAddressData(BroadAddressData + " " + ExtraAddressData);
     PharmacyData.setManagerLocationData(PharmacyData.managerCurrentLocationData);
     PharmacyData.setManagerCurrentLocationData(undefined);
-    history.push({ pathname: "/pharmacy/join/2" });
+    history.push({ pathname: "/pharmacy/join/secondStep" });
   };
   const onClickBackButton = () => {
-    history.push({ pathname: "/pharmacy/join/2" });
+    history.push({ pathname: "/pharmacy/join/secondStep" });
   };
 
   return (

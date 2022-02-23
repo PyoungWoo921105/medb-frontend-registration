@@ -304,16 +304,16 @@ const HospitalJoinThirdPage = observer((props: any) => {
   const HospitalData = useStore().HospitalData;
 
   const onClickGoButton = () => {
-    history.push({ pathname: "/hospital/join/4" });
+    history.push({ pathname: "/hospital/join/fourthStep" });
   };
   const onClickBackButton = () => {
-    history.push({ pathname: "/hospital/join/2" });
+    history.push({ pathname: "/hospital/join/secondStep" });
   };
 
   /*  */
 
   const onClickSearchAddressButton = () => {
-    history.push({ pathname: "/hospital/join/serach-hospital-address" });
+    history.push({ pathname: "/hospital/join/hospitalAddress" });
   };
 
   /*  */

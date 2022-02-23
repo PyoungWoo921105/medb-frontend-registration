@@ -319,7 +319,7 @@ const HospitalAgreePage = observer((props: any) => {
   };
 
   const onClickGoButton = () => {
-    history.push({ pathname: "/hospital/join/1" });
+    history.push({ pathname: "/hospital/join/firstStep" });
   };
 
   return (

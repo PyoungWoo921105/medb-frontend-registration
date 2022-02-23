@@ -362,16 +362,16 @@ const PharmacyJoinSecondPage = observer((props: any) => {
   const PharmacyData = useStore().PharmacyData;
 
   const onClickGoButton = () => {
-    history.push({ pathname: "/pharmacy/join/3" });
+    history.push({ pathname: "/pharmacy/join/thirdStep" });
   };
   const onClickBackButton = () => {
-    history.push({ pathname: "/pharmacy/join/1" });
+    history.push({ pathname: "/pharmacy/join/firstStep" });
   };
 
   /*  */
 
   const onClickSearchAddressButton = () => {
-    history.push({ pathname: "/pharmacy/join/serach-manager-address" });
+    history.push({ pathname: "/pharmacy/join/managerAddress" });
   };
 
   /*  */

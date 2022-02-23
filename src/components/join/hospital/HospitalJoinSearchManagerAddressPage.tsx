@@ -337,10 +337,10 @@ const HospitalJoinSearchManagerAddressPage = observer((props: any) => {
     HospitalData.setManagerAddressData(BroadAddressData + " " + ExtraAddressData);
     HospitalData.setManagerLocationData(HospitalData.managerCurrentLocationData);
     HospitalData.setManagerCurrentLocationData(undefined);
-    history.push({ pathname: "/hospital/join/2" });
+    history.push({ pathname: "/hospital/join/secondStep" });
   };
   const onClickBackButton = () => {
-    history.push({ pathname: "/hospital/join/2" });
+    history.push({ pathname: "/hospital/join/secondStep" });
   };
 
   return (

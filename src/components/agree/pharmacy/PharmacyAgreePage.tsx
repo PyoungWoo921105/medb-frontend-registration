@@ -319,7 +319,7 @@ const PharmacyAgreePage = observer((props: any) => {
   };
 
   const onClickGoButton = () => {
-    history.push({ pathname: "/pharmacy/join/1" });
+    history.push({ pathname: "/pharmacy/join/firstStep" });
   };
 
   return (

@@ -337,10 +337,10 @@ const SearchAddressPage = observer((props: any) => {
     PharmacyData.setBusinessAddressData(BroadAddressData + " " + ExtraAddressData);
     PharmacyData.setBusinessLocationData(PharmacyData.businessCurrentLocationData);
     PharmacyData.setBusinessCurrentLocationData(undefined);
-    history.push({ pathname: "/pharmacy/join/1" });
+    history.push({ pathname: "/pharmacy/join/firstStep" });
   };
   const onClickBackButton = () => {
-    history.push({ pathname: "/pharmacy/join/1" });
+    history.push({ pathname: "/pharmacy/join/firstStep" });
   };
 
   return (
