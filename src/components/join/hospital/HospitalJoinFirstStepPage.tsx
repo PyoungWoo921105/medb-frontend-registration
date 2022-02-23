@@ -587,7 +587,7 @@ const HospitalJoinFirstStepPage = observer((props: any) => {
                   <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
                     <PlainTextFrame className="PlainTextFrame" padding={"0px 10px 0px 10px"}>
                       <PlainTextComponent className="PlainTextComponent" designType="content">
-                        박평우
+                        {HospitalData.delegatorNameData ? HospitalData.delegatorNameData : ""}
                       </PlainTextComponent>
                     </PlainTextFrame>
                   </LineAdditionalFrame>
@@ -608,7 +608,7 @@ const HospitalJoinFirstStepPage = observer((props: any) => {
                   <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
                     <PlainTextFrame className="PlainTextFrame" padding={"0px 10px 0px 10px"}>
                       <PlainTextComponent className="PlainTextComponent" designType="content">
-                        1992년 11월 05일
+                        {HospitalData.delegatorBirthdayData ? HospitalData.delegatorBirthdayData : ""}
                       </PlainTextComponent>
                     </PlainTextFrame>
                   </LineAdditionalFrame>
@@ -629,7 +629,7 @@ const HospitalJoinFirstStepPage = observer((props: any) => {
                   <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
                     <PlainTextFrame className="PlainTextFrame" padding={"0px 10px 0px 10px"}>
                       <PlainTextComponent className="PlainTextComponent" designType="content">
-                        010-7149-3357
+                        {HospitalData.delegatorPhoneNumberData ? HospitalData.delegatorPhoneNumberData : ""}
                       </PlainTextComponent>
                     </PlainTextFrame>
                   </LineAdditionalFrame>

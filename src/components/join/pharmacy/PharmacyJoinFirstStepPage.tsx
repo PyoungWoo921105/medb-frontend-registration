@@ -594,7 +594,7 @@ const PharmacyJoinFirstStepPage = observer((props: any) => {
                   <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
                     <PlainTextFrame className="PlainTextFrame" padding={"0px 10px 0px 10px"}>
                       <PlainTextComponent className="PlainTextComponent" designType="content">
-                        박평우
+                        {PharmacyData.delegatorNameData ? PharmacyData.delegatorNameData : ""}
                       </PlainTextComponent>
                     </PlainTextFrame>
                   </LineAdditionalFrame>
@@ -615,7 +615,7 @@ const PharmacyJoinFirstStepPage = observer((props: any) => {
                   <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
                     <PlainTextFrame className="PlainTextFrame" padding={"0px 10px 0px 10px"}>
                       <PlainTextComponent className="PlainTextComponent" designType="content">
-                        1992년 11월 05일
+                        {PharmacyData.delegatorBirthdayData ? PharmacyData.delegatorBirthdayData : ""}
                       </PlainTextComponent>
                     </PlainTextFrame>
                   </LineAdditionalFrame>
@@ -636,7 +636,7 @@ const PharmacyJoinFirstStepPage = observer((props: any) => {
                   <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
                     <PlainTextFrame className="PlainTextFrame" padding={"0px 10px 0px 10px"}>
                       <PlainTextComponent className="PlainTextComponent" designType="content">
-                        010-7149-3357
+                        {PharmacyData.delegatorPhoneNumberData ? PharmacyData.delegatorPhoneNumberData : ""}
                       </PlainTextComponent>
                     </PlainTextFrame>
                   </LineAdditionalFrame>

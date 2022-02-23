@@ -32,6 +32,15 @@ export interface HospitalDataType {
   /* Business License Image File */
   businessLicenseImageFileData: undefined | File;
   setBusinessLicenseImageFileData: (e: undefined | File) => void;
+  /* Delegator Name */
+  delegatorNameData: undefined | string;
+  setDelegatorNameData: (e: undefined | string) => void;
+  /* Delegator Birthday */
+  delegatorBirthdayData: undefined | string;
+  setDelegatorBirthdayData: (e: undefined | string) => void;
+  /* Delegator Phone Number */
+  delegatorPhoneNumberData: undefined | string;
+  setDelegatorPhoneNumberData: (e: undefined | string) => void;
   /* Delegator Email */
   delegatorEmailData: undefined | string;
   setDelegatorEmailData: (e: undefined | string) => void;
@@ -174,6 +183,21 @@ const HospitalData = observable<HospitalDataType>({
   businessLicenseImageFileData: undefined,
   setBusinessLicenseImageFileData(e: undefined | File) {
     this.businessLicenseImageFileData = e;
+  },
+  /* Delegator Name */
+  delegatorNameData: undefined,
+  setDelegatorNameData(e: undefined | string) {
+    this.delegatorNameData = e;
+  },
+  /* Delegator Birthday */
+  delegatorBirthdayData: undefined,
+  setDelegatorBirthdayData(e: undefined | string) {
+    this.delegatorBirthdayData = e;
+  },
+  /* Delegator Phone Number */
+  delegatorPhoneNumberData: undefined,
+  setDelegatorPhoneNumberData(e: undefined | string) {
+    this.delegatorPhoneNumberData = e;
   },
   /* Delegator Email */
   delegatorEmailData: undefined,
