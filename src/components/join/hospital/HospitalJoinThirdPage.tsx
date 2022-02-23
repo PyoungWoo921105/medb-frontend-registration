@@ -5,7 +5,6 @@ import { observer } from "mobx-react";
 import LogoImageIcon from "../../../assets/icons/LogoImageIcon.png";
 
 import useStore from "../../../data/useStore";
-import { useRef } from "react";
 
 interface Props {
   display?: string;
@@ -145,9 +144,6 @@ const PlainTextFrame = styled.div<Props>`
   margin: ${(props) => (props.margin ? props.margin : "")};
   padding: ${(props) => (props.padding ? props.padding : "")};
 `;
-const InputFakeComponent = styled.input`
-  display: none;
-`;
 const InputTextFrame = styled.div<Props>`
   display: flex;
   flex-direction: row;
@@ -203,7 +199,7 @@ const PlainTextComponent = styled.span<Props>`
       ? "#8D8D8D"
       : ""};
 
-  cursor: ${(props) => (props.designType === "additional" ? "pointer" : "")};
+  cursor: ${(props) => (props.designType === "additional" ? (props.cursor ? props.cursor : "pointer") : "")};
 `;
 const InputTextComponent = styled.input<Props>`
   font-family: "Spoqa Han Sans Neo";
@@ -322,6 +318,13 @@ const HospitalJoinThirdPage = observer((props: any) => {
 
   /*  */
 
+  const onClickAccountIDCheckButton = () => {
+    /* TODO */
+    HospitalData.setAccountIDDataValidateFlagData(true);
+  };
+
+  /*  */
+
   useEffect(() => {
     if (
       HospitalData.accountIDData &&
@@ -346,6 +349,16 @@ const HospitalJoinThirdPage = observer((props: any) => {
     HospitalData.hospitalAddressData,
     HospitalData,
   ]);
+
+  /*  */
+
+  useEffect(() => {
+    if (!HospitalData.hospitalAddressData) {
+      HospitalData.setHospitalAddressData(HospitalData.businessAddressData);
+      HospitalData.setHospitalLocationData(HospitalData.businessLocationData);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   /*  */
 
@@ -405,13 +418,27 @@ const HospitalJoinThirdPage = observer((props: any) => {
                       <InputButtonComponent
                         className="InputButtonComponent"
                         margin="0px 0px 0px 5px"
-                        onClick={onClickSearchAddressButton}
+                        onClick={onClickAccountIDCheckButton}
                         backgroundColor={"#E1E1E1"}
                         border={"1px solid #E0E0E0"}
                       >
                         중복 확인
                       </InputButtonComponent>
                     </InputButtonFrame>
+                  </LineAdditionalFrame>
+                </LineComponent>
+                {/* TEMP */}
+                <LineComponent className="LineComponent" margin="-10px 0px 0px 0px" justifyContent="space-between">
+                  <LineCoreFrame className="LineCoreFrame" minWidth={"65px"}></LineCoreFrame>
+                  <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
+                    <PlainTextFrame className="PlainTextFrame" padding={"0px 10px 0px 10px"} flexDirection="column">
+                      <PlainTextComponent className="PlainTextComponent" designType="additional" cursor="text">
+                        6~20자의 영문 소문자 및 숫자만 사용 가능합니다.
+                      </PlainTextComponent>
+                      <PlainTextComponent className="PlainTextComponent" designType="additional" cursor="text">
+                        희망 ID에 대한 중복 확인을 수행해 주세요.
+                      </PlainTextComponent>
+                    </PlainTextFrame>
                   </LineAdditionalFrame>
                 </LineComponent>
                 <LineComponent
@@ -437,6 +464,20 @@ const HospitalJoinThirdPage = observer((props: any) => {
                         onChange={(event) => HospitalData.setAccountPasswordData(event.target.value)}
                       ></InputTextComponent>
                     </InputTextFrame>
+                  </LineAdditionalFrame>
+                </LineComponent>
+                {/* TEMP */}
+                <LineComponent className="LineComponent" margin="-10px 0px 0px 0px" justifyContent="space-between">
+                  <LineCoreFrame className="LineCoreFrame" minWidth={"65px"}></LineCoreFrame>
+                  <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
+                    <PlainTextFrame className="PlainTextFrame" padding={"0px 10px 0px 10px"} flexDirection="column">
+                      <PlainTextComponent className="PlainTextComponent" designType="additional" cursor="text">
+                        영문, 숫자, 그리고 특수문자를 모두 포함하여
+                      </PlainTextComponent>
+                      <PlainTextComponent className="PlainTextComponent" designType="additional" cursor="text">
+                        8자리 이상으로 입력해 주세요.
+                      </PlainTextComponent>
+                    </PlainTextFrame>
                   </LineAdditionalFrame>
                 </LineComponent>
                 <LineComponent
