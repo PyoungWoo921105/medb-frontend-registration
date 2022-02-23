@@ -7,17 +7,24 @@ import CommonAgreePage from "../agree/common/CommonAgreePage";
 import HospitalAgreePage from "../agree/hospital/HospitalAgreePage";
 import PharmacyAgreePage from "../agree/pharmacy/PharmacyAgreePage";
 import DoctorAgreePage from "../agree/doctor/DoctorAgreePage";
+
 import HospitalJoinFirstPage from "../join/hospital/HospitalJoinFirstPage";
 import HospitalJoinSecondPage from "../join/hospital/HospitalJoinSecondPage";
 import HospitalJoinThirdPage from "../join/hospital/HospitalJoinThirdPage";
+
 import PharmacyJoinFirstPage from "../join/pharmacy/PharmacyJoinFirstPage";
 import PharmacyJoinSecondPage from "../join/pharmacy/PharmacyJoinSecondPage";
+import PharmacyJoinThirdPage from "../join/pharmacy/PharmacyJoinThirdPage";
+
 import DoctorJoinFirstPage from "../join/doctor/DoctorJoinFirstPage";
 
 import HospitalJoinSearchBusinessAddressPage from "../join/hospital/HospitalJoinSearchBusinessAddressPage";
 import HospitalJoinSearchManagerAddressPage from "../join/hospital/HospitalJoinSearchManagerAddressPage";
+import HospitalJoinSearchHospitalAddressPage from "../join/hospital/HospitalJoinSearchHospitalAddressPage";
+
 import PharmacyJoinSearchBusinessAddressPage from "../join/pharmacy/PharmacyJoinSearchBusinessAddressPage";
 import PharmacyJoinSearchManagerAddressPage from "../join/pharmacy/PharmacyJoinSearchManagerAddressPage";
+import PharmacyJoinSearchPharmacyAddressPage from "../join/pharmacy/PharmacyJoinSearchPharmacyAddressPage";
 
 import useStore from "../../data/useStore";
 
@@ -57,11 +64,14 @@ const RootPage = observer(() => {
       <Route path="/hospital/join/2" component={HospitalJoinSecondPage}></Route>
       <Route path="/hospital/join/serach-manager-address" component={HospitalJoinSearchManagerAddressPage}></Route>
       <Route path="/hospital/join/3" component={HospitalJoinThirdPage}></Route>
+      <Route path="/hospital/join/serach-hospital-address" component={HospitalJoinSearchHospitalAddressPage}></Route>
       {/*  */}
       <Route path="/pharmacy/join/1" component={PharmacyJoinFirstPage}></Route>
       <Route path="/pharmacy/join/serach-business-address" component={PharmacyJoinSearchBusinessAddressPage}></Route>
       <Route path="/pharmacy/join/2" component={PharmacyJoinSecondPage}></Route>
       <Route path="/pharmacy/join/serach-manager-address" component={PharmacyJoinSearchManagerAddressPage}></Route>
+      <Route path="/pharmacy/join/3" component={PharmacyJoinThirdPage}></Route>
+      <Route path="/pharmacy/join/serach-pharmacy-address" component={PharmacyJoinSearchPharmacyAddressPage}></Route>
       {/*  */}
       <Route path="/doctor/join/1" component={DoctorJoinFirstPage}></Route>
       {/*  */}
