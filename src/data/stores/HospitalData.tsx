@@ -83,6 +83,40 @@ export interface HospitalDataType {
   joinSecondPageValidateCheckFlagData: undefined | boolean;
   setJoinSecondPageValidateCheckFlagData: (e: undefined | boolean) => void;
   /*  */
+  /* Join Third Page */
+  /* Account ID */
+  accountIDData: undefined | string;
+  setAccountIDData: (e: undefined | string) => void;
+  /* Account ID Validate Check*/
+  accountIDDataValidateFlagData: undefined | boolean;
+  setAccountIDDataValidateFlagData: (e: undefined | boolean) => void;
+  /* Account Password */
+  accountPasswordData: undefined | string;
+  setAccountPasswordData: (e: undefined | string) => void;
+  /* Confirmed Account Password */
+  confirmedAccountPasswordData: undefined | string;
+  setConfirmedAccountPasswordData: (e: undefined | string) => void;
+  /* Hospital Name */
+  hospitalNameData: undefined | string;
+  setHospitalNameData: (e: undefined | string) => void;
+  /* Hospital Phone Number */
+  hospitalPhoneNumberData: undefined | string;
+  setHospitalPhoneNumberData: (e: undefined | string) => void;
+  /* Hospital Fax Number */
+  hospitalFaxNumberData: undefined | string;
+  setHospitalFaxNNumberData: (e: undefined | string) => void;
+  /* Hospital Address */
+  hospitalAddressData: undefined | string;
+  setHospitalAddressData: (e: undefined | string) => void;
+  hospitalLocationData: undefined | { longitude: number; latitude: number };
+  setHospitalLocationData: (e: undefined | { longitude: number; latitude: number }) => void;
+  /* Get Coordinate */
+  hospitalCurrentLocationData: undefined | { longitude: number; latitude: number };
+  setHospitalCurrentLocationData: (e: undefined | { longitude: number; latitude: number }) => void;
+  /* Validate Check */
+  joinThirdPageValidateCheckFlagData: undefined | boolean;
+  setJoinThirdPageValidateCheckFlagData: (e: undefined | boolean) => void;
+  /*  */
 }
 
 const HospitalData = observable<HospitalDataType>({
@@ -220,6 +254,62 @@ const HospitalData = observable<HospitalDataType>({
   joinSecondPageValidateCheckFlagData: undefined,
   setJoinSecondPageValidateCheckFlagData(e: undefined | boolean) {
     this.joinSecondPageValidateCheckFlagData = e;
+  },
+  /*  */
+  /* Join Third Page */
+  /* Account ID */
+  accountIDData: undefined,
+  setAccountIDData(e: undefined | string) {
+    this.accountIDData = e;
+  },
+  /* Account ID Validate Check*/
+  accountIDDataValidateFlagData: undefined,
+  setAccountIDDataValidateFlagData(e: undefined | boolean) {
+    this.accountIDDataValidateFlagData = e;
+  },
+  /* Account Password */
+  accountPasswordData: undefined,
+  setAccountPasswordData(e: undefined | string) {
+    this.accountPasswordData = e;
+  },
+  /* Confirmed Account Password */
+  confirmedAccountPasswordData: undefined,
+  setConfirmedAccountPasswordData(e: undefined | string) {
+    this.confirmedAccountPasswordData = e;
+  },
+  /* Hospital Name */
+  hospitalNameData: undefined,
+  setHospitalNameData(e: undefined | string) {
+    this.hospitalNameData = e;
+  },
+  /* Hospital Phone Number */
+  hospitalPhoneNumberData: undefined,
+  setHospitalPhoneNumberData(e: undefined | string) {
+    this.hospitalPhoneNumberData = e;
+  },
+  /* Hospital Fax Number */
+  hospitalFaxNumberData: undefined,
+  setHospitalFaxNNumberData(e: undefined | string) {
+    this.hospitalFaxNumberData = e;
+  },
+  /* Hospital Address */
+  hospitalAddressData: undefined,
+  setHospitalAddressData(e: undefined | string) {
+    this.hospitalAddressData = e;
+  },
+  hospitalLocationData: undefined,
+  setHospitalLocationData(e: undefined | { longitude: number; latitude: number }) {
+    this.hospitalLocationData = e;
+  },
+  /* Get Coordinate */
+  hospitalCurrentLocationData: undefined,
+  setHospitalCurrentLocationData(e: undefined | { longitude: number; latitude: number }) {
+    this.hospitalCurrentLocationData = e;
+  },
+  /* Validate Check */
+  joinThirdPageValidateCheckFlagData: undefined,
+  setJoinThirdPageValidateCheckFlagData(e: undefined | boolean) {
+    this.joinThirdPageValidateCheckFlagData = e;
   },
   /*  */
 });

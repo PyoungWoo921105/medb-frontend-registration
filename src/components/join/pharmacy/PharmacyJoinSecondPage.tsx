@@ -725,7 +725,7 @@ const PharmacyJoinSecondPage = observer((props: any) => {
                     height={"35px"}
                     flexDirection={"column"}
                   >
-                    <LineCoreFrame className="LineCoreFrame" minWidth={"140px"}>
+                    <LineCoreFrame className="LineCoreFrame" minWidth={"145px"}>
                       <PlainTextFrame className="PlainTextFrame">
                         <PlainTextComponent className="PlainTextComponent" designType="content">
                           *입금 계좌 은행 직접입력
