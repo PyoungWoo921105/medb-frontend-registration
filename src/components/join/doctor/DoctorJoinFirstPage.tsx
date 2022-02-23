@@ -197,7 +197,7 @@ const PlainTextComponent = styled.span<Props>`
       ? "#8D8D8D"
       : ""};
 
-  cursor: ${(props) => (props.designType === "additional" ? "pointer" : "")};
+  cursor: ${(props) => (props.designType === "additional" ? (props.cursor ? props.cursor : "pointer") : "")};
 `;
 const InputTextComponent = styled.input<Props>`
   font-family: "Spoqa Han Sans Neo";
