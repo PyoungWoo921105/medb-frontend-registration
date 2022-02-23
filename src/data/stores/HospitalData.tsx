@@ -130,6 +130,44 @@ export interface HospitalDataType {
   joinThirdPageValidateCheckFlagData: undefined | boolean;
   setJoinThirdPageValidateCheckFlagData: (e: undefined | boolean) => void;
   /*  */
+  /* Join Fourth Page */
+  /* Delegator Doctor Name */
+  delegatorDoctorNameData: undefined | string;
+  setDelegatorDoctorNameData: (e: undefined | string) => void;
+  /* Delegator Doctor Birthday */
+  delegatorDoctorBirthdayData: undefined | string;
+  setDelegatorDoctorBirthdayData: (e: undefined | string) => void;
+  /* Delegator Doctor Phone Number */
+  delegatorDoctorPhoneNumberData: undefined | string;
+  setDelegatorDoctorPhoneNumberData: (e: undefined | string) => void;
+  /* Delegator Doctor Email */
+  delegatorDoctorEmailData: undefined | string;
+  setDelegatorDoctorEmailData: (e: undefined | string) => void;
+  /* Delegator Business Name */
+  delegatorBusinessNameData: undefined | string;
+  setDelegatorBusinessNameData: (e: undefined | string) => void;
+  /* Delegator Doctor License Number */
+  delegatorDoctorLicenseNumberData: undefined | string;
+  setDelegatorDoctorLicenseNumberData: (e: undefined | string) => void;
+  /* Delegator Doctor Specialist Flag */
+  delegatorDoctorSpecialistFlagData: undefined | boolean;
+  setDelegatorDoctorSpecialistFlagData: (e: undefined | boolean) => void;
+  /* Delegator Doctor Specialist Department */
+  delegatorDoctorSpecialistDepartmentData: undefined | string;
+  setDelegatorDoctorSpecialistDepartmentData: (e: undefined | string) => void;
+  /* Delegator Doctor Departments */
+  delegatorDoctorDepratmentsData: [] | { name: string; flag: boolean }[];
+  setDelegatorDoctorDepratmentsData: (e: [] | { name: string; flag: boolean }[]) => void;
+  /* Delegator Doctor Diseases */
+  delegatorDoctorDiseasesData: [] | { name: string; flag: boolean }[];
+  setDelegatorDoctorDiseasesData: (e: [] | { name: string; flag: boolean }[]) => void;
+  /* Companion Doctor Phone Number */
+  companionDoctorPhoneNumberData: [] | string[];
+  setCompanionDoctorPhoneNumberData: (e: [] | string[]) => void;
+  /* Validate Check */
+  joinFourthPageValidateCheckFlagData: undefined | boolean;
+  setJoinFourthPageValidateCheckFlagData: (e: undefined | boolean) => void;
+  /*  */
 }
 
 const HospitalData = observable<HospitalDataType>({
@@ -344,6 +382,68 @@ const HospitalData = observable<HospitalDataType>({
   joinThirdPageValidateCheckFlagData: undefined,
   setJoinThirdPageValidateCheckFlagData(e: undefined | boolean) {
     this.joinThirdPageValidateCheckFlagData = e;
+  },
+  /*  */
+  /* Join Fourth Page */
+  /* Delegator Doctor Name */
+  delegatorDoctorNameData: undefined,
+  setDelegatorDoctorNameData(e: undefined | string) {
+    this.delegatorDoctorNameData = e;
+  },
+  /* Delegator Doctor Birthday */
+  delegatorDoctorBirthdayData: undefined,
+  setDelegatorDoctorBirthdayData(e: undefined | string) {
+    this.delegatorDoctorBirthdayData = e;
+  },
+  /* Delegator Doctor Phone Number */
+  delegatorDoctorPhoneNumberData: undefined,
+  setDelegatorDoctorPhoneNumberData(e: undefined | string) {
+    this.delegatorDoctorPhoneNumberData = e;
+  },
+  /* Delegator Doctor Email */
+  delegatorDoctorEmailData: undefined,
+  setDelegatorDoctorEmailData(e: undefined | string) {
+    this.delegatorDoctorEmailData = e;
+  },
+  /* Delegator Business Name */
+  delegatorBusinessNameData: undefined,
+  setDelegatorBusinessNameData(e: undefined | string) {
+    this.delegatorBusinessNameData = e;
+  },
+  /* Delegator Doctor License Number */
+  delegatorDoctorLicenseNumberData: undefined,
+  setDelegatorDoctorLicenseNumberData(e: undefined | string) {
+    this.delegatorDoctorLicenseNumberData = e;
+  },
+  /* Delegator Doctor Specialist Flag */
+  delegatorDoctorSpecialistFlagData: undefined,
+  setDelegatorDoctorSpecialistFlagData(e: undefined | boolean) {
+    this.delegatorDoctorSpecialistFlagData = e;
+  },
+  /* Delegator Doctor Specialist Department */
+  delegatorDoctorSpecialistDepartmentData: undefined,
+  setDelegatorDoctorSpecialistDepartmentData(e: undefined | string) {
+    this.delegatorDoctorSpecialistDepartmentData = e;
+  },
+  /* Delegator Doctor Departments */
+  delegatorDoctorDepratmentsData: [],
+  setDelegatorDoctorDepratmentsData(e: [] | { name: string; flag: boolean }[]) {
+    this.delegatorDoctorDepratmentsData = e;
+  },
+  /* Delegator Doctor Diseases */
+  delegatorDoctorDiseasesData: [],
+  setDelegatorDoctorDiseasesData(e: [] | { name: string; flag: boolean }[]) {
+    this.delegatorDoctorDiseasesData = e;
+  },
+  /* Companion Doctor Phone Number */
+  companionDoctorPhoneNumberData: [],
+  setCompanionDoctorPhoneNumberData(e: [] | string[]) {
+    this.companionDoctorPhoneNumberData = e;
+  },
+  /* Validate Check */
+  joinFourthPageValidateCheckFlagData: undefined,
+  setJoinFourthPageValidateCheckFlagData(e: undefined | boolean) {
+    this.joinFourthPageValidateCheckFlagData = e;
   },
   /*  */
 });

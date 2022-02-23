@@ -14,6 +14,7 @@ import PharmacyAgreeConsignmentPage from "../agree/pharmacy/PharmacyAgreeConsign
 import HospitalJoinFirstStepPage from "../join/hospital/HospitalJoinFirstStepPage";
 import HospitalJoinSecondStepPage from "../join/hospital/HospitalJoinSecondStepPage";
 import HospitalJoinThirdStepPage from "../join/hospital/HospitalJoinThirdStepPage";
+import HospitalJoinFourthStepPage from "../join/hospital/HospitalJoinFourthStepPage";
 
 import PharmacyJoinFirstStepPage from "../join/pharmacy/PharmacyJoinFirstStepPage";
 import PharmacyJoinSecondStepPage from "../join/pharmacy/PharmacyJoinSecondStepPage";
@@ -100,6 +101,7 @@ const RootPage = observer(() => {
       <Route path="/hospital/join/managerAddress" component={HospitalJoinSearchManagerAddressPage}></Route>
       <Route path="/hospital/join/thirdStep" component={HospitalJoinThirdStepPage}></Route>
       <Route path="/hospital/join/hospitalAddress" component={HospitalJoinSearchHospitalAddressPage}></Route>
+      <Route path="/hospital/join/fourthStep" component={HospitalJoinFourthStepPage}></Route>
       {/*  */}
       <Route path="/pharmacy/join/firstStep" component={PharmacyJoinFirstStepPage}></Route>
       <Route path="/pharmacy/join/businessAddress" component={PharmacyJoinSearchBusinessAddressPage}></Route>
