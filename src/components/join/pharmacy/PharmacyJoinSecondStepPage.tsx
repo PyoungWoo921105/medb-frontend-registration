@@ -353,7 +353,7 @@ const CompanyInformationComponent = styled.span`
   margin: 10px 0px 10px 0px;
 `;
 
-const PharmacyJoinSecondPage = observer((props: any) => {
+const PharmacyJoinSecondStepPage = observer((props: any) => {
   const { match, location, history } = props;
   console.log(match);
   console.log(location);
@@ -910,4 +910,4 @@ const PharmacyJoinSecondPage = observer((props: any) => {
     </Body>
   );
 });
-export default PharmacyJoinSecondPage;
+export default PharmacyJoinSecondStepPage;

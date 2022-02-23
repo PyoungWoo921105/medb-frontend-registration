@@ -353,7 +353,7 @@ const CompanyInformationComponent = styled.span`
   margin: 10px 0px 10px 0px;
 `;
 
-const HospitalJoinSecondPage = observer((props: any) => {
+const HospitalJoinSecondStepPage = observer((props: any) => {
   const { match, location, history } = props;
   console.log(match);
   console.log(location);
@@ -910,4 +910,4 @@ const HospitalJoinSecondPage = observer((props: any) => {
     </Body>
   );
 });
-export default HospitalJoinSecondPage;
+export default HospitalJoinSecondStepPage;

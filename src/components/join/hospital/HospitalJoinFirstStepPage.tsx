@@ -299,32 +299,25 @@ const CompanyInformationComponent = styled.span`
   margin: 10px 0px 10px 0px;
 `;
 
-const PharmacyJoinFirstPage = observer((props: any) => {
+const HospitalJoinFirstStepPage = observer((props: any) => {
   const { match, location, history } = props;
   console.log(match);
   console.log(location);
   console.log(history);
 
-  const CommonData = useStore().CommonData;
-  const PharmacyData = useStore().PharmacyData;
+  const HospitalData = useStore().HospitalData;
 
   const onClickGoButton = () => {
-    history.push({ pathname: "/pharmacy/join/secondStep" });
+    history.push({ pathname: "/hospital/join/secondStep" });
   };
   const onClickBackButton = () => {
     history.push({ pathname: "/common/agree" });
   };
 
-  useEffect(() => {
-    if (CommonData.selectType === "pharmacy") {
-    } else if (CommonData.selectType === "pharmacy") {
-    }
-  }, [CommonData.selectType]);
-
   /*  */
 
   const onClickSearchAddressButton = () => {
-    history.push({ pathname: "/pharmacy/join/businessAddress" });
+    history.push({ pathname: "/hospital/join/businessAddress" });
   };
 
   /*  */
@@ -339,15 +332,15 @@ const PharmacyJoinFirstPage = observer((props: any) => {
       return;
     }
     if (
-      PharmacyData.businessLicenseImageData?.name === event.target.files[0].name ||
-      PharmacyData.tempBusinessLicenseImageData?.name === event.target.files[0].name
+      HospitalData.businessLicenseImageData?.name === event.target.files[0].name ||
+      HospitalData.tempBusinessLicenseImageData?.name === event.target.files[0].name
     ) {
       window.alert("사업자 등록증 업로드 이름 중복 오류");
       return;
     }
 
-    PharmacyData.setBusinessLicenseImageData({ name: event.target.files[0].name, url: undefined });
-    PharmacyData.setBusinessLicenseImageFileData(event.target.files[0]);
+    HospitalData.setBusinessLicenseImageData({ name: event.target.files[0].name, url: undefined });
+    HospitalData.setBusinessLicenseImageFileData(event.target.files[0]);
 
     event.target.value = "";
   };
@@ -356,21 +349,21 @@ const PharmacyJoinFirstPage = observer((props: any) => {
 
   useEffect(() => {
     if (
-      PharmacyData.businessNameData &&
-      PharmacyData.businessLicenseNumberData &&
-      PharmacyData.businessAddressData &&
-      PharmacyData.delegatorEmailData
+      HospitalData.businessNameData &&
+      HospitalData.businessLicenseNumberData &&
+      HospitalData.businessAddressData &&
+      HospitalData.delegatorEmailData
     ) {
-      PharmacyData.setJoinFirstPageValidateCheckFlagData(true);
+      HospitalData.setJoinFirstPageValidateCheckFlagData(true);
     } else {
-      PharmacyData.setJoinFirstPageValidateCheckFlagData(false);
+      HospitalData.setJoinFirstPageValidateCheckFlagData(false);
     }
   }, [
-    PharmacyData.businessNameData,
-    PharmacyData.businessLicenseNumberData,
-    PharmacyData.businessAddressData,
-    PharmacyData.delegatorEmailData,
-    PharmacyData,
+    HospitalData.businessNameData,
+    HospitalData.businessLicenseNumberData,
+    HospitalData.businessAddressData,
+    HospitalData.delegatorEmailData,
+    HospitalData,
   ]);
 
   /*  */
@@ -423,8 +416,8 @@ const PharmacyJoinFirstPage = observer((props: any) => {
                         className="InputTextComponent"
                         width={"100%"}
                         placeholder="사업장 등록증 상 기재된 상호를 입력해 주세요."
-                        value={PharmacyData.businessNameData ? PharmacyData.businessNameData : ""}
-                        onChange={(event) => PharmacyData.setBusinessNameData(event.target.value)}
+                        value={HospitalData.businessNameData ? HospitalData.businessNameData : ""}
+                        onChange={(event) => HospitalData.setBusinessNameData(event.target.value)}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -448,8 +441,8 @@ const PharmacyJoinFirstPage = observer((props: any) => {
                         className="InputTextComponent"
                         width={"100%"}
                         placeholder="-없이 숫자만 입력해 주세요."
-                        value={PharmacyData.businessLicenseNumberData ? PharmacyData.businessLicenseNumberData : ""}
-                        onChange={(event) => PharmacyData.setBusinessLicenseNumberData(event.target.value)}
+                        value={HospitalData.businessLicenseNumberData ? HospitalData.businessLicenseNumberData : ""}
+                        onChange={(event) => HospitalData.setBusinessLicenseNumberData(event.target.value)}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -472,7 +465,7 @@ const PharmacyJoinFirstPage = observer((props: any) => {
                       <InputTextComponent
                         className="InputTextComponent"
                         width={"100%"}
-                        value={PharmacyData.businessAddressData ? PharmacyData.businessAddressData : ""}
+                        value={HospitalData.businessAddressData ? HospitalData.businessAddressData : ""}
                         disabled={true}
                       ></InputTextComponent>
                     </InputTextFrame>
@@ -508,8 +501,8 @@ const PharmacyJoinFirstPage = observer((props: any) => {
                         className="InputTextComponent"
                         width={"100%"}
                         placeholder="법인인 경우에만 -없이 숫자만 입력해 주세요."
-                        value={PharmacyData.corporateNumberData ? PharmacyData.corporateNumberData : ""}
-                        onChange={(event) => PharmacyData.setCorporateNumberData(event.target.value)}
+                        value={HospitalData.corporateNumberData ? HospitalData.corporateNumberData : ""}
+                        onChange={(event) => HospitalData.setCorporateNumberData(event.target.value)}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -539,8 +532,8 @@ const PharmacyJoinFirstPage = observer((props: any) => {
                         className="InputTextComponent"
                         width={"100%"}
                         value={
-                          PharmacyData.businessLicenseImageData && PharmacyData.businessLicenseImageData.name
-                            ? PharmacyData.businessLicenseImageData?.name
+                          HospitalData.businessLicenseImageData && HospitalData.businessLicenseImageData.name
+                            ? HospitalData.businessLicenseImageData?.name
                             : ""
                         }
                         disabled={true}
@@ -660,8 +653,8 @@ const PharmacyJoinFirstPage = observer((props: any) => {
                         className="InputTextComponent"
                         width={"100%"}
                         placeholder="이메일을 입력해 주세요."
-                        value={PharmacyData.delegatorEmailData ? PharmacyData.delegatorEmailData : ""}
-                        onChange={(event) => PharmacyData.setDelegatorEmailData(event.target.value)}
+                        value={HospitalData.delegatorEmailData ? HospitalData.delegatorEmailData : ""}
+                        onChange={(event) => HospitalData.setDelegatorEmailData(event.target.value)}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -685,12 +678,12 @@ const PharmacyJoinFirstPage = observer((props: any) => {
               className="ApplyButtonComponent"
               width={"210px"}
               border={"1px solid #0D985B"}
-              backgroundColor={PharmacyData.joinFirstPageValidateCheckFlagData ? "#00B264" : "transparent"}
-              color={PharmacyData.joinFirstPageValidateCheckFlagData ? "#FFFFFF" : "#00B264"}
-              cursor={PharmacyData.joinFirstPageValidateCheckFlagData ? "pointer" : ""}
-              onClick={PharmacyData.joinFirstPageValidateCheckFlagData ? onClickGoButton : () => {}}
+              backgroundColor={HospitalData.joinFirstPageValidateCheckFlagData ? "#00B264" : "transparent"}
+              color={HospitalData.joinFirstPageValidateCheckFlagData ? "#FFFFFF" : "#00B264"}
+              cursor={HospitalData.joinFirstPageValidateCheckFlagData ? "pointer" : ""}
+              onClick={HospitalData.joinFirstPageValidateCheckFlagData ? onClickGoButton : () => {}}
             >
-              다음 (1/3)
+              다음 (1/4)
             </ApplyButtonComponent>
           </ButtonFrame>
         </Content>
@@ -709,4 +702,4 @@ const PharmacyJoinFirstPage = observer((props: any) => {
     </Body>
   );
 });
-export default PharmacyJoinFirstPage;
+export default HospitalJoinFirstStepPage;

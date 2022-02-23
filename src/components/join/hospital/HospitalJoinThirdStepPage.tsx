@@ -295,67 +295,67 @@ const CompanyInformationComponent = styled.span`
   margin: 10px 0px 10px 0px;
 `;
 
-const PharmacyJoinThirdPage = observer((props: any) => {
+const HospitalJoinThirdStepPage = observer((props: any) => {
   const { match, location, history } = props;
   console.log(match);
   console.log(location);
   console.log(history);
 
-  const PharmacyData = useStore().PharmacyData;
+  const HospitalData = useStore().HospitalData;
 
   const onClickGoButton = () => {
-    history.push({ pathname: "/pharmacy/join/fourthStep" });
+    history.push({ pathname: "/hospital/join/fourthStep" });
   };
   const onClickBackButton = () => {
-    history.push({ pathname: "/pharmacy/join/secondStep" });
+    history.push({ pathname: "/hospital/join/secondStep" });
   };
 
   /*  */
 
   const onClickSearchAddressButton = () => {
-    history.push({ pathname: "/pharmacy/join/pharmacyAddress" });
+    history.push({ pathname: "/hospital/join/hospitalAddress" });
   };
 
   /*  */
 
   const onClickAccountIDCheckButton = () => {
     /* TODO */
-    PharmacyData.setAccountIDDataValidateFlagData(true);
+    HospitalData.setAccountIDDataValidateFlagData(true);
   };
 
   /*  */
 
   useEffect(() => {
     if (
-      PharmacyData.accountIDData &&
-      PharmacyData.accountIDDataValidateFlagData &&
-      PharmacyData.accountPasswordData &&
-      PharmacyData.confirmedAccountPasswordData &&
-      PharmacyData.pharmacyNameData &&
-      PharmacyData.pharmacyPhoneNumberData &&
-      PharmacyData.pharmacyAddressData
+      HospitalData.accountIDData &&
+      HospitalData.accountIDDataValidateFlagData &&
+      HospitalData.accountPasswordData &&
+      HospitalData.confirmedAccountPasswordData &&
+      HospitalData.hospitalNameData &&
+      HospitalData.hospitalPhoneNumberData &&
+      HospitalData.hospitalAddressData
     ) {
-      PharmacyData.setJoinThirdPageValidateCheckFlagData(true);
+      HospitalData.setJoinThirdPageValidateCheckFlagData(true);
     } else {
-      PharmacyData.setJoinThirdPageValidateCheckFlagData(false);
+      HospitalData.setJoinThirdPageValidateCheckFlagData(false);
     }
   }, [
-    PharmacyData.accountIDData,
-    PharmacyData.accountIDDataValidateFlagData,
-    PharmacyData.accountPasswordData,
-    PharmacyData.confirmedAccountPasswordData,
-    PharmacyData.pharmacyNameData,
-    PharmacyData.pharmacyPhoneNumberData,
-    PharmacyData.pharmacyAddressData,
-    PharmacyData,
+    HospitalData.accountIDData,
+    HospitalData.accountIDDataValidateFlagData,
+    HospitalData.accountPasswordData,
+    HospitalData.confirmedAccountPasswordData,
+    HospitalData.hospitalNameData,
+    HospitalData.hospitalPhoneNumberData,
+    HospitalData.hospitalAddressData,
+    HospitalData,
   ]);
 
   /*  */
 
   useEffect(() => {
-    if (!PharmacyData.pharmacyAddressData) {
-      PharmacyData.setPharmacyAddressData(PharmacyData.businessAddressData);
-      PharmacyData.setPharmacyLocationData(PharmacyData.businessLocationData);
+    if (!HospitalData.hospitalAddressData) {
+      HospitalData.setHospitalAddressData(HospitalData.businessAddressData);
+      HospitalData.setHospitalLocationData(HospitalData.businessLocationData);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -380,7 +380,7 @@ const PharmacyJoinThirdPage = observer((props: any) => {
                   <LineCoreFrame className="LineCoreFrame">
                     <PlainTextFrame className="PlainTextFrame" margin="0px 10px 0px 10px">
                       <PlainTextComponent className="PlainTextComponent" designType="title">
-                        약국 정보
+                        병원 정보
                       </PlainTextComponent>
                     </PlainTextFrame>
                   </LineCoreFrame>
@@ -410,8 +410,8 @@ const PharmacyJoinThirdPage = observer((props: any) => {
                         className="InputTextComponent"
                         width={"100%"}
                         placeholder="6~20자의 영문 소문자 및 숫자만 사용 가능합니다."
-                        value={PharmacyData.accountIDData ? PharmacyData.accountIDData : ""}
-                        onChange={(event) => PharmacyData.setAccountIDData(event.target.value)}
+                        value={HospitalData.accountIDData ? HospitalData.accountIDData : ""}
+                        onChange={(event) => HospitalData.setAccountIDData(event.target.value)}
                       ></InputTextComponent>
                     </InputTextFrame>
                     <InputButtonFrame className="InputButtonFrame" minWidth="70px">
@@ -460,8 +460,8 @@ const PharmacyJoinThirdPage = observer((props: any) => {
                         className="InputTextComponent"
                         width={"100%"}
                         placeholder="영문, 숫자, 그리고 특수문자를 모두 포함하여 8자리 이상으로 입력해 주세요."
-                        value={PharmacyData.accountPasswordData ? PharmacyData.accountPasswordData : ""}
-                        onChange={(event) => PharmacyData.setAccountPasswordData(event.target.value)}
+                        value={HospitalData.accountPasswordData ? HospitalData.accountPasswordData : ""}
+                        onChange={(event) => HospitalData.setAccountPasswordData(event.target.value)}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -500,9 +500,9 @@ const PharmacyJoinThirdPage = observer((props: any) => {
                         width={"100%"}
                         placeholder="비밀번호를 다시 입력해 주세요."
                         value={
-                          PharmacyData.confirmedAccountPasswordData ? PharmacyData.confirmedAccountPasswordData : ""
+                          HospitalData.confirmedAccountPasswordData ? HospitalData.confirmedAccountPasswordData : ""
                         }
-                        onChange={(event) => PharmacyData.setConfirmedAccountPasswordData(event.target.value)}
+                        onChange={(event) => HospitalData.setConfirmedAccountPasswordData(event.target.value)}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -516,7 +516,7 @@ const PharmacyJoinThirdPage = observer((props: any) => {
                   <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
                     <PlainTextFrame className="PlainTextFrame">
                       <PlainTextComponent className="PlainTextComponent" designType="content">
-                        *약국 이름
+                        *병원 이름
                       </PlainTextComponent>
                     </PlainTextFrame>
                   </LineCoreFrame>
@@ -525,9 +525,9 @@ const PharmacyJoinThirdPage = observer((props: any) => {
                       <InputTextComponent
                         className="InputTextComponent"
                         width={"100%"}
-                        placeholder="약국 이름을 입력해 주세요."
-                        value={PharmacyData.pharmacyNameData ? PharmacyData.pharmacyNameData : ""}
-                        onChange={(event) => PharmacyData.setPharmacyNameData(event.target.value)}
+                        placeholder="병원 이름을 입력해 주세요."
+                        value={HospitalData.hospitalNameData ? HospitalData.hospitalNameData : ""}
+                        onChange={(event) => HospitalData.setHospitalNameData(event.target.value)}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -541,32 +541,7 @@ const PharmacyJoinThirdPage = observer((props: any) => {
                   <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
                     <PlainTextFrame className="PlainTextFrame">
                       <PlainTextComponent className="PlainTextComponent" designType="content">
-                        *약국 전화번호
-                      </PlainTextComponent>
-                    </PlainTextFrame>
-                  </LineCoreFrame>
-                  <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
-                    <InputTextFrame className="InputTextFrame" width={"100%"}>
-                      <InputTextComponent
-                        className="InputTextComponent"
-                        width={"100%"}
-                        placeholder="-없이 숫자만 입력해 주세요."
-                        value={PharmacyData.pharmacyPhoneNumberData ? PharmacyData.pharmacyPhoneNumberData : ""}
-                        onChange={(event) => PharmacyData.setPharmacyPhoneNumberData(event.target.value)}
-                      ></InputTextComponent>
-                    </InputTextFrame>
-                  </LineAdditionalFrame>
-                </LineComponent>
-                <LineComponent
-                  className="LineComponent"
-                  margin="10px 0px 10px 0px"
-                  justifyContent="space-between"
-                  height={"35px"}
-                >
-                  <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
-                    <PlainTextFrame className="PlainTextFrame">
-                      <PlainTextComponent className="PlainTextComponent" designType="content">
-                        약국 팩스번호
+                        *병원 전화번호
                       </PlainTextComponent>
                     </PlainTextFrame>
                   </LineCoreFrame>
@@ -576,8 +551,8 @@ const PharmacyJoinThirdPage = observer((props: any) => {
                         className="InputTextComponent"
                         width={"100%"}
                         placeholder="-없이 숫자만 입력해 주세요."
-                        value={PharmacyData.pharmacyFaxNumberData ? PharmacyData.pharmacyFaxNumberData : ""}
-                        onChange={(event) => PharmacyData.setPharmacyFaxNNumberData(event.target.value)}
+                        value={HospitalData.hospitalPhoneNumberData ? HospitalData.hospitalPhoneNumberData : ""}
+                        onChange={(event) => HospitalData.setHospitalPhoneNumberData(event.target.value)}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -591,7 +566,7 @@ const PharmacyJoinThirdPage = observer((props: any) => {
                   <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
                     <PlainTextFrame className="PlainTextFrame">
                       <PlainTextComponent className="PlainTextComponent" designType="content">
-                        *약국 주소
+                        병원 팩스번호
                       </PlainTextComponent>
                     </PlainTextFrame>
                   </LineCoreFrame>
@@ -600,7 +575,32 @@ const PharmacyJoinThirdPage = observer((props: any) => {
                       <InputTextComponent
                         className="InputTextComponent"
                         width={"100%"}
-                        value={PharmacyData.pharmacyAddressData ? PharmacyData.pharmacyAddressData : ""}
+                        placeholder="-없이 숫자만 입력해 주세요."
+                        value={HospitalData.hospitalFaxNumberData ? HospitalData.hospitalFaxNumberData : ""}
+                        onChange={(event) => HospitalData.setHospitalFaxNNumberData(event.target.value)}
+                      ></InputTextComponent>
+                    </InputTextFrame>
+                  </LineAdditionalFrame>
+                </LineComponent>
+                <LineComponent
+                  className="LineComponent"
+                  margin="10px 0px 10px 0px"
+                  justifyContent="space-between"
+                  height={"35px"}
+                >
+                  <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
+                    <PlainTextFrame className="PlainTextFrame">
+                      <PlainTextComponent className="PlainTextComponent" designType="content">
+                        *병원 주소
+                      </PlainTextComponent>
+                    </PlainTextFrame>
+                  </LineCoreFrame>
+                  <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
+                    <InputTextFrame className="InputTextFrame" width={"100%"}>
+                      <InputTextComponent
+                        className="InputTextComponent"
+                        width={"100%"}
+                        value={HospitalData.hospitalAddressData ? HospitalData.hospitalAddressData : ""}
                         disabled={true}
                       ></InputTextComponent>
                     </InputTextFrame>
@@ -636,12 +636,12 @@ const PharmacyJoinThirdPage = observer((props: any) => {
               className="ApplyButtonComponent"
               width={"210px"}
               border={"1px solid #0D985B"}
-              backgroundColor={PharmacyData.joinThirdPageValidateCheckFlagData ? "#00B264" : "transparent"}
-              color={PharmacyData.joinThirdPageValidateCheckFlagData ? "#FFFFFF" : "#00B264"}
-              cursor={PharmacyData.joinThirdPageValidateCheckFlagData ? "pointer" : ""}
-              onClick={PharmacyData.joinThirdPageValidateCheckFlagData ? onClickGoButton : () => {}}
+              backgroundColor={HospitalData.joinThirdPageValidateCheckFlagData ? "#00B264" : "transparent"}
+              color={HospitalData.joinThirdPageValidateCheckFlagData ? "#FFFFFF" : "#00B264"}
+              cursor={HospitalData.joinThirdPageValidateCheckFlagData ? "pointer" : ""}
+              onClick={HospitalData.joinThirdPageValidateCheckFlagData ? onClickGoButton : () => {}}
             >
-              완료 (3/3)
+              다음 (3/4)
             </ApplyButtonComponent>
           </ButtonFrame>
         </Content>
@@ -660,4 +660,4 @@ const PharmacyJoinThirdPage = observer((props: any) => {
     </Body>
   );
 });
-export default PharmacyJoinThirdPage;
+export default HospitalJoinThirdStepPage;
