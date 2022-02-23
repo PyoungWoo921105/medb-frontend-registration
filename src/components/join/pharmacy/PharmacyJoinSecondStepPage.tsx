@@ -409,7 +409,7 @@ const PharmacyJoinSecondStepPage = observer((props: any) => {
       PharmacyData.managerEmailData &&
       PharmacyData.managerPhoneNumberData &&
       PharmacyData.managerAddressData &&
-      PharmacyData.bankNameData &&
+      (PharmacyData.bankNameData || PharmacyData.customBankNameData) &&
       PharmacyData.bankAccountNumberData &&
       PharmacyData.bankAccountOwnerNameData &&
       PharmacyData.settlementEmailData
@@ -417,7 +417,7 @@ const PharmacyJoinSecondStepPage = observer((props: any) => {
       PharmacyData.setJoinSecondPageValidateCheckFlagData(true);
     } else if (
       !PharmacyData.managerExistData &&
-      PharmacyData.bankNameData &&
+      (PharmacyData.bankNameData || PharmacyData.customBankNameData) &&
       PharmacyData.bankAccountNumberData &&
       PharmacyData.bankAccountOwnerNameData &&
       PharmacyData.settlementEmailData
@@ -433,6 +433,7 @@ const PharmacyJoinSecondStepPage = observer((props: any) => {
     PharmacyData.managerPhoneNumberData,
     PharmacyData.managerAddressData,
     PharmacyData.bankNameData,
+    PharmacyData.customBankNameData,
     PharmacyData.bankAccountNumberData,
     PharmacyData.bankAccountOwnerNameData,
     PharmacyData.settlementEmailData,

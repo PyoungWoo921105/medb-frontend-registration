@@ -409,7 +409,7 @@ const HospitalJoinSecondStepPage = observer((props: any) => {
       HospitalData.managerEmailData &&
       HospitalData.managerPhoneNumberData &&
       HospitalData.managerAddressData &&
-      HospitalData.bankNameData &&
+      (HospitalData.bankNameData || HospitalData.customBankNameData) &&
       HospitalData.bankAccountNumberData &&
       HospitalData.bankAccountOwnerNameData &&
       HospitalData.settlementEmailData
@@ -417,7 +417,7 @@ const HospitalJoinSecondStepPage = observer((props: any) => {
       HospitalData.setJoinSecondPageValidateCheckFlagData(true);
     } else if (
       !HospitalData.managerExistData &&
-      HospitalData.bankNameData &&
+      (HospitalData.bankNameData || HospitalData.customBankNameData) &&
       HospitalData.bankAccountNumberData &&
       HospitalData.bankAccountOwnerNameData &&
       HospitalData.settlementEmailData
@@ -433,6 +433,7 @@ const HospitalJoinSecondStepPage = observer((props: any) => {
     HospitalData.managerPhoneNumberData,
     HospitalData.managerAddressData,
     HospitalData.bankNameData,
+    HospitalData.customBankNameData,
     HospitalData.bankAccountNumberData,
     HospitalData.bankAccountOwnerNameData,
     HospitalData.settlementEmailData,
