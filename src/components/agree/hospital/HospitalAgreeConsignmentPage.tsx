@@ -175,7 +175,7 @@ const AgreementCheckboxInputComponent = styled.img`
 `;
 const AgreementCheckboxTextFrame = styled.div<Props>`
   display: flex;
-  flex-direction: row;
+  flex-direction: ${(props) => (props.flexDirection ? props.flexDirection : "")};
   justify-content: center;
 
   margin: ${(props) => (props.margin ? props.margin : "")};
@@ -183,7 +183,7 @@ const AgreementCheckboxTextFrame = styled.div<Props>`
 const AgreementCheckboxTextComponent = styled.span<Props>`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: ${(props) => (props.justifyContent ? props.justifyContent : "")};
 
   font-family: ${(props) =>
     props.designType === "title"
@@ -363,8 +363,12 @@ const HospitalAgreePage = observer((props: any) => {
                           src={agreeCheck.first ? onClickCheckedCircleIcon : onClickNotCheckedCircleIcon}
                         ></AgreementCheckboxInputComponent>
                       </AgreementCheckboxInputFrame>
-                      <AgreementCheckboxTextFrame className="AgreementCheckboxTextFrame">
-                        <AgreementCheckboxTextComponent className="AgreementCheckboxTextComponent" designType="title">
+                      <AgreementCheckboxTextFrame className="AgreementCheckboxTextFrame" flexDirection="row">
+                        <AgreementCheckboxTextComponent
+                          className="AgreementCheckboxTextComponent"
+                          justifyContent="center"
+                          designType="title"
+                        >
                           약관 전체 동의
                         </AgreementCheckboxTextComponent>
                       </AgreementCheckboxTextFrame>
@@ -397,16 +401,21 @@ const HospitalAgreePage = observer((props: any) => {
                           src={agreeCheck.first ? onClickCheckedIcon : onClickNotCheckedIcon}
                         ></AgreementCheckboxInputComponent>
                       </AgreementCheckboxInputFrame>
-                      <AgreementCheckboxTextFrame className="AgreementCheckboxTextFrame">
-                        <AgreementCheckboxTextComponent className="AgreementCheckboxTextComponent" designType="content">
+                      <AgreementCheckboxTextFrame className="AgreementCheckboxTextFrame" flexDirection="row">
+                        <AgreementCheckboxTextComponent
+                          className="AgreementCheckboxTextComponent"
+                          justifyContent="center"
+                          designType="content"
+                        >
                           (필수) 메듭 의료기관 개인정보처리 위탁 계약서
                         </AgreementCheckboxTextComponent>
                       </AgreementCheckboxTextFrame>
                     </AgreementLineCoreFrame>
                     <AgreementLineAdditionalFrame className="AgreementLineAdditionalFrame">
-                      <AgreementCheckboxTextFrame className="AgreementCheckboxTextFrame">
+                      <AgreementCheckboxTextFrame className="AgreementCheckboxTextFrame" flexDirection="row">
                         <AgreementCheckboxTextComponent
                           className="AgreementCheckboxTextComponent"
+                          justifyContent="center"
                           designType="additional"
                         >
                           상세보기

@@ -161,6 +161,9 @@ export interface HospitalDataType {
   /* Delegator Doctor Diseases */
   delegatorDoctorDiseasesData: [] | { name: string; flag: boolean }[];
   setDelegatorDoctorDiseasesData: (e: [] | { name: string; flag: boolean }[]) => void;
+  /* Companion Doctor Flag */
+  companionDoctorFlagData: undefined | boolean;
+  setCompanionDoctorFlagData: (e: undefined | boolean) => void;
   /* Companion Doctor Phone Number */
   companionDoctorPhoneNumberData: [] | string[];
   setCompanionDoctorPhoneNumberData: (e: [] | string[]) => void;
@@ -434,6 +437,11 @@ const HospitalData = observable<HospitalDataType>({
   delegatorDoctorDiseasesData: [],
   setDelegatorDoctorDiseasesData(e: [] | { name: string; flag: boolean }[]) {
     this.delegatorDoctorDiseasesData = e;
+  },
+  /* Companion Doctor Flag */
+  companionDoctorFlagData: undefined,
+  setCompanionDoctorFlagData(e: undefined | boolean) {
+    this.companionDoctorFlagData = e;
   },
   /* Companion Doctor Phone Number */
   companionDoctorPhoneNumberData: [],
