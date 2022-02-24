@@ -407,17 +407,41 @@ const DoctorAgreePage = observer((props: any) => {
                           src={agreeCheck.first ? onClickCheckedIcon : onClickNotCheckedIcon}
                         ></AgreementCheckboxInputComponent>
                       </AgreementCheckboxInputFrame>
-                      <AgreementCheckboxTextFrame className="AgreementCheckboxTextFrame" flexDirection="row">
+                      <AgreementCheckboxTextFrame className="AgreementCheckboxTextFrame" flexDirection="column">
                         <AgreementCheckboxTextComponent
                           className="AgreementCheckboxTextComponent"
-                          justifyContent="center"
+                          justifyContent="left"
                           designType="content"
                         >
-                          (필수) 본인(의료진)은 의료행위를 하는 의료진의 정보를 거짓·허위 표시하지 않음에 확약하며,
-                          위반시 본인(의료진)이 법적인 책임을 부담합니다.
+                          (필수) 본인(의료진)은 의료 행위를 하는
+                        </AgreementCheckboxTextComponent>
+                        <AgreementCheckboxTextComponent
+                          className="AgreementCheckboxTextComponent"
+                          justifyContent="left"
+                          designType="content"
+                        >
+                          의료진의 정보를 거짓·허위 표시하지 않음에 확약하며,
+                        </AgreementCheckboxTextComponent>
+                        <AgreementCheckboxTextComponent
+                          className="AgreementCheckboxTextComponent"
+                          justifyContent="left"
+                          designType="content"
+                        >
+                          위반 시 본인(의료진)이 법적인 책임을 부담합니다.
                         </AgreementCheckboxTextComponent>
                       </AgreementCheckboxTextFrame>
                     </AgreementLineCoreFrame>
+                    {/* <AgreementLineAdditionalFrame className="AgreementLineAdditionalFrame">
+                    <AgreementCheckboxTextFrame className="AgreementCheckboxTextFrame" flexDirection="row">
+                      <AgreementCheckboxTextComponent
+                        className="AgreementCheckboxTextComponent"
+                        justifyContent="center"
+                        designType="additional"
+                      >
+                        상세보기
+                      </AgreementCheckboxTextComponent>
+                    </AgreementCheckboxTextFrame>
+                  </AgreementLineAdditionalFrame> */}
                   </AgreementLineComponent>
                   <AgreementLineComponent
                     className="AgreementLineComponent"
