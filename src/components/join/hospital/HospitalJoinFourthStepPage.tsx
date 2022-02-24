@@ -12,6 +12,7 @@ import onClickCheckedIcon from "../../../assets/icons/onClickCheckedIcon.svg";
 
 import useStore from "../../../data/useStore";
 import { useRef } from "react";
+import { toJS } from "mobx";
 
 interface Props {
   display?: string;
@@ -228,6 +229,7 @@ const InputButtonFrame = styled.div<Props>`
 
   width: ${(props) => (props.width ? props.width : "")};
   min-width: ${(props) => (props.minWidth ? props.minWidth : "")};
+  max-width: ${(props) => (props.maxWidth ? props.maxWidth : "")};
   margin: ${(props) => (props.margin ? props.margin : "")};
   height: 30px;
 `;
@@ -619,6 +621,22 @@ const HospitalJoinFourthStepPage = observer((props: any) => {
     }
   };
 
+  const onClickCompanionPlusButton = () => {
+    HospitalData.pushCompanionDoctorPhoneNumberListData("");
+  };
+
+  const onChangeCompanionDoctorPhoneNumberListData = (props: any) => {
+    const { event, key } = props;
+    const tempcompanionDoctorPhoneNumberListData = [...HospitalData.companionDoctorPhoneNumberListData];
+    tempcompanionDoctorPhoneNumberListData[key] = event.target.value;
+    HospitalData.setCompanionDoctorPhoneNumberListData(tempcompanionDoctorPhoneNumberListData);
+  };
+
+  const onClickCompanionMinusButton = (props: any) => {
+    const { key } = props;
+    HospitalData.spliceCompanionDoctorPhoneNumberListData(key);
+  };
+
   return (
     <Body className="Body">
       <Header className="Header">
@@ -935,17 +953,6 @@ const HospitalJoinFourthStepPage = observer((props: any) => {
                       </AgreementCheckboxTextComponent>
                     </AgreementCheckboxTextFrame>
                   </AgreementLineCoreFrame>
-                  {/* <AgreementLineAdditionalFrame className="AgreementLineAdditionalFrame">
-                    <AgreementCheckboxTextFrame className="AgreementCheckboxTextFrame" flexDirection="row">
-                      <AgreementCheckboxTextComponent
-                        className="AgreementCheckboxTextComponent"
-                        justifyContent="center"
-                        designType="additional"
-                      >
-                        상세보기
-                      </AgreementCheckboxTextComponent>
-                    </AgreementCheckboxTextFrame>
-                  </AgreementLineAdditionalFrame> */}
                 </AgreementLineComponent>
                 <AgreementLineComponent
                   className="AgreementLineComponent"
@@ -1093,37 +1100,74 @@ const HospitalJoinFourthStepPage = observer((props: any) => {
                         }
                       ></InputCheckboxComponent>
                     </InputCheckboxFrame>
-                    {/* TODO */}
                     {HospitalData.companionDoctorFlagData ? (
-                      <InputTextFrame className="InputTextFrame" width={"100%"}>
-                        <SelectTextComponent
-                          className="SelectTextComponent"
-                          width={"100%"}
-                          value={
-                            HospitalData.delegatorDoctorSpecialistDepartmentData
-                              ? HospitalData.delegatorDoctorSpecialistDepartmentData
-                              : ""
-                          }
-                          onChange={(event) =>
-                            HospitalData.setDelegatorDoctorSpecialistDepartmentData(event.target.value)
-                          }
+                      <InputButtonFrame className="InputButtonFrame" minWidth="110px" maxWidth="110px">
+                        <InputButtonComponent
+                          className="InputButtonComponent"
+                          margin="0px 0px 0px 5px"
+                          onClick={() => {
+                            onClickCompanionPlusButton();
+                          }}
+                          backgroundColor={"#FFFFFF"}
+                          border={"1px solid #0D985B"}
+                          color={"#00B264"}
                         >
-                          {DoctorSpecialistDepartmentListData.map((DoctorSpecialistDepartment, key) => {
-                            return (
-                              <OptionTextComponent
-                                className="OptionTextComponent"
-                                key={key}
-                                value={DoctorSpecialistDepartment}
-                              >
-                                {DoctorSpecialistDepartment}
-                              </OptionTextComponent>
-                            );
-                          })}
-                        </SelectTextComponent>
-                      </InputTextFrame>
+                          + 의사 추가하기
+                        </InputButtonComponent>
+                      </InputButtonFrame>
                     ) : null}
                   </LineAdditionalFrame>
                 </LineComponent>
+                {HospitalData.companionDoctorFlagData
+                  ? HospitalData.companionDoctorPhoneNumberListData.map((companionDoctorPhoneNumberData, key) => {
+                      return (
+                        <LineComponent
+                          className="LineComponent"
+                          margin="10px 0px 10px 0px"
+                          justifyContent="space-between"
+                          height={"35px"}
+                          key={key}
+                        >
+                          <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
+                            <PlainTextFrame className="PlainTextFrame">
+                              <PlainTextComponent className="PlainTextComponent" designType="content">
+                                *의사 {key} 전화번호
+                              </PlainTextComponent>
+                            </PlainTextFrame>
+                          </LineCoreFrame>
+                          <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
+                            <InputTextFrame className="InputTextFrame" width={"100%"}>
+                              <InputTextComponent
+                                className="InputTextComponent"
+                                width={"100%"}
+                                placeholder="-없이 숫자만 입력해 주세요."
+                                value={
+                                  HospitalData.companionDoctorPhoneNumberListData[key]
+                                    ? HospitalData.companionDoctorPhoneNumberListData[key]
+                                    : ""
+                                }
+                                onChange={(e) => onChangeCompanionDoctorPhoneNumberListData({ event: e, key: key })}
+                              ></InputTextComponent>
+                            </InputTextFrame>
+                            <InputButtonFrame className="InputButtonFrame" minWidth="110px" maxWidth="110px">
+                              <InputButtonComponent
+                                className="InputButtonComponent"
+                                margin="0px 0px 0px 5px"
+                                onClick={() => {
+                                  onClickCompanionMinusButton({ key: key });
+                                }}
+                                backgroundColor={"#FFFFFF"}
+                                border={"1px solid #0D985B"}
+                                color={"#00B264"}
+                              >
+                                - 의사 삭제하기
+                              </InputButtonComponent>
+                            </InputButtonFrame>
+                          </LineAdditionalFrame>
+                        </LineComponent>
+                      );
+                    })
+                  : null}
               </FieldFrame>
             </Frame>
           </ContentFrame>

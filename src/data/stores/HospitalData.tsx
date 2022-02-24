@@ -165,8 +165,10 @@ export interface HospitalDataType {
   companionDoctorFlagData: undefined | boolean;
   setCompanionDoctorFlagData: (e: undefined | boolean) => void;
   /* Companion Doctor Phone Number */
-  companionDoctorPhoneNumberData: [] | string[];
-  setCompanionDoctorPhoneNumberData: (e: [] | string[]) => void;
+  companionDoctorPhoneNumberListData: string[];
+  setCompanionDoctorPhoneNumberListData: (e: string[]) => void;
+  pushCompanionDoctorPhoneNumberListData: (e: string) => void;
+  spliceCompanionDoctorPhoneNumberListData: (e: number) => void;
   /* Validate Check */
   joinFourthPageValidateCheckFlagData: undefined | boolean;
   setJoinFourthPageValidateCheckFlagData: (e: undefined | boolean) => void;
@@ -444,9 +446,15 @@ const HospitalData = observable<HospitalDataType>({
     this.companionDoctorFlagData = e;
   },
   /* Companion Doctor Phone Number */
-  companionDoctorPhoneNumberData: [],
-  setCompanionDoctorPhoneNumberData(e: [] | string[]) {
-    this.companionDoctorPhoneNumberData = e;
+  companionDoctorPhoneNumberListData: [],
+  setCompanionDoctorPhoneNumberListData(e: string[]) {
+    this.companionDoctorPhoneNumberListData = e;
+  },
+  pushCompanionDoctorPhoneNumberListData(e: string) {
+    this.companionDoctorPhoneNumberListData.push(e);
+  },
+  spliceCompanionDoctorPhoneNumberListData(e: number) {
+    this.companionDoctorPhoneNumberListData.splice(e, 1);
   },
   /* Validate Check */
   joinFourthPageValidateCheckFlagData: undefined,
