@@ -10,9 +10,37 @@ import onClickCheckedCircleIcon from "../../../assets/icons/onClickCheckedCircle
 import onClickNotCheckedIcon from "../../../assets/icons/onClickNotCheckedIcon.svg";
 import onClickCheckedIcon from "../../../assets/icons/onClickCheckedIcon.svg";
 
+import AcneIcon from "../../../assets/icons/AcneIcon.svg";
+import AtopyIcon from "../../../assets/icons/AtopyIcon.svg";
+import ColdIcon from "../../../assets/icons/ColdIcon.svg";
+import CoronaIcon from "../../../assets/icons/CoronaIcon.svg";
+import CystitisIcon from "../../../assets/icons/CystitisIcon.svg";
+import DentistIcon from "../../../assets/icons/DentistIcon.svg";
+import DermatologyIcon from "../../../assets/icons/DermatologyIcon.svg";
+import EmergencyMedicineIcon from "../../../assets/icons/EmergencyMedicineIcon.svg";
+import FamilyMedicineIcon from "../../../assets/icons/FamilyMedicineIcon.svg";
+import HairLossIcon from "../../../assets/icons/HairLossIcon.svg";
+import HeadacheIcon from "../../../assets/icons/HeadacheIcon.svg";
+import HypertensionAndDiabetesIcon from "../../../assets/icons/HypertensionAndDiabetesIcon.svg";
+import InternalMedicineIcon from "../../../assets/icons/InternalMedicineIcon.svg";
+import KoreanMedicineIcon from "../../../assets/icons/KoreanMedicineIcon.svg";
+import MorningAfterPillIcon from "../../../assets/icons/MorningAfterPillIcon.svg";
+import MuscleAndBackPainIcon from "../../../assets/icons/MuscleAndBackPainIcon.svg";
+import NeurologyIcon from "../../../assets/icons/NeurologyIcon.svg";
+import ObesityIcon from "../../../assets/icons/ObesityIcon.svg";
+import ObGynIcon from "../../../assets/icons/ObGynIcon.svg";
+import OphthalmologyIcon from "../../../assets/icons/OphthalmologyIcon.svg";
+import OrthopedicsIcon from "../../../assets/icons/OrthopedicsIcon.svg";
+import OtolaryngologyIcon from "../../../assets/icons/OtolaryngologyIcon.svg";
+import PediatricsIcon from "../../../assets/icons/PediatricsIcon.svg";
+import PeriodPainIcon from "../../../assets/icons/PeriodPainIcon.svg";
+import PlasticSurgeryIcon from "../../../assets/icons/PlasticSurgeryIcon.svg";
+import PsychiatryIcon from "../../../assets/icons/PsychiatryIcon.svg";
+import RhinitisIcon from "../../../assets/icons/RhinitisIcon.svg";
+import StomachacheIcon from "../../../assets/icons/StomachacheIcon.svg";
+import UrologyIcon from "../../../assets/icons/UrologyIcon.svg";
+
 import useStore from "../../../data/useStore";
-import { useRef } from "react";
-import { toJS } from "mobx";
 
 interface Props {
   display?: string;
@@ -31,6 +59,7 @@ interface Props {
   margin?: string;
   padding?: string;
   justifyContent?: string;
+  alignItems?: string;
   cursor?: string;
   border?: string;
   flexDirection?: string;
@@ -137,6 +166,7 @@ const LineCoreFrame = styled.div<Props>`
 const LineAdditionalFrame = styled.div<Props>`
   display: flex;
   flex-direction: row;
+  flex-wrap: ${(props) => (props.flexWrap ? props.flexWrap : "")};
   justify-content: ${(props) => (props.justifyContent ? props.justifyContent : "")};
   align-items: center;
 
@@ -152,9 +182,9 @@ const PlainTextFrame = styled.div<Props>`
   margin: ${(props) => (props.margin ? props.margin : "")};
   padding: ${(props) => (props.padding ? props.padding : "")};
 `;
-const InputFakeComponent = styled.input`
+/* const InputFakeComponent = styled.input`
   display: none;
-`;
+`; */
 const InputTextFrame = styled.div<Props>`
   display: flex;
   flex-direction: row;
@@ -234,6 +264,11 @@ const InputButtonFrame = styled.div<Props>`
   height: 30px;
 `;
 const InputButtonComponent = styled.button<Props>`
+  display: flex;
+  flex-direction: ${(props) => (props.flexDirection ? props.flexDirection : "row")};
+  justify-content: ${(props) => (props.justifyContent ? props.justifyContent : "center")};
+  align-items: ${(props) => (props.alignItems ? props.alignItems : "center")};
+
   width: 100%;
   margin: ${(props) => (props.margin ? props.margin : "")};
 
@@ -249,6 +284,8 @@ const InputButtonComponent = styled.button<Props>`
 
   box-sizing: border-box;
   border-radius: 4px;
+
+  cursor: ${(props) => (props.cursor ? props.cursor : "")};
 `;
 const InputCheckboxFrame = styled.div<Props>`
   display: flex;
@@ -483,53 +520,26 @@ const HospitalJoinFourthStepPage = observer((props: any) => {
 
   /*  */
 
-  const onClickSearchAddressButton = () => {
-    history.push({ pathname: "/hospital/join/businessAddress" });
-  };
-
-  /*  */
-
-  const uploadImageRef = useRef(null);
-  const onClickUploadImageRef = () => {
-    (uploadImageRef as any).current.click();
-  };
-  const onChangeUploadImageRef = (props: any) => {
-    const { event } = props;
-    if (!event.target.files[0]) {
-      return;
-    }
-    if (
-      HospitalData.businessLicenseImageData?.name === event.target.files[0].name ||
-      HospitalData.tempBusinessLicenseImageData?.name === event.target.files[0].name
-    ) {
-      window.alert("사업자 등록증 업로드 이름 중복 오류");
-      return;
-    }
-
-    HospitalData.setBusinessLicenseImageData({ name: event.target.files[0].name, url: undefined });
-    HospitalData.setBusinessLicenseImageFileData(event.target.files[0]);
-
-    event.target.value = "";
-  };
-
-  /*  */
-
   useEffect(() => {
     if (
-      HospitalData.businessNameData &&
-      HospitalData.businessLicenseNumberData &&
-      HospitalData.businessAddressData &&
-      HospitalData.delegatorEmailData
+      HospitalData.delegatorDoctorEmailData &&
+      HospitalData.delegatorDoctorLicenseNumberData &&
+      HospitalData.delegatorDoctorDepratmentsData.filter(
+        (delegatorDoctorDepratmentData) => delegatorDoctorDepratmentData.flag === true
+      ).length !== 0 &&
+      HospitalData.delegatorDoctorDiseasesData.filter(
+        (delegatorDoctorDiseaseData) => delegatorDoctorDiseaseData.flag === true
+      ).length !== 0
     ) {
       HospitalData.setJoinFourthPageValidateCheckFlagData(true);
     } else {
       HospitalData.setJoinFourthPageValidateCheckFlagData(false);
     }
   }, [
-    HospitalData.businessNameData,
-    HospitalData.businessLicenseNumberData,
-    HospitalData.businessAddressData,
-    HospitalData.delegatorEmailData,
+    HospitalData.delegatorDoctorEmailData,
+    HospitalData.delegatorDoctorLicenseNumberData,
+    HospitalData.delegatorDoctorDepratmentsData,
+    HospitalData.delegatorDoctorDiseasesData,
     HospitalData,
   ]);
 
@@ -563,7 +573,7 @@ const HospitalJoinFourthStepPage = observer((props: any) => {
     HospitalData.setCompanionDoctorFlagData(!HospitalData.companionDoctorFlagData);
   };
 
-  const DoctorSpecialistDepartmentListData = [
+  const DoctorSpecialistDepartmentsListData = [
     "선택",
     "가정의학과",
     "결핵과",
@@ -635,6 +645,127 @@ const HospitalJoinFourthStepPage = observer((props: any) => {
   const onClickCompanionMinusButton = (props: any) => {
     const { key } = props;
     HospitalData.spliceCompanionDoctorPhoneNumberListData(key);
+  };
+
+  const DoctorDepartmentsListData = [
+    "내과",
+    "가정의학과",
+    "이비인후과",
+    "소아청소년과",
+    "비뇨의학과",
+    "피부과",
+    "정신건강의학과",
+    "산부인과",
+    "안과",
+    "정형외과/재활의학과",
+    "신경과/신경외과",
+    "치과",
+    "응급의학과",
+    "성형외과",
+    "한방의학과",
+  ];
+
+  const DoctorDiseasesListData = [
+    "감기/몸살",
+    "근육통/허리통증",
+    "복통",
+    "두통",
+    "비염",
+    "고혈압/당뇨",
+    "생리통",
+    "여드름",
+    "아토피",
+    "비만",
+    "방광염",
+    "탈모",
+    "사후피임",
+    "코로나 재택치료",
+  ];
+
+  useEffect(() => {
+    HospitalData.setDelegatorDoctorDepratmentsData([
+      { name: "내과", flag: false },
+      { name: "가정의학과", flag: false },
+      { name: "이비인후과", flag: false },
+      { name: "소아청소년과", flag: false },
+      { name: "비뇨의학과", flag: false },
+      { name: "피부과", flag: false },
+      { name: "정신건강의학과", flag: false },
+      { name: "산부인과", flag: false },
+      { name: "안과", flag: false },
+      { name: "정형외과/재활의학과", flag: false },
+      { name: "신경과/신경외과", flag: false },
+      { name: "치과", flag: false },
+      { name: "응급의학과", flag: false },
+      { name: "성형외과", flag: false },
+      { name: "한방의학과", flag: false },
+    ]);
+
+    HospitalData.setDelegatorDoctorDiseasesData([
+      { name: "감기/몸살", flag: false },
+      { name: "근육통/허리통증", flag: false },
+      { name: "복통", flag: false },
+      { name: "두통", flag: false },
+      { name: "비염", flag: false },
+      { name: "고혈압/당뇨", flag: false },
+      { name: "생리통", flag: false },
+      { name: "여드름", flag: false },
+      { name: "아토피", flag: false },
+      { name: "비만", flag: false },
+      { name: "방광염", flag: false },
+      { name: "탈모", flag: false },
+      { name: "사후피임", flag: false },
+      { name: "코로나 재택치료", flag: false },
+    ]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const onClickDepartmentsCheckButton = (props: any) => {
+    const { key } = props;
+    if (
+      HospitalData.delegatorDoctorDepratmentsData.filter(
+        (delegatorDoctorDepratmentsData) => delegatorDoctorDepratmentsData.flag === true
+      ).length > 3
+    ) {
+      let tempDelegatorDoctorDepratmentsData = JSON.parse(JSON.stringify(HospitalData.delegatorDoctorDepratmentsData));
+      if (HospitalData.delegatorDoctorDepratmentsData[key].flag === true) {
+        tempDelegatorDoctorDepratmentsData[key].flag = false;
+      }
+      HospitalData.setDelegatorDoctorDepratmentsData(tempDelegatorDoctorDepratmentsData);
+    } else {
+      let tempDelegatorDoctorDepratmentsData = JSON.parse(JSON.stringify(HospitalData.delegatorDoctorDepratmentsData));
+      if (HospitalData.delegatorDoctorDepratmentsData[key].flag === true) {
+        tempDelegatorDoctorDepratmentsData[key].flag = false;
+      } else if (HospitalData.delegatorDoctorDepratmentsData[key].flag === false) {
+        tempDelegatorDoctorDepratmentsData[key].flag = true;
+      }
+      HospitalData.setDelegatorDoctorDepratmentsData(tempDelegatorDoctorDepratmentsData);
+    }
+  };
+
+  const onClickDiseasesCheckButton = (props: any) => {
+    const { key } = props;
+    if (key === -1) {
+      let tempDelegatorDoctorDiseasesData = JSON.parse(JSON.stringify(HospitalData.delegatorDoctorDiseasesData));
+      for (let i = 0; i < tempDelegatorDoctorDiseasesData.length; i++) {
+        tempDelegatorDoctorDiseasesData[i].flag = true;
+      }
+      HospitalData.setDelegatorDoctorDiseasesData(tempDelegatorDoctorDiseasesData);
+    } else if (key === 0) {
+      let tempDelegatorDoctorDiseasesData = JSON.parse(JSON.stringify(HospitalData.delegatorDoctorDiseasesData));
+      for (let i = 0; i < tempDelegatorDoctorDiseasesData.length; i++) {
+        tempDelegatorDoctorDiseasesData[i].flag = false;
+      }
+      HospitalData.setDelegatorDoctorDiseasesData(tempDelegatorDoctorDiseasesData);
+    } else {
+      let tempDelegatorDoctorDiseasesData = JSON.parse(JSON.stringify(HospitalData.delegatorDoctorDiseasesData));
+      if (HospitalData.delegatorDoctorDiseasesData[key - 1].flag === true) {
+        tempDelegatorDoctorDiseasesData[key - 1].flag = false;
+      } else if (HospitalData.delegatorDoctorDiseasesData[key - 1].flag === false) {
+        tempDelegatorDoctorDiseasesData[key - 1].flag = true;
+      }
+      HospitalData.setDelegatorDoctorDiseasesData(tempDelegatorDoctorDiseasesData);
+    }
   };
 
   return (
@@ -819,7 +950,7 @@ const HospitalJoinFourthStepPage = observer((props: any) => {
                   </LineCoreFrame>
                   <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
                     <InputCheckboxFrame
-                      className="InputButtonFrame"
+                      className="InputCheckboxFrame"
                       minWidth="40px"
                       maxWidth="40px"
                       margin="0px 15px 0px 0px"
@@ -852,7 +983,7 @@ const HospitalJoinFourthStepPage = observer((props: any) => {
                             HospitalData.setDelegatorDoctorSpecialistDepartmentData(event.target.value)
                           }
                         >
-                          {DoctorSpecialistDepartmentListData.map((DoctorSpecialistDepartment, key) => {
+                          {DoctorSpecialistDepartmentsListData.map((DoctorSpecialistDepartment, key) => {
                             return (
                               <OptionTextComponent
                                 className="OptionTextComponent"
@@ -866,6 +997,227 @@ const HospitalJoinFourthStepPage = observer((props: any) => {
                         </SelectTextComponent>
                       </InputTextFrame>
                     ) : null}
+                  </LineAdditionalFrame>
+                </LineComponent>
+                {/*  */}
+                <LineComponent
+                  className="LineComponent"
+                  margin="10px 0px 0px 0px"
+                  justifyContent="space-between"
+                  height={"35px"}
+                >
+                  <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
+                    <PlainTextFrame className="PlainTextFrame">
+                      <PlainTextComponent className="PlainTextComponent" designType="content">
+                        *메듭 App 노출 진료과 (최대 4개)
+                      </PlainTextComponent>
+                    </PlainTextFrame>
+                  </LineCoreFrame>
+                </LineComponent>
+                <LineComponent className="LineComponent" margin="0px 0px 10px 0px" justifyContent="space-between">
+                  <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"} flexWrap="wrap">
+                    {HospitalData.delegatorDoctorDepratmentsData.length !== 0
+                      ? DoctorDepartmentsListData.map((DoctorDepartmentsData, key) => {
+                          return (
+                            <InputButtonFrame className="InputButtonFrame" key={key} margin="5px 0px 5px 0px">
+                              <InputButtonComponent
+                                className="InputButtonComponent"
+                                margin="0px 10px 0px 0px"
+                                backgroundColor={
+                                  HospitalData.delegatorDoctorDepratmentsData[key].flag ? "#F7FDFA" : "#FFFFFF"
+                                }
+                                border={
+                                  HospitalData.delegatorDoctorDepratmentsData[key].flag
+                                    ? "1px solid #00B264"
+                                    : "1px solid #E3E3E3"
+                                }
+                                color={"#393939"}
+                                cursor={"pointer"}
+                                justifyContent="center"
+                                flexDirection="row"
+                                alignItems="center"
+                                onClick={() => {
+                                  onClickDepartmentsCheckButton({ key: key });
+                                }}
+                              >
+                                <InputCheckboxFrame
+                                  className="InputCheckboxFrame"
+                                  minWidth="15px"
+                                  maxWidth="15px"
+                                  margin="0px 5px 0px 0px"
+                                  backgroundColor={"#E1E1E1"}
+                                  border={"1px solid #E0E0E0"}
+                                >
+                                  <InputCheckboxComponent
+                                    className="InputCheckboxComponent"
+                                    src={
+                                      DoctorDepartmentsData
+                                        ? DoctorDepartmentsData === "내과"
+                                          ? InternalMedicineIcon
+                                          : DoctorDepartmentsData === "가정의학과"
+                                          ? FamilyMedicineIcon
+                                          : DoctorDepartmentsData === "이비인후과"
+                                          ? OtolaryngologyIcon
+                                          : DoctorDepartmentsData === "소아청소년과"
+                                          ? PediatricsIcon
+                                          : DoctorDepartmentsData === "비뇨의학과"
+                                          ? UrologyIcon
+                                          : DoctorDepartmentsData === "피부과"
+                                          ? DermatologyIcon
+                                          : DoctorDepartmentsData === "정신건강의학과"
+                                          ? PsychiatryIcon
+                                          : DoctorDepartmentsData === "산부인과"
+                                          ? ObGynIcon
+                                          : DoctorDepartmentsData === "안과"
+                                          ? OphthalmologyIcon
+                                          : DoctorDepartmentsData === "정형외과/재활의학과"
+                                          ? OrthopedicsIcon
+                                          : DoctorDepartmentsData === "신경과/신경외과"
+                                          ? NeurologyIcon
+                                          : DoctorDepartmentsData === "치과"
+                                          ? DentistIcon
+                                          : DoctorDepartmentsData === "응급의학과"
+                                          ? EmergencyMedicineIcon
+                                          : DoctorDepartmentsData === "성형외과"
+                                          ? PlasticSurgeryIcon
+                                          : DoctorDepartmentsData === "한방의학과"
+                                          ? KoreanMedicineIcon
+                                          : ""
+                                        : ""
+                                    }
+                                  ></InputCheckboxComponent>
+                                </InputCheckboxFrame>
+                                {DoctorDepartmentsData}
+                              </InputButtonComponent>
+                            </InputButtonFrame>
+                          );
+                        })
+                      : null}
+                  </LineAdditionalFrame>
+                </LineComponent>
+                <LineComponent
+                  className="LineComponent"
+                  margin="10px 0px 0px 0px"
+                  justifyContent="space-between"
+                  height={"35px"}
+                >
+                  <LineCoreFrame className="LineCoreFrame" minWidth={"175px"}>
+                    <PlainTextFrame className="PlainTextFrame">
+                      <PlainTextComponent className="PlainTextComponent" designType="content">
+                        *메듭 App 노출 질환 (제한 없음)
+                      </PlainTextComponent>
+                    </PlainTextFrame>
+                  </LineCoreFrame>
+                  <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
+                    <InputButtonFrame className="InputButtonFrame" minWidth="70px" maxWidth="70px">
+                      <InputButtonComponent
+                        className="InputButtonComponent"
+                        margin="0px 0px 0px 5px"
+                        onClick={() => {
+                          onClickDiseasesCheckButton({ key: -1 });
+                        }}
+                        backgroundColor={"#FFFFFF"}
+                        border={"1px solid #E3E3E3"}
+                        color={"#393939"}
+                        cursor={"pointer"}
+                      >
+                        전체 선택
+                      </InputButtonComponent>
+                    </InputButtonFrame>
+                    <InputButtonFrame className="InputButtonFrame" minWidth="70px" maxWidth="70px">
+                      <InputButtonComponent
+                        className="InputButtonComponent"
+                        margin="0px 0px 0px 5px"
+                        onClick={() => {
+                          onClickDiseasesCheckButton({ key: 0 });
+                        }}
+                        backgroundColor={"#FFFFFF"}
+                        border={"1px solid #E3E3E3"}
+                        color={"#393939"}
+                        cursor={"pointer"}
+                      >
+                        전체 해제
+                      </InputButtonComponent>
+                    </InputButtonFrame>
+                  </LineAdditionalFrame>
+                </LineComponent>
+                <LineComponent className="LineComponent" margin="0px 0px 10px 0px" justifyContent="space-between">
+                  <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"} flexWrap="wrap">
+                    {HospitalData.delegatorDoctorDiseasesData.length !== 0
+                      ? DoctorDiseasesListData.map((DoctorDiseasesData, key) => {
+                          return (
+                            <InputButtonFrame className="InputButtonFrame" key={key} margin="5px 0px 5px 0px">
+                              <InputButtonComponent
+                                className="InputButtonComponent"
+                                margin="0px 10px 0px 0px"
+                                backgroundColor={
+                                  HospitalData.delegatorDoctorDiseasesData[key].flag ? "#F7FDFA" : "#FFFFFF"
+                                }
+                                border={
+                                  HospitalData.delegatorDoctorDiseasesData[key].flag
+                                    ? "1px solid #00B264"
+                                    : "1px solid #E3E3E3"
+                                }
+                                color={"#393939"}
+                                cursor={"pointer"}
+                                justifyContent="center"
+                                flexDirection="row"
+                                alignItems="center"
+                                onClick={() => {
+                                  onClickDiseasesCheckButton({ key: key + 1 });
+                                }}
+                              >
+                                <InputCheckboxFrame
+                                  className="InputCheckboxFrame"
+                                  minWidth="15px"
+                                  maxWidth="15px"
+                                  margin="0px 5px 0px 0px"
+                                  backgroundColor={"#E1E1E1"}
+                                  border={"1px solid #E0E0E0"}
+                                >
+                                  <InputCheckboxComponent
+                                    className="InputCheckboxComponent"
+                                    src={
+                                      DoctorDiseasesData
+                                        ? DoctorDiseasesData === "감기/몸살"
+                                          ? ColdIcon
+                                          : DoctorDiseasesData === "근육통/허리통증"
+                                          ? MuscleAndBackPainIcon
+                                          : DoctorDiseasesData === "복통"
+                                          ? StomachacheIcon
+                                          : DoctorDiseasesData === "두통"
+                                          ? HeadacheIcon
+                                          : DoctorDiseasesData === "비염"
+                                          ? RhinitisIcon
+                                          : DoctorDiseasesData === "고혈압/당뇨"
+                                          ? HypertensionAndDiabetesIcon
+                                          : DoctorDiseasesData === "생리통"
+                                          ? PeriodPainIcon
+                                          : DoctorDiseasesData === "여드름"
+                                          ? AcneIcon
+                                          : DoctorDiseasesData === "아토피"
+                                          ? AtopyIcon
+                                          : DoctorDiseasesData === "비만"
+                                          ? ObesityIcon
+                                          : DoctorDiseasesData === "방광염"
+                                          ? CystitisIcon
+                                          : DoctorDiseasesData === "탈모"
+                                          ? HairLossIcon
+                                          : DoctorDiseasesData === "사후피임"
+                                          ? MorningAfterPillIcon
+                                          : DoctorDiseasesData === "코로나 재택치료"
+                                          ? CoronaIcon
+                                          : ""
+                                        : ""
+                                    }
+                                  ></InputCheckboxComponent>
+                                </InputCheckboxFrame>
+                                {DoctorDiseasesData}
+                              </InputButtonComponent>
+                            </InputButtonFrame>
+                          );
+                        })
+                      : null}
                   </LineAdditionalFrame>
                 </LineComponent>
               </FieldFrame>
@@ -1083,7 +1435,7 @@ const HospitalJoinFourthStepPage = observer((props: any) => {
                   </LineCoreFrame>
                   <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
                     <InputCheckboxFrame
-                      className="InputButtonFrame"
+                      className="InputCheckboxFrame"
                       minWidth="40px"
                       maxWidth="40px"
                       margin="0px 15px 0px 0px"
@@ -1111,6 +1463,7 @@ const HospitalJoinFourthStepPage = observer((props: any) => {
                           backgroundColor={"#FFFFFF"}
                           border={"1px solid #0D985B"}
                           color={"#00B264"}
+                          cursor={"pointer"}
                         >
                           + 의사 추가하기
                         </InputButtonComponent>
@@ -1159,6 +1512,7 @@ const HospitalJoinFourthStepPage = observer((props: any) => {
                                 backgroundColor={"#FFFFFF"}
                                 border={"1px solid #0D985B"}
                                 color={"#00B264"}
+                                cursor={"pointer"}
                               >
                                 - 의사 삭제하기
                               </InputButtonComponent>
@@ -1187,10 +1541,38 @@ const HospitalJoinFourthStepPage = observer((props: any) => {
               className="ApplyButtonComponent"
               width={"210px"}
               border={"1px solid #0D985B"}
-              backgroundColor={HospitalData.joinFourthPageValidateCheckFlagData ? "#00B264" : "transparent"}
-              color={HospitalData.joinFourthPageValidateCheckFlagData ? "#FFFFFF" : "#00B264"}
-              cursor={HospitalData.joinFourthPageValidateCheckFlagData ? "pointer" : ""}
-              onClick={HospitalData.joinFourthPageValidateCheckFlagData ? onClickGoButton : () => {}}
+              backgroundColor={
+                HospitalData.joinFourthPageValidateCheckFlagData &&
+                agreeCheck.first &&
+                agreeCheck.second &&
+                agreeCheck.third
+                  ? "#00B264"
+                  : "transparent"
+              }
+              color={
+                HospitalData.joinFourthPageValidateCheckFlagData &&
+                agreeCheck.first &&
+                agreeCheck.second &&
+                agreeCheck.third
+                  ? "#FFFFFF"
+                  : "#00B264"
+              }
+              cursor={
+                HospitalData.joinFourthPageValidateCheckFlagData &&
+                agreeCheck.first &&
+                agreeCheck.second &&
+                agreeCheck.third
+                  ? "pointer"
+                  : ""
+              }
+              onClick={
+                HospitalData.joinFourthPageValidateCheckFlagData &&
+                agreeCheck.first &&
+                agreeCheck.second &&
+                agreeCheck.third
+                  ? onClickGoButton
+                  : () => {}
+              }
             >
               완료 (4/4)
             </ApplyButtonComponent>

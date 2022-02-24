@@ -156,11 +156,11 @@ export interface HospitalDataType {
   delegatorDoctorSpecialistDepartmentData: undefined | string;
   setDelegatorDoctorSpecialistDepartmentData: (e: undefined | string) => void;
   /* Delegator Doctor Departments */
-  delegatorDoctorDepratmentsData: [] | { name: string; flag: boolean }[];
-  setDelegatorDoctorDepratmentsData: (e: [] | { name: string; flag: boolean }[]) => void;
+  delegatorDoctorDepratmentsData: { name: string; flag: boolean }[];
+  setDelegatorDoctorDepratmentsData: (e: { name: string; flag: boolean }[]) => void;
   /* Delegator Doctor Diseases */
-  delegatorDoctorDiseasesData: [] | { name: string; flag: boolean }[];
-  setDelegatorDoctorDiseasesData: (e: [] | { name: string; flag: boolean }[]) => void;
+  delegatorDoctorDiseasesData: { name: string; flag: boolean }[];
+  setDelegatorDoctorDiseasesData: (e: { name: string; flag: boolean }[]) => void;
   /* Companion Doctor Flag */
   companionDoctorFlagData: undefined | boolean;
   setCompanionDoctorFlagData: (e: undefined | boolean) => void;
@@ -432,12 +432,12 @@ const HospitalData = observable<HospitalDataType>({
   },
   /* Delegator Doctor Departments */
   delegatorDoctorDepratmentsData: [],
-  setDelegatorDoctorDepratmentsData(e: [] | { name: string; flag: boolean }[]) {
+  setDelegatorDoctorDepratmentsData(e: { name: string; flag: boolean }[]) {
     this.delegatorDoctorDepratmentsData = e;
   },
   /* Delegator Doctor Diseases */
   delegatorDoctorDiseasesData: [],
-  setDelegatorDoctorDiseasesData(e: [] | { name: string; flag: boolean }[]) {
+  setDelegatorDoctorDiseasesData(e: { name: string; flag: boolean }[]) {
     this.delegatorDoctorDiseasesData = e;
   },
   /* Companion Doctor Flag */

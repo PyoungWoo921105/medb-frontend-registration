@@ -26,6 +26,7 @@ interface Props {
   margin?: string;
   padding?: string;
   justifyContent?: string;
+  alignItems?: string;
   cursor?: string;
   border?: string;
   flexDirection?: string;
@@ -132,6 +133,7 @@ const LineCoreFrame = styled.div<Props>`
 const LineAdditionalFrame = styled.div<Props>`
   display: flex;
   flex-direction: row;
+  flex-wrap: ${(props) => (props.flexWrap ? props.flexWrap : "")};
   justify-content: ${(props) => (props.justifyContent ? props.justifyContent : "")};
   align-items: center;
 

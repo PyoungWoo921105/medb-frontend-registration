@@ -27,6 +27,7 @@ interface Props {
   margin?: string;
   padding?: string;
   justifyContent?: string;
+  alignItems?: string;
   cursor?: string;
   border?: string;
   flexDirection?: string;

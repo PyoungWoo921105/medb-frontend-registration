@@ -25,6 +25,7 @@ interface Props {
   margin?: string;
   padding?: string;
   justifyContent?: string;
+  alignItems?: string;
   cursor?: string;
   border?: string;
   flexDirection?: string;
@@ -131,6 +132,7 @@ const LineCoreFrame = styled.div<Props>`
 const LineAdditionalFrame = styled.div<Props>`
   display: flex;
   flex-direction: row;
+  flex-wrap: ${(props) => (props.flexWrap ? props.flexWrap : "")};
   justify-content: ${(props) => (props.justifyContent ? props.justifyContent : "")};
   align-items: center;
 
@@ -268,6 +270,11 @@ const OptionTextComponent = styled.option<Props>`
   padding: 0px 10px 0px 10px;
 `;
 const InputButtonComponent = styled.button<Props>`
+  display: flex;
+  flex-direction: ${(props) => (props.flexDirection ? props.flexDirection : "row")};
+  justify-content: ${(props) => (props.justifyContent ? props.justifyContent : "center")};
+  align-items: ${(props) => (props.alignItems ? props.alignItems : "center")};
+
   width: 100%;
   margin: ${(props) => (props.margin ? props.margin : "")};
 
@@ -297,6 +304,8 @@ const InputButtonComponent = styled.button<Props>`
 
   box-sizing: border-box;
   border-radius: 4px;
+
+  cursor: ${(props) => (props.cursor ? props.cursor : "")};
 `;
 
 const ButtonFrame = styled.div`
