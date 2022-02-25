@@ -360,6 +360,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
       PharmacyData.accountIDDataValidateFlagData &&
       PharmacyData.accountPasswordData &&
       PharmacyData.confirmedAccountPasswordData &&
+      PharmacyData.accountPasswordData === PharmacyData.confirmedAccountPasswordData &&
       PharmacyData.pharmacyNameData &&
       PharmacyData.pharmacyPhoneNumberData &&
       PharmacyData.pharmacyAddressData
@@ -536,7 +537,13 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                           PharmacyData.confirmedAccountPasswordData ? PharmacyData.confirmedAccountPasswordData : ""
                         }
                         onChange={(event) => PharmacyData.setConfirmedAccountPasswordData(event.target.value)}
-                        border={validateFlag && !PharmacyData.confirmedAccountPasswordData ? "1.5px solid #FF3B30" : ""}
+                        border={
+                          (validateFlag && !PharmacyData.confirmedAccountPasswordData) ||
+                          (validateFlag &&
+                            PharmacyData.accountPasswordData !== PharmacyData.confirmedAccountPasswordData)
+                            ? "1.5px solid #FF3B30"
+                            : ""
+                        }
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>

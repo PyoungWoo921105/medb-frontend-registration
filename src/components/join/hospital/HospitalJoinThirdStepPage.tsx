@@ -360,6 +360,7 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
       HospitalData.accountIDDataValidateFlagData &&
       HospitalData.accountPasswordData &&
       HospitalData.confirmedAccountPasswordData &&
+      HospitalData.accountPasswordData === HospitalData.confirmedAccountPasswordData &&
       HospitalData.hospitalNameData &&
       HospitalData.hospitalPhoneNumberData &&
       HospitalData.hospitalAddressData
@@ -536,7 +537,13 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
                           HospitalData.confirmedAccountPasswordData ? HospitalData.confirmedAccountPasswordData : ""
                         }
                         onChange={(event) => HospitalData.setConfirmedAccountPasswordData(event.target.value)}
-                        border={validateFlag && !HospitalData.confirmedAccountPasswordData ? "1.5px solid #FF3B30" : ""}
+                        border={
+                          (validateFlag && !HospitalData.confirmedAccountPasswordData) ||
+                          (validateFlag &&
+                            HospitalData.accountPasswordData !== HospitalData.confirmedAccountPasswordData)
+                            ? "1.5px solid #FF3B30"
+                            : ""
+                        }
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
