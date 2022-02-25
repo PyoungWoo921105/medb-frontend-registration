@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { observer } from "mobx-react";
 
@@ -277,6 +277,9 @@ const SelectTextComponent = styled.select<Props>`
   padding: 0px 10px 0px 10px;
 
   cursor: ${(props) => (props.cursor ? props.cursor : "")};
+
+  border: ${(props) => (props.border ? props.border : "1.5px solid #E0E0E0")};
+  border-radius: 4px;
 `;
 const OptionTextComponent = styled.option<Props>`
   font-family: "Spoqa Han Sans Neo";
@@ -316,10 +319,10 @@ const InputButtonComponent = styled.button<Props>`
     props.backgroundColor
       ? props.backgroundColor
       : props.designType === "true"
-      ? "1px solid #0D985B"
+      ? "1.5px solid #0D985B"
       : props.designType === "false"
-      ? "1px solid #E0E0E0"
-      : ""};
+      ? "1.5px solid #E0E0E0"
+      : "1.5px solid #E0E0E0"};
 
   box-sizing: border-box;
   border-radius: 4px;
@@ -390,9 +393,11 @@ const HospitalJoinSecondStepPage = observer((props: any) => {
   const HospitalData = useStore().HospitalData;
 
   const onClickGoButton = () => {
+    setValidateFlag(false);
     history.push({ pathname: "/hospital/join/thirdStep" });
   };
   const onClickBackButton = () => {
+    setValidateFlag(false);
     history.push({ pathname: "/hospital/join/firstStep" });
   };
 
@@ -500,6 +505,10 @@ const HospitalJoinSecondStepPage = observer((props: any) => {
     "한국씨티은행",
   ];
 
+  /*  */
+
+  const [validateFlag, setValidateFlag] = useState(false);
+
   return (
     <Body className="Body">
       <Header className="Header">
@@ -587,6 +596,11 @@ const HospitalJoinSecondStepPage = observer((props: any) => {
                           placeholder="이름을 입력해 주세요."
                           value={HospitalData.managerNameData ? HospitalData.managerNameData : ""}
                           onChange={(event) => HospitalData.setManagerNameData(event.target.value)}
+                          border={
+                            validateFlag && HospitalData.managerExistData && !HospitalData.managerNameData
+                              ? "1.5px solid #FF3B30"
+                              : ""
+                          }
                         ></InputTextComponent>
                       </InputTextFrame>
                     </LineAdditionalFrame>
@@ -614,6 +628,11 @@ const HospitalJoinSecondStepPage = observer((props: any) => {
                           placeholder="이메일을 입력해 주세요."
                           value={HospitalData.managerEmailData ? HospitalData.managerEmailData : ""}
                           onChange={(event) => HospitalData.setManagerEmailData(event.target.value)}
+                          border={
+                            validateFlag && HospitalData.managerExistData && !HospitalData.managerEmailData
+                              ? "1.5px solid #FF3B30"
+                              : ""
+                          }
                         ></InputTextComponent>
                       </InputTextFrame>
                     </LineAdditionalFrame>
@@ -641,6 +660,11 @@ const HospitalJoinSecondStepPage = observer((props: any) => {
                           placeholder="-없이 숫자만 입력해 주세요."
                           value={HospitalData.managerPhoneNumberData ? HospitalData.managerPhoneNumberData : ""}
                           onChange={(event) => HospitalData.setManagerPhoneNumberData(event.target.value)}
+                          border={
+                            validateFlag && HospitalData.managerExistData && !HospitalData.managerPhoneNumberData
+                              ? "1.5px solid #FF3B30"
+                              : ""
+                          }
                         ></InputTextComponent>
                       </InputTextFrame>
                     </LineAdditionalFrame>
@@ -667,6 +691,11 @@ const HospitalJoinSecondStepPage = observer((props: any) => {
                           width={"100%"}
                           value={HospitalData.managerAddressData ? HospitalData.managerAddressData : ""}
                           disabled={true}
+                          border={
+                            validateFlag && HospitalData.managerExistData && !HospitalData.managerAddressData
+                              ? "1.5px solid #FF3B30"
+                              : ""
+                          }
                         ></InputTextComponent>
                       </InputTextFrame>
                       <InputButtonFrame className="InputButtonFrame" minWidth="70px">
@@ -734,6 +763,11 @@ const HospitalJoinSecondStepPage = observer((props: any) => {
                         width={"100%"}
                         value={HospitalData.bankNameData ? HospitalData.bankNameData : ""}
                         onChange={(event) => HospitalData.setBankNameData(event.target.value)}
+                        border={
+                          validateFlag && HospitalData.bankNameData === "직접입력" && !HospitalData.customBankNameData
+                            ? "1.5px solid #FF3B30"
+                            : ""
+                        }
                       >
                         {bankNameListData.map((bankNameData, key) => {
                           return (
@@ -771,6 +805,7 @@ const HospitalJoinSecondStepPage = observer((props: any) => {
                           width={"100%"}
                           value={HospitalData.customBankNameData ? HospitalData.customBankNameData : ""}
                           onChange={(event) => HospitalData.setCustomBankNameData(event.target.value)}
+                          border={validateFlag && !HospitalData.customBankNameData ? "1.5px solid #FF3B30" : ""}
                         ></InputTextComponent>
                       </InputTextFrame>
                     </LineAdditionalFrame>
@@ -797,6 +832,7 @@ const HospitalJoinSecondStepPage = observer((props: any) => {
                         placeholder="-없이 숫자만 입력해 주세요."
                         value={HospitalData.bankAccountNumberData ? HospitalData.bankAccountNumberData : ""}
                         onChange={(event) => HospitalData.setBankAccountNumberData(event.target.value)}
+                        border={validateFlag && !HospitalData.bankAccountNumberData ? "1.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -822,6 +858,7 @@ const HospitalJoinSecondStepPage = observer((props: any) => {
                         placeholder="이름을 입력해 주세요."
                         value={HospitalData.bankAccountOwnerNameData ? HospitalData.bankAccountOwnerNameData : ""}
                         onChange={(event) => HospitalData.setBankAccountOwnerNameData(event.target.value)}
+                        border={validateFlag && !HospitalData.bankAccountOwnerNameData ? "1.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -850,6 +887,7 @@ const HospitalJoinSecondStepPage = observer((props: any) => {
                         placeholder="이메일을 입력해 주세요."
                         value={HospitalData.settlementEmailData ? HospitalData.settlementEmailData : ""}
                         onChange={(event) => HospitalData.setSettlementEmailData(event.target.value)}
+                        border={validateFlag && !HospitalData.settlementEmailData ? "1.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -921,7 +959,7 @@ const HospitalJoinSecondStepPage = observer((props: any) => {
               backgroundColor={HospitalData.joinSecondPageValidateCheckFlagData ? "#00B264" : "transparent"}
               color={HospitalData.joinSecondPageValidateCheckFlagData ? "#FFFFFF" : "#00B264"}
               cursor={HospitalData.joinSecondPageValidateCheckFlagData ? "pointer" : ""}
-              onClick={HospitalData.joinSecondPageValidateCheckFlagData ? onClickGoButton : () => {}}
+              onClick={HospitalData.joinSecondPageValidateCheckFlagData ? onClickGoButton : () => setValidateFlag(true)}
             >
               다음 (2/4)
             </ApplyButtonComponent>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { observer } from "mobx-react";
 
@@ -258,7 +258,7 @@ const InputButtonComponent = styled.button<Props>`
   color: ${(props) => (props.color ? props.color : "")};
 
   background-color: ${(props) => (props.backgroundColor ? props.backgroundColor : "")};
-  border: ${(props) => (props.border ? props.border : "")};
+  border: ${(props) => (props.border ? props.border : "1.5px solid #E0E0E0")};
 
   box-sizing: border-box;
   border-radius: 4px;
@@ -331,9 +331,11 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
   const PharmacyData = useStore().PharmacyData;
 
   const onClickGoButton = () => {
+    setValidateFlag(false);
     history.push({ pathname: "/pharmacy/join/complete" });
   };
   const onClickBackButton = () => {
+    setValidateFlag(false);
     history.push({ pathname: "/pharmacy/join/secondStep" });
   };
 
@@ -389,6 +391,8 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
 
   /*  */
 
+  const [validateFlag, setValidateFlag] = useState(false);
+
   return (
     <Body className="Body">
       <Header className="Header">
@@ -438,6 +442,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                         width={"100%"}
                         value={PharmacyData.accountIDData ? PharmacyData.accountIDData : ""}
                         onChange={(event) => PharmacyData.setAccountIDData(event.target.value)}
+                        border={validateFlag && !PharmacyData.accountIDData ? "1.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                     <InputButtonFrame className="InputButtonFrame" minWidth="70px">
@@ -446,7 +451,9 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                         margin="0px 0px 0px 5px"
                         onClick={onClickAccountIDCheckButton}
                         backgroundColor={"#E1E1E1"}
-                        border={"1px solid #E0E0E0"}
+                        border={
+                          validateFlag && !PharmacyData.accountIDDataValidateFlagData ? "1.5px solid #FF3B30" : ""
+                        }
                       >
                         중복 확인
                       </InputButtonComponent>
@@ -487,6 +494,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                         width={"100%"}
                         value={PharmacyData.accountPasswordData ? PharmacyData.accountPasswordData : ""}
                         onChange={(event) => PharmacyData.setAccountPasswordData(event.target.value)}
+                        border={validateFlag && !PharmacyData.accountPasswordData ? "1.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -528,6 +536,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                           PharmacyData.confirmedAccountPasswordData ? PharmacyData.confirmedAccountPasswordData : ""
                         }
                         onChange={(event) => PharmacyData.setConfirmedAccountPasswordData(event.target.value)}
+                        border={validateFlag && !PharmacyData.confirmedAccountPasswordData ? "1.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -553,6 +562,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                         placeholder="약국 이름을 입력해 주세요."
                         value={PharmacyData.pharmacyNameData ? PharmacyData.pharmacyNameData : ""}
                         onChange={(event) => PharmacyData.setPharmacyNameData(event.target.value)}
+                        border={validateFlag && !PharmacyData.pharmacyNameData ? "1.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -578,6 +588,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                         placeholder="-없이 숫자만 입력해 주세요."
                         value={PharmacyData.pharmacyPhoneNumberData ? PharmacyData.pharmacyPhoneNumberData : ""}
                         onChange={(event) => PharmacyData.setPharmacyPhoneNumberData(event.target.value)}
+                        border={validateFlag && !PharmacyData.pharmacyPhoneNumberData ? "1.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -627,6 +638,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                         width={"100%"}
                         value={PharmacyData.pharmacyAddressData ? PharmacyData.pharmacyAddressData : ""}
                         disabled={true}
+                        border={validateFlag && !PharmacyData.pharmacyAddressData ? "1.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                     <InputButtonFrame className="InputButtonFrame" minWidth="70px">
@@ -664,7 +676,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
               backgroundColor={PharmacyData.joinThirdPageValidateCheckFlagData ? "#00B264" : "transparent"}
               color={PharmacyData.joinThirdPageValidateCheckFlagData ? "#FFFFFF" : "#00B264"}
               cursor={PharmacyData.joinThirdPageValidateCheckFlagData ? "pointer" : ""}
-              onClick={PharmacyData.joinThirdPageValidateCheckFlagData ? onClickGoButton : () => {}}
+              onClick={PharmacyData.joinThirdPageValidateCheckFlagData ? onClickGoButton : () => setValidateFlag(true)}
             >
               완료 (3/3)
             </ApplyButtonComponent>

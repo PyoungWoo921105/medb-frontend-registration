@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { observer } from "mobx-react";
 
@@ -258,7 +258,7 @@ const InputButtonComponent = styled.button<Props>`
   color: ${(props) => (props.color ? props.color : "")};
 
   background-color: ${(props) => (props.backgroundColor ? props.backgroundColor : "")};
-  border: ${(props) => (props.border ? props.border : "")};
+  border: ${(props) => (props.border ? props.border : "1.5px solid #E0E0E0")};
 
   box-sizing: border-box;
   border-radius: 4px;
@@ -331,9 +331,11 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
   const HospitalData = useStore().HospitalData;
 
   const onClickGoButton = () => {
+    setValidateFlag(false);
     history.push({ pathname: "/hospital/join/fourthStep" });
   };
   const onClickBackButton = () => {
+    setValidateFlag(false);
     history.push({ pathname: "/hospital/join/secondStep" });
   };
 
@@ -389,6 +391,8 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
 
   /*  */
 
+  const [validateFlag, setValidateFlag] = useState(false);
+
   return (
     <Body className="Body">
       <Header className="Header">
@@ -438,6 +442,7 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
                         width={"100%"}
                         value={HospitalData.accountIDData ? HospitalData.accountIDData : ""}
                         onChange={(event) => HospitalData.setAccountIDData(event.target.value)}
+                        border={validateFlag && !HospitalData.accountIDData ? "1.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                     <InputButtonFrame className="InputButtonFrame" minWidth="70px">
@@ -446,7 +451,9 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
                         margin="0px 0px 0px 5px"
                         onClick={onClickAccountIDCheckButton}
                         backgroundColor={"#E1E1E1"}
-                        border={"1px solid #E0E0E0"}
+                        border={
+                          validateFlag && !HospitalData.accountIDDataValidateFlagData ? "1.5px solid #FF3B30" : ""
+                        }
                       >
                         중복 확인
                       </InputButtonComponent>
@@ -487,6 +494,7 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
                         width={"100%"}
                         value={HospitalData.accountPasswordData ? HospitalData.accountPasswordData : ""}
                         onChange={(event) => HospitalData.setAccountPasswordData(event.target.value)}
+                        border={validateFlag && !HospitalData.accountPasswordData ? "1.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -528,6 +536,7 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
                           HospitalData.confirmedAccountPasswordData ? HospitalData.confirmedAccountPasswordData : ""
                         }
                         onChange={(event) => HospitalData.setConfirmedAccountPasswordData(event.target.value)}
+                        border={validateFlag && !HospitalData.confirmedAccountPasswordData ? "1.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -553,6 +562,7 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
                         placeholder="병원 이름을 입력해 주세요."
                         value={HospitalData.hospitalNameData ? HospitalData.hospitalNameData : ""}
                         onChange={(event) => HospitalData.setHospitalNameData(event.target.value)}
+                        border={validateFlag && !HospitalData.hospitalNameData ? "1.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -578,6 +588,7 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
                         placeholder="-없이 숫자만 입력해 주세요."
                         value={HospitalData.hospitalPhoneNumberData ? HospitalData.hospitalPhoneNumberData : ""}
                         onChange={(event) => HospitalData.setHospitalPhoneNumberData(event.target.value)}
+                        border={validateFlag && !HospitalData.hospitalPhoneNumberData ? "1.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -627,6 +638,7 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
                         width={"100%"}
                         value={HospitalData.hospitalAddressData ? HospitalData.hospitalAddressData : ""}
                         disabled={true}
+                        border={validateFlag && !HospitalData.hospitalAddressData ? "1.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                     <InputButtonFrame className="InputButtonFrame" minWidth="70px">
@@ -664,7 +676,7 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
               backgroundColor={HospitalData.joinThirdPageValidateCheckFlagData ? "#00B264" : "transparent"}
               color={HospitalData.joinThirdPageValidateCheckFlagData ? "#FFFFFF" : "#00B264"}
               cursor={HospitalData.joinThirdPageValidateCheckFlagData ? "pointer" : ""}
-              onClick={HospitalData.joinThirdPageValidateCheckFlagData ? onClickGoButton : () => {}}
+              onClick={HospitalData.joinThirdPageValidateCheckFlagData ? onClickGoButton : () => setValidateFlag(true)}
             >
               다음 (3/4)
             </ApplyButtonComponent>

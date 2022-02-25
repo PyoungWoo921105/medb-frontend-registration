@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { observer } from "mobx-react";
 
@@ -293,7 +293,7 @@ const InputButtonComponent = styled.button<Props>`
   color: ${(props) => (props.color ? props.color : "")};
 
   background-color: ${(props) => (props.backgroundColor ? props.backgroundColor : "")};
-  border: ${(props) => (props.border ? props.border : "")};
+  border: ${(props) => (props.border ? props.border : "1.5px solid #E0E0E0")};
 
   box-sizing: border-box;
   border-radius: 4px;
@@ -329,6 +329,10 @@ const SelectTextComponent = styled.select<Props>`
 
   width: ${(props) => (props.width ? props.width : "")};
   padding: 0px 10px 0px 10px;
+
+  cursor: ${(props) => (props.cursor ? props.cursor : "")};
+
+  border-radius: 4px;
 `;
 const OptionTextComponent = styled.option<Props>`
   font-family: "Spoqa Han Sans Neo";
@@ -602,6 +606,10 @@ const DoctorJoinFirstStepPage = observer((props: any) => {
     }
   };
 
+  /*  */
+
+  const [validateFlag, setValidateFlag] = useState(false);
+
   return (
     <Body className="Body">
       <Header className="Header">
@@ -715,6 +723,7 @@ const DoctorJoinFirstStepPage = observer((props: any) => {
                         placeholder="이메일을 입력해 주세요."
                         value={DoctorData.companionDoctorEmailData ? DoctorData.companionDoctorEmailData : ""}
                         onChange={(event) => DoctorData.setCompanionDoctorEmailData(event.target.value)}
+                        border={validateFlag && !DoctorData.companionDoctorEmailData ? "1.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -763,6 +772,9 @@ const DoctorJoinFirstStepPage = observer((props: any) => {
                           DoctorData.companionDoctorLicenseNumberData ? DoctorData.companionDoctorLicenseNumberData : ""
                         }
                         onChange={(event) => DoctorData.setCompanionDoctorLicenseNumberData(event.target.value)}
+                        border={
+                          validateFlag && !DoctorData.companionDoctorLicenseNumberData ? "1.5px solid #FF3B30" : ""
+                        }
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -1074,7 +1086,7 @@ const DoctorJoinFirstStepPage = observer((props: any) => {
               backgroundColor={DoctorData.joinFourthPageValidateCheckFlagData ? "#00B264" : "transparent"}
               color={DoctorData.joinFourthPageValidateCheckFlagData ? "#FFFFFF" : "#00B264"}
               cursor={DoctorData.joinFourthPageValidateCheckFlagData ? "pointer" : ""}
-              onClick={DoctorData.joinFourthPageValidateCheckFlagData ? onClickGoButton : () => {}}
+              onClick={DoctorData.joinFourthPageValidateCheckFlagData ? onClickGoButton : () => setValidateFlag(true)}
             >
               완료 (1/1)
             </ApplyButtonComponent>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { observer } from "mobx-react";
 
@@ -262,7 +262,7 @@ const InputButtonComponent = styled.button<Props>`
   color: ${(props) => (props.color ? props.color : "")};
 
   background-color: ${(props) => (props.backgroundColor ? props.backgroundColor : "")};
-  border: ${(props) => (props.border ? props.border : "")};
+  border: ${(props) => (props.border ? props.border : "1.5px solid #E0E0E0")};
 
   box-sizing: border-box;
   border-radius: 4px;
@@ -336,9 +336,11 @@ const PharmacyJoinFirstStepPage = observer((props: any) => {
   const PharmacyData = useStore().PharmacyData;
 
   const onClickGoButton = () => {
+    setValidateFlag(false);
     history.push({ pathname: "/pharmacy/join/secondStep" });
   };
   const onClickBackButton = () => {
+    setValidateFlag(false);
     history.push({ pathname: "/common/agree" });
   };
 
@@ -402,6 +404,8 @@ const PharmacyJoinFirstStepPage = observer((props: any) => {
 
   /*  */
 
+  const [validateFlag, setValidateFlag] = useState(false);
+
   return (
     <Body className="Body">
       <Header className="Header">
@@ -452,6 +456,7 @@ const PharmacyJoinFirstStepPage = observer((props: any) => {
                         placeholder="사업장 등록증 상 기재된 상호를 입력해 주세요."
                         value={PharmacyData.businessNameData ? PharmacyData.businessNameData : ""}
                         onChange={(event) => PharmacyData.setBusinessNameData(event.target.value)}
+                        border={validateFlag && !PharmacyData.businessNameData ? "1.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -477,6 +482,7 @@ const PharmacyJoinFirstStepPage = observer((props: any) => {
                         placeholder="-없이 숫자만 입력해 주세요."
                         value={PharmacyData.businessLicenseNumberData ? PharmacyData.businessLicenseNumberData : ""}
                         onChange={(event) => PharmacyData.setBusinessLicenseNumberData(event.target.value)}
+                        border={validateFlag && !PharmacyData.businessLicenseNumberData ? "1.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -501,6 +507,7 @@ const PharmacyJoinFirstStepPage = observer((props: any) => {
                         width={"100%"}
                         value={PharmacyData.businessAddressData ? PharmacyData.businessAddressData : ""}
                         disabled={true}
+                        border={validateFlag && !PharmacyData.businessAddressData ? "1.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                     <InputButtonFrame className="InputButtonFrame" minWidth="70px">
@@ -689,6 +696,7 @@ const PharmacyJoinFirstStepPage = observer((props: any) => {
                         placeholder="이메일을 입력해 주세요."
                         value={PharmacyData.delegatorEmailData ? PharmacyData.delegatorEmailData : ""}
                         onChange={(event) => PharmacyData.setDelegatorEmailData(event.target.value)}
+                        border={validateFlag && !PharmacyData.delegatorEmailData ? "1.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -715,7 +723,7 @@ const PharmacyJoinFirstStepPage = observer((props: any) => {
               backgroundColor={PharmacyData.joinFirstPageValidateCheckFlagData ? "#00B264" : "transparent"}
               color={PharmacyData.joinFirstPageValidateCheckFlagData ? "#FFFFFF" : "#00B264"}
               cursor={PharmacyData.joinFirstPageValidateCheckFlagData ? "pointer" : ""}
-              onClick={PharmacyData.joinFirstPageValidateCheckFlagData ? onClickGoButton : () => {}}
+              onClick={PharmacyData.joinFirstPageValidateCheckFlagData ? onClickGoButton : () => setValidateFlag(true)}
             >
               다음 (1/3)
             </ApplyButtonComponent>

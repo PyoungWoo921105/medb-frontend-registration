@@ -297,7 +297,7 @@ const InputButtonComponent = styled.button<Props>`
   color: ${(props) => (props.color ? props.color : "")};
 
   background-color: ${(props) => (props.backgroundColor ? props.backgroundColor : "")};
-  border: ${(props) => (props.border ? props.border : "")};
+  border: ${(props) => (props.border ? props.border : "1.5px solid #E0E0E0")};
 
   box-sizing: border-box;
   border-radius: 4px;
@@ -333,6 +333,11 @@ const SelectTextComponent = styled.select<Props>`
 
   width: ${(props) => (props.width ? props.width : "")};
   padding: 0px 10px 0px 10px;
+
+  cursor: ${(props) => (props.cursor ? props.cursor : "")};
+
+  border: ${(props) => (props.border ? props.border : "1.5px solid #E0E0E0")};
+  border-radius: 4px;
 `;
 const OptionTextComponent = styled.option<Props>`
   font-family: "Spoqa Han Sans Neo";
@@ -529,9 +534,11 @@ const HospitalJoinFourthStepPage = observer((props: any) => {
   const HospitalData = useStore().HospitalData;
 
   const onClickGoButton = () => {
+    setValidateFlag(false);
     history.push({ pathname: "/hospital/join/complete" });
   };
   const onClickBackButton = () => {
+    setValidateFlag(false);
     history.push({ pathname: "/hospital/join/thirdStep" });
   };
 
@@ -785,6 +792,10 @@ const HospitalJoinFourthStepPage = observer((props: any) => {
     }
   };
 
+  /*  */
+
+  const [validateFlag, setValidateFlag] = useState(false);
+
   return (
     <Body className="Body">
       <Header className="Header">
@@ -898,6 +909,7 @@ const HospitalJoinFourthStepPage = observer((props: any) => {
                         placeholder="이메일을 입력해 주세요."
                         value={HospitalData.delegatorDoctorEmailData ? HospitalData.delegatorDoctorEmailData : ""}
                         onChange={(event) => HospitalData.setDelegatorDoctorEmailData(event.target.value)}
+                        border={validateFlag && !HospitalData.delegatorDoctorEmailData ? "1.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -948,6 +960,9 @@ const HospitalJoinFourthStepPage = observer((props: any) => {
                             : ""
                         }
                         onChange={(event) => HospitalData.setDelegatorDoctorLicenseNumberData(event.target.value)}
+                        border={
+                          validateFlag && !HospitalData.delegatorDoctorLicenseNumberData ? "1.5px solid #FF3B30" : ""
+                        }
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -1588,7 +1603,7 @@ const HospitalJoinFourthStepPage = observer((props: any) => {
                 agreeCheck.second &&
                 agreeCheck.third
                   ? onClickGoButton
-                  : () => {}
+                  : () => setValidateFlag(true)
               }
             >
               완료 (4/4)

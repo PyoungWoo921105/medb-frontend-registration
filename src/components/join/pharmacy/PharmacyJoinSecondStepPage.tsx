@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { observer } from "mobx-react";
 
@@ -275,6 +275,11 @@ const SelectTextComponent = styled.select<Props>`
 
   width: ${(props) => (props.width ? props.width : "")};
   padding: 0px 10px 0px 10px;
+
+  cursor: ${(props) => (props.cursor ? props.cursor : "")};
+
+  border: ${(props) => (props.border ? props.border : "1.5px solid #E0E0E0")};
+  border-radius: 4px;
 `;
 const OptionTextComponent = styled.option<Props>`
   font-family: "Spoqa Han Sans Neo";
@@ -314,10 +319,10 @@ const InputButtonComponent = styled.button<Props>`
     props.backgroundColor
       ? props.backgroundColor
       : props.designType === "true"
-      ? "1px solid #0D985B"
+      ? "1.5px solid #0D985B"
       : props.designType === "false"
-      ? "1px solid #E0E0E0"
-      : ""};
+      ? "1.5px solid #E0E0E0"
+      : "1.5px solid #E0E0E0"};
 
   box-sizing: border-box;
   border-radius: 4px;
@@ -390,9 +395,11 @@ const PharmacyJoinSecondStepPage = observer((props: any) => {
   const PharmacyData = useStore().PharmacyData;
 
   const onClickGoButton = () => {
+    setValidateFlag(false);
     history.push({ pathname: "/pharmacy/join/thirdStep" });
   };
   const onClickBackButton = () => {
+    setValidateFlag(false);
     history.push({ pathname: "/pharmacy/join/firstStep" });
   };
 
@@ -500,6 +507,10 @@ const PharmacyJoinSecondStepPage = observer((props: any) => {
     "한국씨티은행",
   ];
 
+  /*  */
+
+  const [validateFlag, setValidateFlag] = useState(false);
+
   return (
     <Body className="Body">
       <Header className="Header">
@@ -587,6 +598,11 @@ const PharmacyJoinSecondStepPage = observer((props: any) => {
                           placeholder="이름을 입력해 주세요."
                           value={PharmacyData.managerNameData ? PharmacyData.managerNameData : ""}
                           onChange={(event) => PharmacyData.setManagerNameData(event.target.value)}
+                          border={
+                            validateFlag && PharmacyData.managerExistData && !PharmacyData.managerNameData
+                              ? "1.5px solid #FF3B30"
+                              : ""
+                          }
                         ></InputTextComponent>
                       </InputTextFrame>
                     </LineAdditionalFrame>
@@ -614,6 +630,11 @@ const PharmacyJoinSecondStepPage = observer((props: any) => {
                           placeholder="이메일을 입력해 주세요."
                           value={PharmacyData.managerEmailData ? PharmacyData.managerEmailData : ""}
                           onChange={(event) => PharmacyData.setManagerEmailData(event.target.value)}
+                          border={
+                            validateFlag && PharmacyData.managerExistData && !PharmacyData.managerEmailData
+                              ? "1.5px solid #FF3B30"
+                              : ""
+                          }
                         ></InputTextComponent>
                       </InputTextFrame>
                     </LineAdditionalFrame>
@@ -641,6 +662,11 @@ const PharmacyJoinSecondStepPage = observer((props: any) => {
                           placeholder="-없이 숫자만 입력해 주세요."
                           value={PharmacyData.managerPhoneNumberData ? PharmacyData.managerPhoneNumberData : ""}
                           onChange={(event) => PharmacyData.setManagerPhoneNumberData(event.target.value)}
+                          border={
+                            validateFlag && PharmacyData.managerExistData && !PharmacyData.managerPhoneNumberData
+                              ? "1.5px solid #FF3B30"
+                              : ""
+                          }
                         ></InputTextComponent>
                       </InputTextFrame>
                     </LineAdditionalFrame>
@@ -667,6 +693,11 @@ const PharmacyJoinSecondStepPage = observer((props: any) => {
                           width={"100%"}
                           value={PharmacyData.managerAddressData ? PharmacyData.managerAddressData : ""}
                           disabled={true}
+                          border={
+                            validateFlag && PharmacyData.managerExistData && !PharmacyData.managerAddressData
+                              ? "1.5px solid #FF3B30"
+                              : ""
+                          }
                         ></InputTextComponent>
                       </InputTextFrame>
                       <InputButtonFrame className="InputButtonFrame" minWidth="70px">
@@ -734,6 +765,11 @@ const PharmacyJoinSecondStepPage = observer((props: any) => {
                         width={"100%"}
                         value={PharmacyData.bankNameData ? PharmacyData.bankNameData : ""}
                         onChange={(event) => PharmacyData.setBankNameData(event.target.value)}
+                        border={
+                          validateFlag && PharmacyData.bankNameData === "직접입력" && !PharmacyData.customBankNameData
+                            ? "1.5px solid #FF3B30"
+                            : ""
+                        }
                       >
                         {bankNameListData.map((bankNameData, key) => {
                           return (
@@ -771,6 +807,7 @@ const PharmacyJoinSecondStepPage = observer((props: any) => {
                           width={"100%"}
                           value={PharmacyData.customBankNameData ? PharmacyData.customBankNameData : ""}
                           onChange={(event) => PharmacyData.setCustomBankNameData(event.target.value)}
+                          border={validateFlag && !PharmacyData.customBankNameData ? "1.5px solid #FF3B30" : ""}
                         ></InputTextComponent>
                       </InputTextFrame>
                     </LineAdditionalFrame>
@@ -797,6 +834,7 @@ const PharmacyJoinSecondStepPage = observer((props: any) => {
                         placeholder="-없이 숫자만 입력해 주세요."
                         value={PharmacyData.bankAccountNumberData ? PharmacyData.bankAccountNumberData : ""}
                         onChange={(event) => PharmacyData.setBankAccountNumberData(event.target.value)}
+                        border={validateFlag && !PharmacyData.bankAccountNumberData ? "1.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -822,6 +860,7 @@ const PharmacyJoinSecondStepPage = observer((props: any) => {
                         placeholder="이름을 입력해 주세요."
                         value={PharmacyData.bankAccountOwnerNameData ? PharmacyData.bankAccountOwnerNameData : ""}
                         onChange={(event) => PharmacyData.setBankAccountOwnerNameData(event.target.value)}
+                        border={validateFlag && !PharmacyData.bankAccountOwnerNameData ? "1.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -850,6 +889,7 @@ const PharmacyJoinSecondStepPage = observer((props: any) => {
                         placeholder="이메일을 입력해 주세요."
                         value={PharmacyData.settlementEmailData ? PharmacyData.settlementEmailData : ""}
                         onChange={(event) => PharmacyData.setSettlementEmailData(event.target.value)}
+                        border={validateFlag && !PharmacyData.settlementEmailData ? "1.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -921,7 +961,7 @@ const PharmacyJoinSecondStepPage = observer((props: any) => {
               backgroundColor={PharmacyData.joinSecondPageValidateCheckFlagData ? "#00B264" : "transparent"}
               color={PharmacyData.joinSecondPageValidateCheckFlagData ? "#FFFFFF" : "#00B264"}
               cursor={PharmacyData.joinSecondPageValidateCheckFlagData ? "pointer" : ""}
-              onClick={PharmacyData.joinSecondPageValidateCheckFlagData ? onClickGoButton : () => {}}
+              onClick={PharmacyData.joinSecondPageValidateCheckFlagData ? onClickGoButton : () => setValidateFlag(true)}
             >
               다음 (2/3)
             </ApplyButtonComponent>
