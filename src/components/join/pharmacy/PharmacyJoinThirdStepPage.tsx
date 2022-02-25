@@ -226,6 +226,9 @@ const InputTextComponent = styled.input<Props>`
 
   width: ${(props) => (props.width ? props.width : "")};
   padding: 0px 10px 0px 10px;
+
+  border: ${(props) => (props.border ? props.border : "1.5px solid #E0E0E0")};
+  border-radius: 4px;
 `;
 const InputButtonFrame = styled.div<Props>`
   display: flex;
