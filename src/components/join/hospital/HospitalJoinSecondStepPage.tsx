@@ -196,6 +196,8 @@ const PlainTextComponent = styled.span<Props>`
       ? "Spoqa Han Sans Neo"
       : props.designType === "additional"
       ? "Spoqa Han Sans Neo"
+      : props.designType === "help"
+      ? "Spoqa Han Sans Neo"
       : ""};
   font-style: ${(props) =>
     props.designType === "title"
@@ -204,6 +206,8 @@ const PlainTextComponent = styled.span<Props>`
       ? "normal"
       : props.designType === "additional"
       ? "Spoqa Han Sans Neo"
+      : props.designType === "help"
+      ? "normal"
       : ""};
   font-weight: ${(props) =>
     props.designType === "title"
@@ -211,6 +215,8 @@ const PlainTextComponent = styled.span<Props>`
       : props.designType === "content"
       ? "normal"
       : props.designType === "additional"
+      ? "normal"
+      : props.designType === "help"
       ? "normal"
       : ""};
   font-size: ${(props) =>
@@ -220,6 +226,8 @@ const PlainTextComponent = styled.span<Props>`
       ? "12px"
       : props.designType === "additional"
       ? "12px"
+      : props.designType === "help"
+      ? "10px"
       : ""};
   color: ${(props) =>
     props.designType === "title"
@@ -228,6 +236,8 @@ const PlainTextComponent = styled.span<Props>`
       ? "#000000"
       : props.designType === "additional"
       ? "#8D8D8D"
+      : props.designType === "help"
+      ? "#a8a8a8"
       : ""};
 
   cursor: ${(props) => (props.designType === "additional" ? (props.cursor ? props.cursor : "pointer") : "")};
@@ -741,10 +751,13 @@ const HospitalJoinSecondStepPage = observer((props: any) => {
                     height={"35px"}
                     flexDirection={"column"}
                   >
-                    <LineCoreFrame className="LineCoreFrame" minWidth={"145px"}>
-                      <PlainTextFrame className="PlainTextFrame">
+                    <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
+                      <PlainTextFrame className="PlainTextFrame" flexDirection="column">
                         <PlainTextComponent className="PlainTextComponent" designType="content">
-                          *입금 계좌 은행 직접입력
+                          *입금 계좌 은행
+                        </PlainTextComponent>
+                        <PlainTextComponent className="PlainTextComponent" designType="content">
+                          직접입력
                         </PlainTextComponent>
                       </PlainTextFrame>
                     </LineCoreFrame>

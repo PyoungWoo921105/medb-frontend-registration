@@ -171,6 +171,8 @@ const PlainTextComponent = styled.span<Props>`
       ? "Spoqa Han Sans Neo"
       : props.designType === "additional"
       ? "Spoqa Han Sans Neo"
+      : props.designType === "help"
+      ? "Spoqa Han Sans Neo"
       : ""};
   font-style: ${(props) =>
     props.designType === "title"
@@ -179,6 +181,8 @@ const PlainTextComponent = styled.span<Props>`
       ? "normal"
       : props.designType === "additional"
       ? "Spoqa Han Sans Neo"
+      : props.designType === "help"
+      ? "normal"
       : ""};
   font-weight: ${(props) =>
     props.designType === "title"
@@ -186,6 +190,8 @@ const PlainTextComponent = styled.span<Props>`
       : props.designType === "content"
       ? "normal"
       : props.designType === "additional"
+      ? "normal"
+      : props.designType === "help"
       ? "normal"
       : ""};
   font-size: ${(props) =>
@@ -195,6 +201,8 @@ const PlainTextComponent = styled.span<Props>`
       ? "12px"
       : props.designType === "additional"
       ? "12px"
+      : props.designType === "help"
+      ? "10px"
       : ""};
   color: ${(props) =>
     props.designType === "title"
@@ -203,6 +211,8 @@ const PlainTextComponent = styled.span<Props>`
       ? "#000000"
       : props.designType === "additional"
       ? "#8D8D8D"
+      : props.designType === "help"
+      ? "#a8a8a8"
       : ""};
 
   cursor: ${(props) => (props.designType === "additional" ? (props.cursor ? props.cursor : "pointer") : "")};
@@ -411,7 +421,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                   justifyContent="space-between"
                   height={"35px"}
                 >
-                  <LineCoreFrame className="LineCoreFrame" minWidth={"65px"}>
+                  <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
                     <PlainTextFrame className="PlainTextFrame">
                       <PlainTextComponent className="PlainTextComponent" designType="content">
                         *희망 ID
@@ -423,7 +433,6 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                       <InputTextComponent
                         className="InputTextComponent"
                         width={"100%"}
-                        placeholder="6~20자의 영문 소문자 및 숫자만 사용 가능합니다."
                         value={PharmacyData.accountIDData ? PharmacyData.accountIDData : ""}
                         onChange={(event) => PharmacyData.setAccountIDData(event.target.value)}
                       ></InputTextComponent>
@@ -443,13 +452,13 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                 </LineComponent>
                 {/* TEMP */}
                 <LineComponent className="LineComponent" margin="-10px 0px 0px 0px" justifyContent="space-between">
-                  <LineCoreFrame className="LineCoreFrame" minWidth={"65px"}></LineCoreFrame>
+                  <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}></LineCoreFrame>
                   <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
                     <PlainTextFrame className="PlainTextFrame" padding={"0px 10px 0px 10px"} flexDirection="column">
-                      <PlainTextComponent className="PlainTextComponent" designType="additional" cursor="text">
+                      <PlainTextComponent className="PlainTextComponent" designType="help" cursor="text">
                         6~20자의 영문 소문자 및 숫자만 사용 가능합니다.
                       </PlainTextComponent>
-                      <PlainTextComponent className="PlainTextComponent" designType="additional" cursor="text">
+                      <PlainTextComponent className="PlainTextComponent" designType="help" cursor="text">
                         희망 ID에 대한 중복 확인을 수행해 주세요.
                       </PlainTextComponent>
                     </PlainTextFrame>
@@ -461,7 +470,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                   justifyContent="space-between"
                   height={"35px"}
                 >
-                  <LineCoreFrame className="LineCoreFrame" minWidth={"65px"}>
+                  <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}>
                     <PlainTextFrame className="PlainTextFrame">
                       <PlainTextComponent className="PlainTextComponent" designType="content">
                         *비밀번호
@@ -473,7 +482,6 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                       <InputTextComponent
                         className="InputTextComponent"
                         width={"100%"}
-                        placeholder="영문, 숫자, 그리고 특수문자를 모두 포함하여 8자리 이상으로 입력해 주세요."
                         value={PharmacyData.accountPasswordData ? PharmacyData.accountPasswordData : ""}
                         onChange={(event) => PharmacyData.setAccountPasswordData(event.target.value)}
                       ></InputTextComponent>
@@ -482,13 +490,13 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                 </LineComponent>
                 {/* TEMP */}
                 <LineComponent className="LineComponent" margin="-10px 0px 0px 0px" justifyContent="space-between">
-                  <LineCoreFrame className="LineCoreFrame" minWidth={"65px"}></LineCoreFrame>
+                  <LineCoreFrame className="LineCoreFrame" minWidth={"105px"}></LineCoreFrame>
                   <LineAdditionalFrame className="LineAdditionalFrame" width={"100%"}>
                     <PlainTextFrame className="PlainTextFrame" padding={"0px 10px 0px 10px"} flexDirection="column">
-                      <PlainTextComponent className="PlainTextComponent" designType="additional" cursor="text">
+                      <PlainTextComponent className="PlainTextComponent" designType="help" cursor="text">
                         영문, 숫자, 그리고 특수문자를 모두 포함하여
                       </PlainTextComponent>
-                      <PlainTextComponent className="PlainTextComponent" designType="additional" cursor="text">
+                      <PlainTextComponent className="PlainTextComponent" designType="help" cursor="text">
                         8자리 이상으로 입력해 주세요.
                       </PlainTextComponent>
                     </PlainTextFrame>
