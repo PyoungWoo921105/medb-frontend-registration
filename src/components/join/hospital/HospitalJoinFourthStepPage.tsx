@@ -137,8 +137,12 @@ const DelimiterComponent = styled.div<Props>`
   flex-direction: column;
   justify-content: center;
 
+  height: 1.5px;
+
   border: 1px solid #000000;
   margin: ${(props) => (props.margin ? props.margin : "")};
+
+  background-color: black;
 `;
 const FieldFrame = styled.div`
   display: flex;
