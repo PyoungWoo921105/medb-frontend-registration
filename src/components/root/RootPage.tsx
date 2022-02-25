@@ -65,7 +65,6 @@ const RootPage = observer(() => {
       const query = new URLSearchParams(location.search);
       console.log(query.get("doctorCode"));
       console.log(query.get("hospitalName"));
-      /* TODO */
     } /*  */ else if (location.pathname === "/hospital/consignment") {
       CommonData.setURLType("hospital");
       history.push({ pathname: "/hospital/consign/agree" });
