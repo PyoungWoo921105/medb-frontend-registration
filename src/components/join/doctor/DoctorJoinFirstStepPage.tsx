@@ -393,7 +393,7 @@ const DoctorJoinFirstStepPage = observer((props: any) => {
   const DoctorData = useStore().DoctorData;
 
   const onClickGoButton = () => {
-    history.push({ pathname: "/doctor/join/completion" });
+    history.push({ pathname: "/doctor/join/complete" });
   };
   const onClickBackButton = () => {
     history.push({ pathname: "/doctor/agree" });

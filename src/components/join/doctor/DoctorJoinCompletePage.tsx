@@ -245,7 +245,7 @@ const CompanyInformationComponent = styled.span`
   margin: 10px 0px 10px 0px;
 `;
 
-const DoctorCompletionPage = observer((props: any) => {
+const DoctorCompletePage = observer((props: any) => {
   const { match, location, history } = props;
   console.log(match);
   console.log(location);
@@ -340,4 +340,4 @@ const DoctorCompletionPage = observer((props: any) => {
     </Body>
   );
 });
-export default DoctorCompletionPage;
+export default DoctorCompletePage;

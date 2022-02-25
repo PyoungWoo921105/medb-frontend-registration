@@ -8,22 +8,23 @@ import HospitalAgreePage from "../agree/hospital/HospitalAgreePage";
 import PharmacyAgreePage from "../agree/pharmacy/PharmacyAgreePage";
 import DoctorAgreePage from "../agree/doctor/DoctorAgreePage";
 
-import HospitalAgreeConsignmentPage from "../agree/hospital/HospitalAgreeConsignmentPage";
-import PharmacyAgreeConsignmentPage from "../agree/pharmacy/PharmacyAgreeConsignmentPage";
+import HospitalConsignPage from "../consign/hospital/HospitalConsignPage";
+
+import PharmacyConsignPage from "../consign/pharmacy/PharmacyConsignPage";
 
 import HospitalJoinFirstStepPage from "../join/hospital/HospitalJoinFirstStepPage";
 import HospitalJoinSecondStepPage from "../join/hospital/HospitalJoinSecondStepPage";
 import HospitalJoinThirdStepPage from "../join/hospital/HospitalJoinThirdStepPage";
 import HospitalJoinFourthStepPage from "../join/hospital/HospitalJoinFourthStepPage";
-import HospitalJoinCompletionPage from "../join/hospital/HospitalJoinCompletionPage"
+import HospitalJoinCompletePage from "../join/hospital/HospitalJoinCompletePage";
 
 import PharmacyJoinFirstStepPage from "../join/pharmacy/PharmacyJoinFirstStepPage";
 import PharmacyJoinSecondStepPage from "../join/pharmacy/PharmacyJoinSecondStepPage";
 import PharmacyJoinThirdStepPage from "../join/pharmacy/PharmacyJoinThirdStepPage";
-import PharmacyJoinCompletionPage from "../join/pharmacy/PharmacyJoinCompletionPage"
+import PharmacyJoinCompletePage from "../join/pharmacy/PharmacyJoinCompletePage";
 
 import DoctorJoinFirstStepPage from "../join/doctor/DoctorJoinFirstStepPage";
-import DoctorJoinCompletionPage from "../join/doctor/DoctorJoinCompletionPage";
+import DoctorJoinCompletePage from "../join/doctor/DoctorJoinCompletePage";
 
 import HospitalJoinSearchBusinessAddressPage from "../join/hospital/HospitalJoinSearchBusinessAddressPage";
 import HospitalJoinSearchManagerAddressPage from "../join/hospital/HospitalJoinSearchManagerAddressPage";
@@ -95,9 +96,9 @@ const RootPage = observer(() => {
       <Route path="/pharmacy/agree" component={PharmacyAgreePage}></Route>
       <Route path="/doctor/agree" component={DoctorAgreePage}></Route>
       {/*  */}
-      <Route path="/hospital/consignment" component={HospitalAgreeConsignmentPage}></Route>
+      <Route path="/hospital/consignment" component={HospitalConsignPage}></Route>
       {/*  */}
-      <Route path="/pharmacy/consignment" component={PharmacyAgreeConsignmentPage}></Route>
+      <Route path="/pharmacy/consignment" component={PharmacyConsignPage}></Route>
       {/*  */}
       <Route path="/hospital/join/firstStep" component={HospitalJoinFirstStepPage}></Route>
       <Route path="/hospital/join/businessAddress" component={HospitalJoinSearchBusinessAddressPage}></Route>
@@ -106,7 +107,7 @@ const RootPage = observer(() => {
       <Route path="/hospital/join/thirdStep" component={HospitalJoinThirdStepPage}></Route>
       <Route path="/hospital/join/hospitalAddress" component={HospitalJoinSearchHospitalAddressPage}></Route>
       <Route path="/hospital/join/fourthStep" component={HospitalJoinFourthStepPage}></Route>
-      <Route path="/hospital/join/completion" component={HospitalJoinCompletionPage}></Route>
+      <Route path="/hospital/join/complete" component={HospitalJoinCompletePage}></Route>
       {/*  */}
       <Route path="/pharmacy/join/firstStep" component={PharmacyJoinFirstStepPage}></Route>
       <Route path="/pharmacy/join/businessAddress" component={PharmacyJoinSearchBusinessAddressPage}></Route>
@@ -114,10 +115,10 @@ const RootPage = observer(() => {
       <Route path="/pharmacy/join/managerAddress" component={PharmacyJoinSearchManagerAddressPage}></Route>
       <Route path="/pharmacy/join/thirdStep" component={PharmacyJoinThirdStepPage}></Route>
       <Route path="/pharmacy/join/pharmacyAddress" component={PharmacyJoinSearchPharmacyAddressPage}></Route>
-      <Route path="/pharmacy/join/completion" component={PharmacyJoinCompletionPage}></Route>
+      <Route path="/pharmacy/join/complete" component={PharmacyJoinCompletePage}></Route>
       {/*  */}
       <Route path="/doctor/join/firstStep" component={DoctorJoinFirstStepPage}></Route>
-      <Route path="/doctor/join/completion" component={DoctorJoinCompletionPage}></Route>
+      <Route path="/doctor/join/complete" component={DoctorJoinCompletePage}></Route>
       {/*  */}
     </Frame>
   );

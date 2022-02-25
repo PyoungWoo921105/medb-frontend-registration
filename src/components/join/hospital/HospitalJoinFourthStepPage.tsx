@@ -516,7 +516,7 @@ const HospitalJoinFourthStepPage = observer((props: any) => {
   const HospitalData = useStore().HospitalData;
 
   const onClickGoButton = () => {
-    history.push({ pathname: "/hospital/join/completion" });
+    history.push({ pathname: "/hospital/join/complete" });
   };
   const onClickBackButton = () => {
     history.push({ pathname: "/hospital/join/thirdStep" });

@@ -318,7 +318,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
   const PharmacyData = useStore().PharmacyData;
 
   const onClickGoButton = () => {
-    history.push({ pathname: "/pharmacy/join/completion" });
+    history.push({ pathname: "/pharmacy/join/complete" });
   };
   const onClickBackButton = () => {
     history.push({ pathname: "/pharmacy/join/secondStep" });
