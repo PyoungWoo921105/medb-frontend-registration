@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { observer } from "mobx-react";
 
 import LogoImageIcon from "../../../assets/icons/LogoImageIcon.png";
 import onClickCheckedToggleIcon from "../../../assets/icons/onClickCheckedToggleIcon.svg";
 import onClickNotCheckedToggleIcon from "../../../assets/icons/onClickNotCheckedToggleIcon.svg";
-import onClickNotCheckedCircleIcon from "../../../assets/icons/onClickNotCheckedCircleIcon.svg";
-import onClickCheckedCircleIcon from "../../../assets/icons/onClickCheckedCircleIcon.svg";
-import onClickNotCheckedIcon from "../../../assets/icons/onClickNotCheckedIcon.svg";
-import onClickCheckedIcon from "../../../assets/icons/onClickCheckedIcon.svg";
 
 import AcneIcon from "../../../assets/icons/AcneIcon.svg";
 import AtopyIcon from "../../../assets/icons/AtopyIcon.svg";
@@ -331,125 +327,6 @@ const OptionTextComponent = styled.option<Props>`
   width: ${(props) => (props.width ? props.width : "")};
   padding: 0px 10px 0px 10px;
 `;
-const AgreementFrame = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-const AgreementTitleFrame = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-const AgreementDelimiterFrame = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-const AgreementDelimiterComponent = styled.div<Props>`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  border: 1px solid #000000;
-  margin: ${(props) => (props.margin ? props.margin : "")};
-`;
-const AgreementFieldFrame = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-const AgreementLineComponent = styled.div<Props>`
-  display: flex;
-  flex-direction: row;
-  justify-content: ${(props) => (props.justifyContent ? props.justifyContent : "")};
-
-  margin: ${(props) => (props.margin ? props.margin : "")};
-`;
-const AgreementLineCoreFrame = styled.div<Props>`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-`;
-const AgreementLineAdditionalFrame = styled.div<Props>`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-`;
-const AgreementCheckboxInputFrame = styled.div<Props>`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-
-  width: ${(props) => (props.width ? props.width : "")};
-  min-width: ${(props) => (props.minWidth ? props.minWidth : "")};
-  margin: ${(props) => (props.margin ? props.margin : "")};
-
-  cursor: pointer;
-`;
-const AgreementCheckboxInputComponent = styled.img`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-
-  width: 100%;
-  height: 100%;
-`;
-const AgreementCheckboxTextFrame = styled.div<Props>`
-  display: flex;
-  flex-direction: ${(props) => (props.flexDirection ? props.flexDirection : "")};
-  justify-content: center;
-
-  margin: ${(props) => (props.margin ? props.margin : "")};
-`;
-const AgreementCheckboxTextComponent = styled.span<Props>`
-  display: flex;
-  flex-direction: row;
-  justify-content: ${(props) => (props.justifyContent ? props.justifyContent : "")};
-
-  font-family: ${(props) =>
-    props.designType === "title"
-      ? "Spoqa Han Sans Neo"
-      : props.designType === "content"
-      ? "Spoqa Han Sans Neo"
-      : props.designType === "additional"
-      ? "Spoqa Han Sans Neo"
-      : ""};
-  font-style: ${(props) =>
-    props.designType === "title"
-      ? "normal"
-      : props.designType === "content"
-      ? "normal"
-      : props.designType === "additional"
-      ? "Spoqa Han Sans Neo"
-      : ""};
-  font-weight: ${(props) =>
-    props.designType === "title"
-      ? "500"
-      : props.designType === "content"
-      ? "normal"
-      : props.designType === "additional"
-      ? "normal"
-      : ""};
-  font-size: ${(props) =>
-    props.designType === "title"
-      ? "16px"
-      : props.designType === "content"
-      ? "12px"
-      : props.designType === "additional"
-      ? "12px"
-      : ""};
-  color: ${(props) =>
-    props.designType === "title"
-      ? "#000000"
-      : props.designType === "content"
-      ? "#000000"
-      : props.designType === "additional"
-      ? "#8D8D8D"
-      : ""};
-
-  cursor: ${(props) => (props.designType === "additional" ? "pointer" : "")};
-`;
 
 const ButtonFrame = styled.div`
   display: flex;
@@ -551,9 +428,6 @@ const DoctorJoinFirstStepPage = observer((props: any) => {
 
   const onClickSpecialistCheckButton = () => {
     DoctorData.setCompanionDoctorSpecialistFlagData(!DoctorData.companionDoctorSpecialistFlagData);
-  };
-  const onClickCompanionCheckButton = () => {
-    DoctorData.setCompanionDoctorFlagData(!DoctorData.companionDoctorFlagData);
   };
 
   const DoctorSpecialistDepartmentsListData = [
