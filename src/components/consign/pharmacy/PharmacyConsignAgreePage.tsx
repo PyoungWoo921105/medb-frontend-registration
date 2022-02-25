@@ -286,14 +286,13 @@ const CompanyInformationComponent = styled.span`
   margin: 10px 0px 10px 0px;
 `;
 
-const PharmacyConsignPage = observer((props: any) => {
+const PharmacyConsignAgreePage = observer((props: any) => {
   const { match, location, history } = props;
   console.log(match);
   console.log(location);
   console.log(history);
 
   const CommonData = useStore().CommonData;
-  const PharmacyData = useStore().PharmacyData;
 
   useEffect(() => {
     CommonData.setSelectType("pharmacy");
@@ -317,8 +316,7 @@ const PharmacyConsignPage = observer((props: any) => {
   };
 
   const onClickGoButton = () => {
-    console.log(PharmacyData.pharmacyCodeData);
-    /* TODO */
+    history.push({ pathname: "/pharmacy/consign/complete" });
   };
 
   return (
@@ -459,4 +457,4 @@ const PharmacyConsignPage = observer((props: any) => {
     </Body>
   );
 });
-export default PharmacyConsignPage;
+export default PharmacyConsignAgreePage;

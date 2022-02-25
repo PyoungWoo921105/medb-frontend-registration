@@ -245,7 +245,7 @@ const CompanyInformationComponent = styled.span`
   margin: 10px 0px 10px 0px;
 `;
 
-const HospitalCompletePage = observer((props: any) => {
+const HospitalJoinCompletePage = observer((props: any) => {
   const { match, location, history } = props;
   console.log(match);
   console.log(location);
@@ -340,4 +340,4 @@ const HospitalCompletePage = observer((props: any) => {
     </Body>
   );
 });
-export default HospitalCompletePage;
+export default HospitalJoinCompletePage;

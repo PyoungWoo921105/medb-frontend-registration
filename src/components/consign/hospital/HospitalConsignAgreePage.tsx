@@ -1,8 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { observer } from "mobx-react";
 
 import LogoImageIcon from "../../../assets/icons/LogoImageIcon.png";
+import onClickNotCheckedCircleIcon from "../../../assets/icons/onClickNotCheckedCircleIcon.svg";
+import onClickCheckedCircleIcon from "../../../assets/icons/onClickCheckedCircleIcon.svg";
+import onClickNotCheckedIcon from "../../../assets/icons/onClickNotCheckedIcon.svg";
+import onClickCheckedIcon from "../../../assets/icons/onClickCheckedIcon.svg";
 
 import useStore from "../../../data/useStore";
 
@@ -116,6 +120,24 @@ const AgreementTitleFrame = styled.div`
   flex-direction: column;
   justify-content: center;
 `;
+const AgreementDelimiterFrame = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+const AgreementDelimiterComponent = styled.div<Props>`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border: 1px solid #000000;
+  margin: ${(props) => (props.margin ? props.margin : "")};
+`;
+const AgreementFieldFrame = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
 const AgreementLineComponent = styled.div<Props>`
   display: flex;
   flex-direction: row;
@@ -132,6 +154,25 @@ const AgreementLineAdditionalFrame = styled.div<Props>`
   display: flex;
   flex-direction: row;
   justify-content: center;
+`;
+const AgreementCheckboxInputFrame = styled.div<Props>`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  width: ${(props) => (props.width ? props.width : "")};
+  min-width: ${(props) => (props.minWidth ? props.minWidth : "")};
+  margin: ${(props) => (props.margin ? props.margin : "")};
+
+  cursor: pointer;
+`;
+const AgreementCheckboxInputComponent = styled.img`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
 `;
 const AgreementCheckboxTextFrame = styled.div<Props>`
   display: flex;
@@ -245,7 +286,7 @@ const CompanyInformationComponent = styled.span`
   margin: 10px 0px 10px 0px;
 `;
 
-const PharmacyJoinCompletePage = observer((props: any) => {
+const HospitalConsignAgreePage = observer((props: any) => {
   const { match, location, history } = props;
   console.log(match);
   console.log(location);
@@ -254,12 +295,28 @@ const PharmacyJoinCompletePage = observer((props: any) => {
   const CommonData = useStore().CommonData;
 
   useEffect(() => {
-    CommonData.setSelectType("pharmacy");
+    CommonData.setSelectType("hospital");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const [agreeCheck, setAgreeCheck] = useState({ first: false });
+
+  const onClickCheckButton = (props: any) => {
+    const { key } = props;
+    console.log(key);
+    if (key === 0) {
+      if (agreeCheck.first) {
+        setAgreeCheck({ first: false });
+      } else {
+        setAgreeCheck({ first: true });
+      }
+    } else if (key === 1) {
+      setAgreeCheck({ ...agreeCheck, first: !agreeCheck.first });
+    }
+  };
+
   const onClickGoButton = () => {
-    history.push({ pathname: "/pharmacy/agree" });
+    history.push({ pathname: "/hospital/consign/complete" });
   };
 
   return (
@@ -276,11 +333,11 @@ const PharmacyJoinCompletePage = observer((props: any) => {
           <SelectFrame className="SelectFrame">
             <SelectButtonComponent
               className="SelectButtonComponent"
-              backgroundColor={CommonData.selectType === "pharmacy" ? "#00B264" : "transparent"}
-              color={CommonData.selectType === "pharmacy" ? "#FFFFFF" : "#00B264"}
+              backgroundColor={CommonData.selectType === "hospital" ? "#00B264" : "transparent"}
+              color={CommonData.selectType === "hospital" ? "#FFFFFF" : "#00B264"}
               margin="15px 15px 15px 15px"
             >
-              약국
+              병원
             </SelectButtonComponent>
           </SelectFrame>
           {CommonData.selectType ? (
@@ -293,19 +350,79 @@ const PharmacyJoinCompletePage = observer((props: any) => {
                     justifyContent="space-between"
                   >
                     <AgreementLineCoreFrame className="AgreementLineCoreFrame">
+                      <AgreementCheckboxInputFrame
+                        className="AgreementCheckboxInputFrame"
+                        width={"20px"}
+                        minWidth={"20px"}
+                        margin="0px 10px 0px 10px"
+                        onClick={() => onClickCheckButton({ key: 0 })}
+                      >
+                        <AgreementCheckboxInputComponent
+                          className="AgreementCheckboxInputComponent"
+                          src={agreeCheck.first ? onClickCheckedCircleIcon : onClickNotCheckedCircleIcon}
+                        ></AgreementCheckboxInputComponent>
+                      </AgreementCheckboxInputFrame>
                       <AgreementCheckboxTextFrame className="AgreementCheckboxTextFrame" flexDirection="row">
                         <AgreementCheckboxTextComponent
                           className="AgreementCheckboxTextComponent"
                           justifyContent="center"
                           designType="title"
                         >
-                          이용 신청이 완료되었습니다.
+                          약관 전체 동의
                         </AgreementCheckboxTextComponent>
                       </AgreementCheckboxTextFrame>
                     </AgreementLineCoreFrame>
                     <AgreementLineAdditionalFrame className="AgreementLineAdditionalFrame"></AgreementLineAdditionalFrame>
                   </AgreementLineComponent>
                 </AgreementTitleFrame>
+                <AgreementDelimiterFrame className="AgreementDelimiterFrame">
+                  <AgreementDelimiterComponent
+                    className="AgreementDelimiterComponent"
+                    margin="5px 0px 10px 0px"
+                  ></AgreementDelimiterComponent>
+                </AgreementDelimiterFrame>
+                <AgreementFieldFrame className="AgreementFieldFrame">
+                  <AgreementLineComponent
+                    className="AgreementLineComponent"
+                    margin="10px 0px 10px 0px"
+                    justifyContent="space-between"
+                  >
+                    <AgreementLineCoreFrame className="AgreementLineCoreFrame">
+                      <AgreementCheckboxInputFrame
+                        className="AgreementCheckboxInputFrame"
+                        width={"15px"}
+                        minWidth={"15px"}
+                        margin="0px 10px 0px 10px"
+                        onClick={() => onClickCheckButton({ key: 1 })}
+                      >
+                        <AgreementCheckboxInputComponent
+                          className="AgreementCheckboxInputComponent"
+                          src={agreeCheck.first ? onClickCheckedIcon : onClickNotCheckedIcon}
+                        ></AgreementCheckboxInputComponent>
+                      </AgreementCheckboxInputFrame>
+                      <AgreementCheckboxTextFrame className="AgreementCheckboxTextFrame" flexDirection="row">
+                        <AgreementCheckboxTextComponent
+                          className="AgreementCheckboxTextComponent"
+                          justifyContent="center"
+                          designType="content"
+                        >
+                          (필수) 메듭 의료기관 개인정보처리 위탁 계약서
+                        </AgreementCheckboxTextComponent>
+                      </AgreementCheckboxTextFrame>
+                    </AgreementLineCoreFrame>
+                    <AgreementLineAdditionalFrame className="AgreementLineAdditionalFrame">
+                      <AgreementCheckboxTextFrame className="AgreementCheckboxTextFrame" flexDirection="row">
+                        <AgreementCheckboxTextComponent
+                          className="AgreementCheckboxTextComponent"
+                          justifyContent="center"
+                          designType="additional"
+                        >
+                          상세보기
+                        </AgreementCheckboxTextComponent>
+                      </AgreementCheckboxTextFrame>
+                    </AgreementLineAdditionalFrame>
+                  </AgreementLineComponent>
+                </AgreementFieldFrame>
               </AgreementFrame>
             </ContentFrame>
           ) : null}
@@ -315,12 +432,12 @@ const PharmacyJoinCompletePage = observer((props: any) => {
                 className="ButtonComponent"
                 width={"340px"}
                 border={"1px solid #0d985b"}
-                backgroundColor={"#00B264"}
-                color={"#FFFFFF"}
-                cursor={"pointer"}
-                onClick={onClickGoButton}
+                backgroundColor={agreeCheck.first ? "#00B264" : "transparent"}
+                color={agreeCheck.first ? "#FFFFFF" : "#00B264"}
+                cursor={agreeCheck.first ? "pointer" : ""}
+                onClick={agreeCheck.first ? onClickGoButton : () => {}}
               >
-                돌아가기
+                본인인증으로 동의하기
               </ButtonComponent>
             </ButtonFrame>
           ) : null}
@@ -340,4 +457,4 @@ const PharmacyJoinCompletePage = observer((props: any) => {
     </Body>
   );
 });
-export default PharmacyJoinCompletePage;
+export default HospitalConsignAgreePage;

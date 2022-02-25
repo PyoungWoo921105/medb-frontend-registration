@@ -8,9 +8,11 @@ import HospitalAgreePage from "../agree/hospital/HospitalAgreePage";
 import PharmacyAgreePage from "../agree/pharmacy/PharmacyAgreePage";
 import DoctorAgreePage from "../agree/doctor/DoctorAgreePage";
 
-import HospitalConsignPage from "../consign/hospital/HospitalConsignPage";
+import HospitalConsignAgreePage from "../consign/hospital/HospitalConsignAgreePage";
+import HospitalConsignCompletePage from "../consign/hospital/HospitalConsignCompletePage";
 
-import PharmacyConsignPage from "../consign/pharmacy/PharmacyConsignPage";
+import PharmacyConsignAgreePage from "../consign/pharmacy/PharmacyConsignAgreePage";
+import PharmacyConsignCompletePage from "../consign/pharmacy/PharmacyConsignCompletePage";
 
 import HospitalJoinFirstStepPage from "../join/hospital/HospitalJoinFirstStepPage";
 import HospitalJoinSecondStepPage from "../join/hospital/HospitalJoinSecondStepPage";
@@ -66,14 +68,14 @@ const RootPage = observer(() => {
       /* TODO */
     } /*  */ else if (location.pathname === "/hospital/consignment") {
       CommonData.setURLType("hospital");
-      history.push({ pathname: "/hospital/consignment" });
+      history.push({ pathname: "/hospital/consign/agree" });
       console.log(location.search);
       const query = new URLSearchParams(location.search);
       console.log(query.get("hospitalCode"));
       HospitalData.setHospitalCodeData(query.get("hospitalCode"));
     } else if (location.pathname === "/pharmacy/consignment") {
       CommonData.setURLType("pharmacy");
-      history.push({ pathname: "/pharmacy/consignment" });
+      history.push({ pathname: "/pharmacy/consign/agree" });
       console.log(location.search);
       const query = new URLSearchParams(location.search);
       console.log(query.get("pharmacyCode"));
@@ -96,9 +98,11 @@ const RootPage = observer(() => {
       <Route path="/pharmacy/agree" component={PharmacyAgreePage}></Route>
       <Route path="/doctor/agree" component={DoctorAgreePage}></Route>
       {/*  */}
-      <Route path="/hospital/consignment" component={HospitalConsignPage}></Route>
+      <Route path="/hospital/consign/agree" component={HospitalConsignAgreePage}></Route>
+      <Route path="/hospital/consign/complete" component={HospitalConsignCompletePage}></Route>
       {/*  */}
-      <Route path="/pharmacy/consignment" component={PharmacyConsignPage}></Route>
+      <Route path="/pharmacy/consign/agree" component={PharmacyConsignAgreePage}></Route>
+      <Route path="/pharmacy/consign/complete" component={PharmacyConsignCompletePage}></Route>
       {/*  */}
       <Route path="/hospital/join/firstStep" component={HospitalJoinFirstStepPage}></Route>
       <Route path="/hospital/join/businessAddress" component={HospitalJoinSearchBusinessAddressPage}></Route>

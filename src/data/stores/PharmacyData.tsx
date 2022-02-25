@@ -1,7 +1,7 @@
 import { observable } from "mobx";
 
 export interface PharmacyDataType {
-  /* Agree Consignment Page */
+  /* Consign Page */
   /* Identifier */
   pharmacyCodeData: undefined | null | string;
   setPharmacyCodeData: (e: undefined | null | string) => void;
@@ -133,7 +133,7 @@ export interface PharmacyDataType {
 }
 
 const PharmacyData = observable<PharmacyDataType>({
-  /* Agree Consignment Page */
+  /* Consign Page */
   /* Identifier */
   pharmacyCodeData: null,
   setPharmacyCodeData(e: undefined | null | string) {
