@@ -354,12 +354,47 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
 
   /*  */
 
+  const [accountIDValidate, setAccountIDValidate] = useState(false);
+  const [accountPasswordValidate, setAccountPasswordValidate] = useState(false);
+
+  useEffect(() => {
+    let accountIDDataValidateFlagData = new RegExp("^(?=.*[a-z])(?=.*[0-9])(?=.{6,})");
+    if (
+      HospitalData.accountIDData &&
+      HospitalData.accountIDData.match(accountIDDataValidateFlagData) &&
+      HospitalData.accountIDData.length >= 6 &&
+      HospitalData.accountIDData.length <= 20
+    ) {
+      setAccountIDValidate(true);
+    } else {
+      setAccountIDValidate(false);
+    }
+  }, [HospitalData.accountIDData]);
+
+  useEffect(() => {
+    let accountPasswordDataValidateFlagData = new RegExp(
+      "^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[~!@#$%^&*()_+|<>?:{};])(?=.{8,})"
+    );
+    if (
+      HospitalData.accountPasswordData &&
+      HospitalData.accountPasswordData.match(accountPasswordDataValidateFlagData) &&
+      HospitalData.accountPasswordData.length >= 6 &&
+      HospitalData.accountPasswordData.length <= 20
+    ) {
+      setAccountPasswordValidate(true);
+    } else {
+      setAccountPasswordValidate(false);
+    }
+  }, [HospitalData.accountPasswordData]);
+
   useEffect(() => {
     if (
       HospitalData.accountIDData &&
+      accountIDValidate &&
       HospitalData.accountIDDataValidateFlagData &&
       HospitalData.accountPasswordData &&
       HospitalData.confirmedAccountPasswordData &&
+      accountPasswordValidate &&
       HospitalData.accountPasswordData === HospitalData.confirmedAccountPasswordData &&
       HospitalData.hospitalNameData &&
       HospitalData.hospitalPhoneNumberData &&
@@ -371,9 +406,11 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
     }
   }, [
     HospitalData.accountIDData,
+    accountIDValidate,
     HospitalData.accountIDDataValidateFlagData,
     HospitalData.accountPasswordData,
     HospitalData.confirmedAccountPasswordData,
+    accountPasswordValidate,
     HospitalData.hospitalNameData,
     HospitalData.hospitalPhoneNumberData,
     HospitalData.hospitalAddressData,
@@ -443,7 +480,11 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
                         width={"100%"}
                         value={HospitalData.accountIDData ? HospitalData.accountIDData : ""}
                         onChange={(event) => HospitalData.setAccountIDData(event.target.value)}
-                        border={validateFlag && !HospitalData.accountIDData ? "1.5px solid #FF3B30" : ""}
+                        border={
+                          (validateFlag && !HospitalData.accountIDData) || !accountIDValidate
+                            ? "1.5px solid #FF3B30"
+                            : ""
+                        }
                       ></InputTextComponent>
                     </InputTextFrame>
                     <InputButtonFrame className="InputButtonFrame" minWidth="70px">
@@ -495,7 +536,11 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
                         width={"100%"}
                         value={HospitalData.accountPasswordData ? HospitalData.accountPasswordData : ""}
                         onChange={(event) => HospitalData.setAccountPasswordData(event.target.value)}
-                        border={validateFlag && !HospitalData.accountPasswordData ? "1.5px solid #FF3B30" : ""}
+                        border={
+                          (validateFlag && !HospitalData.accountPasswordData) || !accountPasswordValidate
+                            ? "1.5px solid #FF3B30"
+                            : ""
+                        }
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -540,7 +585,8 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
                         border={
                           (validateFlag && !HospitalData.confirmedAccountPasswordData) ||
                           (validateFlag &&
-                            HospitalData.accountPasswordData !== HospitalData.confirmedAccountPasswordData)
+                            HospitalData.accountPasswordData !== HospitalData.confirmedAccountPasswordData) ||
+                          !accountPasswordValidate
                             ? "1.5px solid #FF3B30"
                             : ""
                         }

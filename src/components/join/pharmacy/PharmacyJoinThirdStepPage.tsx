@@ -354,12 +354,47 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
 
   /*  */
 
+  const [accountIDValidate, setAccountIDValidate] = useState(false);
+  const [accountPasswordValidate, setAccountPasswordValidate] = useState(false);
+
+  useEffect(() => {
+    let accountIDDataValidateFlagData = new RegExp("^(?=.*[a-z])(?=.*[0-9])(?=.{6,})");
+    if (
+      PharmacyData.accountIDData &&
+      PharmacyData.accountIDData.match(accountIDDataValidateFlagData) &&
+      PharmacyData.accountIDData.length >= 6 &&
+      PharmacyData.accountIDData.length <= 20
+    ) {
+      setAccountIDValidate(true);
+    } else {
+      setAccountIDValidate(false);
+    }
+  }, [PharmacyData.accountIDData]);
+
+  useEffect(() => {
+    let accountPasswordDataValidateFlagData = new RegExp(
+      "^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[~!@#$%^&*()_+|<>?:{};])(?=.{8,})"
+    );
+    if (
+      PharmacyData.accountPasswordData &&
+      PharmacyData.accountPasswordData.match(accountPasswordDataValidateFlagData) &&
+      PharmacyData.accountPasswordData.length >= 6 &&
+      PharmacyData.accountPasswordData.length <= 20
+    ) {
+      setAccountPasswordValidate(true);
+    } else {
+      setAccountPasswordValidate(false);
+    }
+  }, [PharmacyData.accountPasswordData]);
+
   useEffect(() => {
     if (
       PharmacyData.accountIDData &&
+      accountIDValidate &&
       PharmacyData.accountIDDataValidateFlagData &&
       PharmacyData.accountPasswordData &&
       PharmacyData.confirmedAccountPasswordData &&
+      accountPasswordValidate &&
       PharmacyData.accountPasswordData === PharmacyData.confirmedAccountPasswordData &&
       PharmacyData.pharmacyNameData &&
       PharmacyData.pharmacyPhoneNumberData &&
@@ -371,9 +406,11 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
     }
   }, [
     PharmacyData.accountIDData,
+    accountIDValidate,
     PharmacyData.accountIDDataValidateFlagData,
     PharmacyData.accountPasswordData,
     PharmacyData.confirmedAccountPasswordData,
+    accountPasswordValidate,
     PharmacyData.pharmacyNameData,
     PharmacyData.pharmacyPhoneNumberData,
     PharmacyData.pharmacyAddressData,
@@ -443,7 +480,11 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                         width={"100%"}
                         value={PharmacyData.accountIDData ? PharmacyData.accountIDData : ""}
                         onChange={(event) => PharmacyData.setAccountIDData(event.target.value)}
-                        border={validateFlag && !PharmacyData.accountIDData ? "1.5px solid #FF3B30" : ""}
+                        border={
+                          (validateFlag && !PharmacyData.accountIDData) || !accountIDValidate
+                            ? "1.5px solid #FF3B30"
+                            : ""
+                        }
                       ></InputTextComponent>
                     </InputTextFrame>
                     <InputButtonFrame className="InputButtonFrame" minWidth="70px">
@@ -495,7 +536,11 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                         width={"100%"}
                         value={PharmacyData.accountPasswordData ? PharmacyData.accountPasswordData : ""}
                         onChange={(event) => PharmacyData.setAccountPasswordData(event.target.value)}
-                        border={validateFlag && !PharmacyData.accountPasswordData ? "1.5px solid #FF3B30" : ""}
+                        border={
+                          (validateFlag && !PharmacyData.accountPasswordData) || !accountPasswordValidate
+                            ? "1.5px solid #FF3B30"
+                            : ""
+                        }
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -540,7 +585,8 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                         border={
                           (validateFlag && !PharmacyData.confirmedAccountPasswordData) ||
                           (validateFlag &&
-                            PharmacyData.accountPasswordData !== PharmacyData.confirmedAccountPasswordData)
+                            PharmacyData.accountPasswordData !== PharmacyData.confirmedAccountPasswordData) ||
+                          !accountPasswordValidate
                             ? "1.5px solid #FF3B30"
                             : ""
                         }
