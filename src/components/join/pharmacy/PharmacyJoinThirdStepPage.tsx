@@ -377,7 +377,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
   const [accountPasswordValidate, setAccountPasswordValidate] = useState(false);
 
   useEffect(() => {
-    const accountIDDataValidateFlagData = /^(?=.*[a-z])(?=.*[0-9])(?=.{6,20})/;
+    const accountIDDataValidateFlagData = /^(?=.+[a-z])(?=.*[0-9])(?=.{6,20})/;
     if (
       PharmacyData.accountIDData &&
       PharmacyData.accountIDData.match(accountIDDataValidateFlagData) &&
