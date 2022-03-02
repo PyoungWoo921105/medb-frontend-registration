@@ -11,6 +11,7 @@ import onClickCheckedIcon from "../../../assets/icons/onClickCheckedIcon.svg";
 import useStore from "../../../data/useStore";
 
 import { PostAuthCertifications } from "../../../services/common/PostAuthCertifications";
+import { PostPublicSignupPharmacyConsignment } from "../../../services/pharmacy/PostPublicSignupPharmacyConsignment";
 
 interface Props {
   display?: string;
@@ -295,6 +296,7 @@ const PharmacyConsignAgreePage = observer((props: any) => {
   console.log(history);
 
   const CommonData = useStore().CommonData;
+  const PharmacyData = useStore().PharmacyData;
 
   useEffect(() => {
     CommonData.setSelectType("pharmacy");
@@ -346,8 +348,17 @@ const PharmacyConsignAgreePage = observer((props: any) => {
       const response = await PostAuthCertifications(PostAuthCertificationsData);
       if (response.status === 201) {
         alert("본인인증 성공");
-        /* TODO */
-        history.push({ pathname: "/pharmacy/consign/complete" });
+        const PostPublicSignupPharmacyConsignmentData = {
+          code: PharmacyData.pharmacyCodeData,
+          ci: CommonData.certificationData?.ci,
+        };
+        const response = await PostPublicSignupPharmacyConsignment(PostPublicSignupPharmacyConsignmentData);
+        if (response.status === 201) {
+          history.push({ pathname: "/pharmacy/consign/complete" });
+        } else {
+          window.alert("병원 회원가입 오류");
+        }
+        return response;
       } else {
         window.alert("본인인증 실패: 본인인증 확인 오류");
       }
