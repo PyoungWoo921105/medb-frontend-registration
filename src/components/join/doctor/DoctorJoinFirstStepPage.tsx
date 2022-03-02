@@ -409,6 +409,11 @@ const DoctorJoinFirstStepPage = observer((props: any) => {
 
   const DoctorData = useStore().DoctorData;
 
+  useEffect(() => {
+    DoctorData.setCompanionBusinessNameData(DoctorData.hospitalNameData ? DoctorData.hospitalNameData : "");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [DoctorData.hospitalNameData]);
+
   const onClickGoButton = () => {
     history.push({ pathname: "/doctor/join/complete" });
   };
