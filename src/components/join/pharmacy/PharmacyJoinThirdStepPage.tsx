@@ -501,7 +501,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                         onChange={(event) => PharmacyData.setAccountIDData(event.target.value)}
                         border={
                           (validateFlag && !PharmacyData.accountIDData) || (validateFlag && !accountIDValidate)
-                            ? "1.5px solid #FF3B30"
+                            ? "2.5px solid #FF3B30"
                             : ""
                         }
                       ></InputTextComponent>
@@ -516,7 +516,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                         border={
                           (validateFlag && !PharmacyData.accountIDDataValidateFlagData) ||
                           (validateFlag && !accountIDValidate)
-                            ? "1.5px solid #FF3B30"
+                            ? "2.5px solid #FF3B30"
                             : ""
                         }
                         color={!accountIDValidate ? "white" : "black"}
@@ -563,7 +563,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                         border={
                           (validateFlag && !PharmacyData.accountPasswordData) ||
                           (validateFlag && !accountPasswordValidate)
-                            ? "1.5px solid #FF3B30"
+                            ? "2.5px solid #FF3B30"
                             : ""
                         }
                       ></InputTextComponent>
@@ -612,7 +612,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                           (validateFlag &&
                             PharmacyData.accountPasswordData !== PharmacyData.confirmedAccountPasswordData) ||
                           (validateFlag && !accountPasswordValidate)
-                            ? "1.5px solid #FF3B30"
+                            ? "2.5px solid #FF3B30"
                             : ""
                         }
                       ></InputTextComponent>
@@ -640,7 +640,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                         placeholder="약국 이름을 입력해 주세요."
                         value={PharmacyData.pharmacyNameData ? PharmacyData.pharmacyNameData : ""}
                         onChange={(event) => PharmacyData.setPharmacyNameData(event.target.value)}
-                        border={validateFlag && !PharmacyData.pharmacyNameData ? "1.5px solid #FF3B30" : ""}
+                        border={validateFlag && !PharmacyData.pharmacyNameData ? "2.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -666,7 +666,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                         placeholder="-없이 숫자만 입력해 주세요."
                         value={PharmacyData.pharmacyPhoneNumberData ? PharmacyData.pharmacyPhoneNumberData : ""}
                         onChange={(event) => PharmacyData.setPharmacyPhoneNumberData(event.target.value)}
-                        border={validateFlag && !PharmacyData.pharmacyPhoneNumberData ? "1.5px solid #FF3B30" : ""}
+                        border={validateFlag && !PharmacyData.pharmacyPhoneNumberData ? "2.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -716,7 +716,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                         width={"100%"}
                         value={PharmacyData.pharmacyAddressData ? PharmacyData.pharmacyAddressData : ""}
                         disabled={true}
-                        border={validateFlag && !PharmacyData.pharmacyAddressData ? "1.5px solid #FF3B30" : ""}
+                        border={validateFlag && !PharmacyData.pharmacyAddressData ? "2.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                     <InputButtonFrame className="InputButtonFrame" minWidth="70px">

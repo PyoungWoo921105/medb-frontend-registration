@@ -598,7 +598,7 @@ const HospitalJoinSecondStepPage = observer((props: any) => {
                           onChange={(event) => HospitalData.setManagerNameData(event.target.value)}
                           border={
                             validateFlag && HospitalData.managerExistData && !HospitalData.managerNameData
-                              ? "1.5px solid #FF3B30"
+                              ? "2.5px solid #FF3B30"
                               : ""
                           }
                         ></InputTextComponent>
@@ -630,7 +630,7 @@ const HospitalJoinSecondStepPage = observer((props: any) => {
                           onChange={(event) => HospitalData.setManagerEmailData(event.target.value)}
                           border={
                             validateFlag && HospitalData.managerExistData && !HospitalData.managerEmailData
-                              ? "1.5px solid #FF3B30"
+                              ? "2.5px solid #FF3B30"
                               : ""
                           }
                         ></InputTextComponent>
@@ -662,7 +662,7 @@ const HospitalJoinSecondStepPage = observer((props: any) => {
                           onChange={(event) => HospitalData.setManagerPhoneNumberData(event.target.value)}
                           border={
                             validateFlag && HospitalData.managerExistData && !HospitalData.managerPhoneNumberData
-                              ? "1.5px solid #FF3B30"
+                              ? "2.5px solid #FF3B30"
                               : ""
                           }
                         ></InputTextComponent>
@@ -693,7 +693,7 @@ const HospitalJoinSecondStepPage = observer((props: any) => {
                           disabled={true}
                           border={
                             validateFlag && HospitalData.managerExistData && !HospitalData.managerAddressData
-                              ? "1.5px solid #FF3B30"
+                              ? "2.5px solid #FF3B30"
                               : ""
                           }
                         ></InputTextComponent>
@@ -765,7 +765,7 @@ const HospitalJoinSecondStepPage = observer((props: any) => {
                         onChange={(event) => HospitalData.setBankNameData(event.target.value)}
                         border={
                           validateFlag && HospitalData.bankNameData === "직접입력" && !HospitalData.customBankNameData
-                            ? "1.5px solid #FF3B30"
+                            ? "2.5px solid #FF3B30"
                             : ""
                         }
                       >
@@ -805,7 +805,7 @@ const HospitalJoinSecondStepPage = observer((props: any) => {
                           width={"100%"}
                           value={HospitalData.customBankNameData ? HospitalData.customBankNameData : ""}
                           onChange={(event) => HospitalData.setCustomBankNameData(event.target.value)}
-                          border={validateFlag && !HospitalData.customBankNameData ? "1.5px solid #FF3B30" : ""}
+                          border={validateFlag && !HospitalData.customBankNameData ? "2.5px solid #FF3B30" : ""}
                         ></InputTextComponent>
                       </InputTextFrame>
                     </LineAdditionalFrame>
@@ -832,7 +832,7 @@ const HospitalJoinSecondStepPage = observer((props: any) => {
                         placeholder="-없이 숫자만 입력해 주세요."
                         value={HospitalData.bankAccountNumberData ? HospitalData.bankAccountNumberData : ""}
                         onChange={(event) => HospitalData.setBankAccountNumberData(event.target.value)}
-                        border={validateFlag && !HospitalData.bankAccountNumberData ? "1.5px solid #FF3B30" : ""}
+                        border={validateFlag && !HospitalData.bankAccountNumberData ? "2.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -858,7 +858,7 @@ const HospitalJoinSecondStepPage = observer((props: any) => {
                         placeholder="이름을 입력해 주세요."
                         value={HospitalData.bankAccountOwnerNameData ? HospitalData.bankAccountOwnerNameData : ""}
                         onChange={(event) => HospitalData.setBankAccountOwnerNameData(event.target.value)}
-                        border={validateFlag && !HospitalData.bankAccountOwnerNameData ? "1.5px solid #FF3B30" : ""}
+                        border={validateFlag && !HospitalData.bankAccountOwnerNameData ? "2.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -887,7 +887,7 @@ const HospitalJoinSecondStepPage = observer((props: any) => {
                         placeholder="이메일을 입력해 주세요."
                         value={HospitalData.settlementEmailData ? HospitalData.settlementEmailData : ""}
                         onChange={(event) => HospitalData.setSettlementEmailData(event.target.value)}
-                        border={validateFlag && !HospitalData.settlementEmailData ? "1.5px solid #FF3B30" : ""}
+                        border={validateFlag && !HospitalData.settlementEmailData ? "2.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>

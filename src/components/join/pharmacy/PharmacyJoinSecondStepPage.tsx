@@ -600,7 +600,7 @@ const PharmacyJoinSecondStepPage = observer((props: any) => {
                           onChange={(event) => PharmacyData.setManagerNameData(event.target.value)}
                           border={
                             validateFlag && PharmacyData.managerExistData && !PharmacyData.managerNameData
-                              ? "1.5px solid #FF3B30"
+                              ? "2.5px solid #FF3B30"
                               : ""
                           }
                         ></InputTextComponent>
@@ -632,7 +632,7 @@ const PharmacyJoinSecondStepPage = observer((props: any) => {
                           onChange={(event) => PharmacyData.setManagerEmailData(event.target.value)}
                           border={
                             validateFlag && PharmacyData.managerExistData && !PharmacyData.managerEmailData
-                              ? "1.5px solid #FF3B30"
+                              ? "2.5px solid #FF3B30"
                               : ""
                           }
                         ></InputTextComponent>
@@ -664,7 +664,7 @@ const PharmacyJoinSecondStepPage = observer((props: any) => {
                           onChange={(event) => PharmacyData.setManagerPhoneNumberData(event.target.value)}
                           border={
                             validateFlag && PharmacyData.managerExistData && !PharmacyData.managerPhoneNumberData
-                              ? "1.5px solid #FF3B30"
+                              ? "2.5px solid #FF3B30"
                               : ""
                           }
                         ></InputTextComponent>
@@ -695,7 +695,7 @@ const PharmacyJoinSecondStepPage = observer((props: any) => {
                           disabled={true}
                           border={
                             validateFlag && PharmacyData.managerExistData && !PharmacyData.managerAddressData
-                              ? "1.5px solid #FF3B30"
+                              ? "2.5px solid #FF3B30"
                               : ""
                           }
                         ></InputTextComponent>
@@ -767,7 +767,7 @@ const PharmacyJoinSecondStepPage = observer((props: any) => {
                         onChange={(event) => PharmacyData.setBankNameData(event.target.value)}
                         border={
                           validateFlag && PharmacyData.bankNameData === "직접입력" && !PharmacyData.customBankNameData
-                            ? "1.5px solid #FF3B30"
+                            ? "2.5px solid #FF3B30"
                             : ""
                         }
                       >
@@ -807,7 +807,7 @@ const PharmacyJoinSecondStepPage = observer((props: any) => {
                           width={"100%"}
                           value={PharmacyData.customBankNameData ? PharmacyData.customBankNameData : ""}
                           onChange={(event) => PharmacyData.setCustomBankNameData(event.target.value)}
-                          border={validateFlag && !PharmacyData.customBankNameData ? "1.5px solid #FF3B30" : ""}
+                          border={validateFlag && !PharmacyData.customBankNameData ? "2.5px solid #FF3B30" : ""}
                         ></InputTextComponent>
                       </InputTextFrame>
                     </LineAdditionalFrame>
@@ -834,7 +834,7 @@ const PharmacyJoinSecondStepPage = observer((props: any) => {
                         placeholder="-없이 숫자만 입력해 주세요."
                         value={PharmacyData.bankAccountNumberData ? PharmacyData.bankAccountNumberData : ""}
                         onChange={(event) => PharmacyData.setBankAccountNumberData(event.target.value)}
-                        border={validateFlag && !PharmacyData.bankAccountNumberData ? "1.5px solid #FF3B30" : ""}
+                        border={validateFlag && !PharmacyData.bankAccountNumberData ? "2.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -860,7 +860,7 @@ const PharmacyJoinSecondStepPage = observer((props: any) => {
                         placeholder="이름을 입력해 주세요."
                         value={PharmacyData.bankAccountOwnerNameData ? PharmacyData.bankAccountOwnerNameData : ""}
                         onChange={(event) => PharmacyData.setBankAccountOwnerNameData(event.target.value)}
-                        border={validateFlag && !PharmacyData.bankAccountOwnerNameData ? "1.5px solid #FF3B30" : ""}
+                        border={validateFlag && !PharmacyData.bankAccountOwnerNameData ? "2.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -889,7 +889,7 @@ const PharmacyJoinSecondStepPage = observer((props: any) => {
                         placeholder="이메일을 입력해 주세요."
                         value={PharmacyData.settlementEmailData ? PharmacyData.settlementEmailData : ""}
                         onChange={(event) => PharmacyData.setSettlementEmailData(event.target.value)}
-                        border={validateFlag && !PharmacyData.settlementEmailData ? "1.5px solid #FF3B30" : ""}
+                        border={validateFlag && !PharmacyData.settlementEmailData ? "2.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>

@@ -909,7 +909,7 @@ const HospitalJoinFourthStepPage = observer((props: any) => {
                         placeholder="이메일을 입력해 주세요."
                         value={HospitalData.delegatorDoctorEmailData ? HospitalData.delegatorDoctorEmailData : ""}
                         onChange={(event) => HospitalData.setDelegatorDoctorEmailData(event.target.value)}
-                        border={validateFlag && !HospitalData.delegatorDoctorEmailData ? "1.5px solid #FF3B30" : ""}
+                        border={validateFlag && !HospitalData.delegatorDoctorEmailData ? "2.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -961,7 +961,7 @@ const HospitalJoinFourthStepPage = observer((props: any) => {
                         }
                         onChange={(event) => HospitalData.setDelegatorDoctorLicenseNumberData(event.target.value)}
                         border={
-                          validateFlag && !HospitalData.delegatorDoctorLicenseNumberData ? "1.5px solid #FF3B30" : ""
+                          validateFlag && !HospitalData.delegatorDoctorLicenseNumberData ? "2.5px solid #FF3B30" : ""
                         }
                       ></InputTextComponent>
                     </InputTextFrame>

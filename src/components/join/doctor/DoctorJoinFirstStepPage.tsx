@@ -723,7 +723,7 @@ const DoctorJoinFirstStepPage = observer((props: any) => {
                         placeholder="이메일을 입력해 주세요."
                         value={DoctorData.companionDoctorEmailData ? DoctorData.companionDoctorEmailData : ""}
                         onChange={(event) => DoctorData.setCompanionDoctorEmailData(event.target.value)}
-                        border={validateFlag && !DoctorData.companionDoctorEmailData ? "1.5px solid #FF3B30" : ""}
+                        border={validateFlag && !DoctorData.companionDoctorEmailData ? "2.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -773,7 +773,7 @@ const DoctorJoinFirstStepPage = observer((props: any) => {
                         }
                         onChange={(event) => DoctorData.setCompanionDoctorLicenseNumberData(event.target.value)}
                         border={
-                          validateFlag && !DoctorData.companionDoctorLicenseNumberData ? "1.5px solid #FF3B30" : ""
+                          validateFlag && !DoctorData.companionDoctorLicenseNumberData ? "2.5px solid #FF3B30" : ""
                         }
                       ></InputTextComponent>
                     </InputTextFrame>

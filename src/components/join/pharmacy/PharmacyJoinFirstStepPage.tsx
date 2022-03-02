@@ -456,7 +456,7 @@ const PharmacyJoinFirstStepPage = observer((props: any) => {
                         placeholder="사업장 등록증 상 기재된 상호를 입력해 주세요."
                         value={PharmacyData.businessNameData ? PharmacyData.businessNameData : ""}
                         onChange={(event) => PharmacyData.setBusinessNameData(event.target.value)}
-                        border={validateFlag && !PharmacyData.businessNameData ? "1.5px solid #FF3B30" : ""}
+                        border={validateFlag && !PharmacyData.businessNameData ? "2.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -482,7 +482,7 @@ const PharmacyJoinFirstStepPage = observer((props: any) => {
                         placeholder="-없이 숫자만 입력해 주세요."
                         value={PharmacyData.businessLicenseNumberData ? PharmacyData.businessLicenseNumberData : ""}
                         onChange={(event) => PharmacyData.setBusinessLicenseNumberData(event.target.value)}
-                        border={validateFlag && !PharmacyData.businessLicenseNumberData ? "1.5px solid #FF3B30" : ""}
+                        border={validateFlag && !PharmacyData.businessLicenseNumberData ? "2.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -507,7 +507,7 @@ const PharmacyJoinFirstStepPage = observer((props: any) => {
                         width={"100%"}
                         value={PharmacyData.businessAddressData ? PharmacyData.businessAddressData : ""}
                         disabled={true}
-                        border={validateFlag && !PharmacyData.businessAddressData ? "1.5px solid #FF3B30" : ""}
+                        border={validateFlag && !PharmacyData.businessAddressData ? "2.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                     <InputButtonFrame className="InputButtonFrame" minWidth="70px">
@@ -696,7 +696,7 @@ const PharmacyJoinFirstStepPage = observer((props: any) => {
                         placeholder="이메일을 입력해 주세요."
                         value={PharmacyData.delegatorEmailData ? PharmacyData.delegatorEmailData : ""}
                         onChange={(event) => PharmacyData.setDelegatorEmailData(event.target.value)}
-                        border={validateFlag && !PharmacyData.delegatorEmailData ? "1.5px solid #FF3B30" : ""}
+                        border={validateFlag && !PharmacyData.delegatorEmailData ? "2.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>

@@ -501,7 +501,7 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
                         onChange={(event) => HospitalData.setAccountIDData(event.target.value)}
                         border={
                           (validateFlag && !HospitalData.accountIDData) || (validateFlag && !accountIDValidate)
-                            ? "1.5px solid #FF3B30"
+                            ? "2.5px solid #FF3B30"
                             : ""
                         }
                       ></InputTextComponent>
@@ -516,7 +516,7 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
                         border={
                           (validateFlag && !HospitalData.accountIDDataValidateFlagData) ||
                           (validateFlag && !accountIDValidate)
-                            ? "1.5px solid #FF3B30"
+                            ? "2.5px solid #FF3B30"
                             : ""
                         }
                         color={!accountIDValidate ? "white" : "black"}
@@ -563,7 +563,7 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
                         border={
                           (validateFlag && !HospitalData.accountPasswordData) ||
                           (validateFlag && !accountPasswordValidate)
-                            ? "1.5px solid #FF3B30"
+                            ? "2.5px solid #FF3B30"
                             : ""
                         }
                       ></InputTextComponent>
@@ -612,7 +612,7 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
                           (validateFlag &&
                             HospitalData.accountPasswordData !== HospitalData.confirmedAccountPasswordData) ||
                           (validateFlag && !accountPasswordValidate)
-                            ? "1.5px solid #FF3B30"
+                            ? "2.5px solid #FF3B30"
                             : ""
                         }
                       ></InputTextComponent>
@@ -640,7 +640,7 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
                         placeholder="병원 이름을 입력해 주세요."
                         value={HospitalData.hospitalNameData ? HospitalData.hospitalNameData : ""}
                         onChange={(event) => HospitalData.setHospitalNameData(event.target.value)}
-                        border={validateFlag && !HospitalData.hospitalNameData ? "1.5px solid #FF3B30" : ""}
+                        border={validateFlag && !HospitalData.hospitalNameData ? "2.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -666,7 +666,7 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
                         placeholder="-없이 숫자만 입력해 주세요."
                         value={HospitalData.hospitalPhoneNumberData ? HospitalData.hospitalPhoneNumberData : ""}
                         onChange={(event) => HospitalData.setHospitalPhoneNumberData(event.target.value)}
-                        border={validateFlag && !HospitalData.hospitalPhoneNumberData ? "1.5px solid #FF3B30" : ""}
+                        border={validateFlag && !HospitalData.hospitalPhoneNumberData ? "2.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                   </LineAdditionalFrame>
@@ -716,7 +716,7 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
                         width={"100%"}
                         value={HospitalData.hospitalAddressData ? HospitalData.hospitalAddressData : ""}
                         disabled={true}
-                        border={validateFlag && !HospitalData.hospitalAddressData ? "1.5px solid #FF3B30" : ""}
+                        border={validateFlag && !HospitalData.hospitalAddressData ? "2.5px solid #FF3B30" : ""}
                       ></InputTextComponent>
                     </InputTextFrame>
                     <InputButtonFrame className="InputButtonFrame" minWidth="70px">
