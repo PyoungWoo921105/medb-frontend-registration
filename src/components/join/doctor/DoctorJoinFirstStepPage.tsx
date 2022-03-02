@@ -37,6 +37,7 @@ import StomachacheIcon from "../../../assets/icons/StomachacheIcon.svg";
 import UrologyIcon from "../../../assets/icons/UrologyIcon.svg";
 
 import useStore from "../../../data/useStore";
+import { PostPublicSignupDoctor } from "../../../services/doctor/PostPublicSignupDoctor";
 
 interface Props {
   display?: string;
@@ -408,6 +409,7 @@ const DoctorJoinFirstStepPage = observer((props: any) => {
   console.log(history);
 
   const DoctorData = useStore().DoctorData;
+  const CommonData = useStore().CommonData;
 
   useEffect(() => {
     DoctorData.setCompanionBusinessNameData(DoctorData.hospitalNameData ? DoctorData.hospitalNameData : "");
@@ -415,9 +417,43 @@ const DoctorJoinFirstStepPage = observer((props: any) => {
   }, [DoctorData.hospitalNameData]);
 
   const onClickGoButton = () => {
-    /* TODO */
-    setValidateFlag(false);
-    history.push({ pathname: "/doctor/join/complete" });
+    const PostPublicSignupDoctorFunction = async () => {
+      let tempCompanionDoctorDepratmentsData = [];
+      for (let i = 0; i < DoctorData.companionDoctorDepratmentsData.length; i++) {
+        if (DoctorData.companionDoctorDepratmentsData[i].flag === true) {
+          tempCompanionDoctorDepratmentsData.push(DoctorData.companionDoctorDepratmentsData[i].name);
+        }
+      }
+      let tempCompanionDoctorDiseasesData = [];
+      for (let i = 0; i < DoctorData.companionDoctorDiseasesData.length; i++) {
+        if (DoctorData.companionDoctorDiseasesData[i].flag === true) {
+          tempCompanionDoctorDiseasesData.push(DoctorData.companionDoctorDiseasesData[i].name);
+        }
+      }
+      const PostPublicSignupDoctorData = {
+        name: DoctorData.companionDoctorNameData,
+        birthday: DoctorData.companionDoctorBirthdayData,
+        phoneNum: DoctorData.companionDoctorPhoneNumberData,
+        email: DoctorData.companionDoctorEmailData,
+        licenseNum: DoctorData.companionDoctorLicenseNumberData,
+        specialistDepartment: DoctorData.companionDoctorSpecialistDepartmentData,
+        departments: tempCompanionDoctorDepratmentsData,
+        diseases: tempCompanionDoctorDiseasesData,
+        ci: CommonData.certificationData?.ci,
+        code: DoctorData.doctorCodeData,
+      };
+
+      const response = await PostPublicSignupDoctor(PostPublicSignupDoctorData);
+      if (response.status === 201) {
+        setValidateFlag(false);
+        history.push({ pathname: "/doctor/join/complete" });
+        return response;
+      } else {
+        window.alert("의사 회원가입 오류");
+      }
+      return response;
+    };
+    PostPublicSignupDoctorFunction();
   };
   const onClickBackButton = () => {
     history.push({ pathname: "/doctor/agree" });
