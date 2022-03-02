@@ -358,7 +358,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
   const [accountPasswordValidate, setAccountPasswordValidate] = useState(false);
 
   useEffect(() => {
-    let accountIDDataValidateFlagData = new RegExp("^(?=.*[a-z])(?=.*[0-9])(?=.{6,})");
+    const accountIDDataValidateFlagData = /^(?=.*[a-z])(?=.*[0-9])(?=.{6,})/;
     if (
       PharmacyData.accountIDData &&
       PharmacyData.accountIDData.match(accountIDDataValidateFlagData) &&
@@ -372,9 +372,8 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
   }, [PharmacyData.accountIDData]);
 
   useEffect(() => {
-    let accountPasswordDataValidateFlagData = new RegExp(
-      "^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[~!@#$%^&*()_+|<>?:{};])(?=.{8,})"
-    );
+    const accountPasswordDataValidateFlagData = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[~!@#$%^&*()_+|<>?:{};])(?=.{8,})/;
+
     if (
       PharmacyData.accountPasswordData &&
       PharmacyData.accountPasswordData.match(accountPasswordDataValidateFlagData) &&

@@ -358,7 +358,7 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
   const [accountPasswordValidate, setAccountPasswordValidate] = useState(false);
 
   useEffect(() => {
-    let accountIDDataValidateFlagData = new RegExp("^(?=.*[a-z])(?=.*[0-9])(?=.{6,})");
+    const accountIDDataValidateFlagData = /^(?=.*[a-z])(?=.*[0-9])(?=.{6,})/;
     if (
       HospitalData.accountIDData &&
       HospitalData.accountIDData.match(accountIDDataValidateFlagData) &&
@@ -372,9 +372,8 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
   }, [HospitalData.accountIDData]);
 
   useEffect(() => {
-    let accountPasswordDataValidateFlagData = new RegExp(
-      "^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[~!@#$%^&*()_+|<>?:{};])(?=.{8,})"
-    );
+    const accountPasswordDataValidateFlagData = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[~!@#$%^&*()_+|<>?:{};])(?=.{8,})/;
+
     if (
       HospitalData.accountPasswordData &&
       HospitalData.accountPasswordData.match(accountPasswordDataValidateFlagData) &&
