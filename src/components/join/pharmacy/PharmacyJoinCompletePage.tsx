@@ -259,7 +259,7 @@ const PharmacyJoinCompletePage = observer((props: any) => {
   }, []);
 
   const onClickGoButton = () => {
-    history.push({ pathname: "/pharmacy/agree" });
+    history.push({ pathname: "/common/agree" });
   };
 
   return (

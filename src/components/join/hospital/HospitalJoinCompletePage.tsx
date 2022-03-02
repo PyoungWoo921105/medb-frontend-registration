@@ -259,7 +259,7 @@ const HospitalJoinCompletePage = observer((props: any) => {
   }, []);
 
   const onClickGoButton = () => {
-    history.push({ pathname: "/hospital/agree" });
+    history.push({ pathname: "/common/agree" });
   };
 
   return (
