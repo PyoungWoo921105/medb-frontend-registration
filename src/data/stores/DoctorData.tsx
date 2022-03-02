@@ -1,6 +1,13 @@
 import { observable } from "mobx";
 
 export interface DoctorDataType {
+  /*  */
+  /* Root Page */
+  /* Identifier */
+  doctorCodeData: undefined | null | string;
+  setDoctorCodeData: (e: undefined | null | string) => void;
+  hospitalNameData: undefined | null | string;
+  setHospitalNameData: (e: undefined | null | string) => void;
   /* Join First Page */
   /* Companion Doctor Name */
   companionDoctorNameData: undefined | string;
@@ -48,6 +55,16 @@ export interface DoctorDataType {
 
 const DoctorData = observable<DoctorDataType>({
   /*  */
+  /* Root Page */
+  /* Identifier */
+  doctorCodeData: null,
+  setDoctorCodeData(e: undefined | null | string) {
+    this.doctorCodeData = e;
+  },
+  hospitalNameData: null,
+  setHospitalNameData(e: undefined | null | string) {
+    this.hospitalNameData = e;
+  },
   /* Join Fourth Page */
   /* Companion Doctor Name */
   companionDoctorNameData: undefined,

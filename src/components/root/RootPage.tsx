@@ -47,6 +47,7 @@ const RootPage = observer(() => {
   const CommonData = useStore().CommonData;
   const HospitalData = useStore().HospitalData;
   const PharmacyData = useStore().PharmacyData;
+  const DoctorData = useStore().DoctorData;
 
   useEffect(() => {
     if (location.pathname === "/common") {
@@ -65,6 +66,8 @@ const RootPage = observer(() => {
       const query = new URLSearchParams(location.search);
       console.log(query.get("doctorCode"));
       console.log(query.get("hospitalName"));
+      DoctorData.setDoctorCodeData(query.get("doctorCode"));
+      DoctorData.setHospitalNameData(query.get("hospitalName"));
     } /*  */ else if (location.pathname === "/hospital/consignment") {
       CommonData.setURLType("hospital");
       history.push({ pathname: "/hospital/consign/agree" });
