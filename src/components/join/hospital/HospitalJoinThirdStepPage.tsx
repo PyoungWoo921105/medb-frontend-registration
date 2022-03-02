@@ -358,7 +358,7 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
   const [accountPasswordValidate, setAccountPasswordValidate] = useState(false);
 
   useEffect(() => {
-    const accountIDDataValidateFlagData = /^(?=.*[a-z])(?=.*[0-9])(?=.{6,})/;
+    const accountIDDataValidateFlagData = /^(?=.*[a-z])(?=.*[0-9])(?=.{6,20})/;
     if (
       HospitalData.accountIDData &&
       HospitalData.accountIDData.match(accountIDDataValidateFlagData) &&
