@@ -8,6 +8,9 @@ import useStore from "../../../data/useStore";
 
 import { GetAuthAccountIsDuplicated } from "../../../services/common/GetAuthAccountIsDuplicated";
 
+import { PostPublicSignupPharmacy } from "../../../services/pharmacy/PostPublicSignupPharmacy";
+import { PostPublicSignupPharmacyFiles } from "../../../services/pharmacy/PostPublicSignupPharmacyFiles";
+
 interface Props {
   display?: string;
   width?: string;
@@ -331,11 +334,81 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
   console.log(history);
 
   const PharmacyData = useStore().PharmacyData;
+  const CommonData = useStore().CommonData;
 
   const onClickGoButton = () => {
-    /* TODO */
-    setValidateFlag(false);
-    history.push({ pathname: "/pharmacy/join/complete" });
+    const PostPublicSignupPharmacyFunction = async () => {
+      const PostPublicSignupPharmacyData = {
+        businessInfo: {
+          businessRegName: PharmacyData.businessNameData,
+          businessRegNum: PharmacyData.businessLicenseNumberData,
+          businessRegAddress: PharmacyData.businessAddressData,
+          businessRegLocation: PharmacyData.businessLocationData,
+          corpNum: PharmacyData.corporateNumberData,
+          ownerName: PharmacyData.delegatorNameData,
+          ownerBirthday: PharmacyData.delegatorBirthdayData,
+          ownerPhoneNum: PharmacyData.delegatorPhoneNumberData,
+          ownerEmail: PharmacyData.delegatorEmailData,
+          ownerCi: CommonData.certificationData?.ci,
+        },
+        manager: {
+          isEmpty: !PharmacyData.managerExistData,
+          name: PharmacyData.managerNameData,
+          email: PharmacyData.managerEmailData,
+          phoneNum: PharmacyData.managerPhoneNumberData,
+          dmAddress: PharmacyData.managerAddressData,
+          dmLocation: PharmacyData.managerLocationData,
+        },
+        settlementInfo: {
+          bankName:
+            PharmacyData.bankNameData === "직접입력" || !PharmacyData.bankNameData
+              ? PharmacyData.customBankNameData
+              : PharmacyData.bankNameData,
+          accountNumber: PharmacyData.bankAccountNumberData,
+          accountHolderName: PharmacyData.bankAccountOwnerNameData,
+          email: PharmacyData.settlementEmailData,
+        },
+        operationInfo: {
+          accountId: PharmacyData.accountIDData,
+          password: PharmacyData.accountPasswordData,
+          name: PharmacyData.pharmacyNameData,
+          phoneNum: PharmacyData.pharmacyPhoneNumberData,
+          faxNum: PharmacyData.pharmacyFaxNumberData,
+          address: PharmacyData.pharmacyAddressData,
+          location: PharmacyData.pharmacyLocationData,
+        },
+      };
+
+      const response = await PostPublicSignupPharmacy(PostPublicSignupPharmacyData);
+      if (response.status === 201) {
+        const PostPublicSignupPharmacyFilesData = new FormData();
+        PostPublicSignupPharmacyFilesData.append(
+          "data",
+          JSON.stringify({
+            settlementImgFiles: [PharmacyData.bankBookImageData],
+            businessImgFiles: [PharmacyData.businessLicenseImageData],
+          })
+        );
+        if (PharmacyData.businessLicenseImageFileData) {
+          PostPublicSignupPharmacyFilesData.append("files", PharmacyData.businessLicenseImageFileData);
+        }
+        if (PharmacyData.bankBookImageFileData) {
+          PostPublicSignupPharmacyFilesData.append("files", PharmacyData.bankBookImageFileData);
+        }
+        const response = await PostPublicSignupPharmacyFiles(PostPublicSignupPharmacyFilesData);
+        if (response.status === 201) {
+          setValidateFlag(false);
+          history.push({ pathname: "/pharmacy/join/complete" });
+        } else {
+          window.alert("약국 회원가입 오류");
+        }
+        return response;
+      } else {
+        window.alert("약국 회원가입 오류");
+      }
+      return response;
+    };
+    PostPublicSignupPharmacyFunction();
   };
   const onClickBackButton = () => {
     setValidateFlag(false);
