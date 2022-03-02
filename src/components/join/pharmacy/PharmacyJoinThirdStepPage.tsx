@@ -479,7 +479,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                         value={PharmacyData.accountIDData ? PharmacyData.accountIDData : ""}
                         onChange={(event) => PharmacyData.setAccountIDData(event.target.value)}
                         border={
-                          (validateFlag && !PharmacyData.accountIDData) || !accountIDValidate
+                          (validateFlag && !PharmacyData.accountIDData) || (validateFlag && !accountIDValidate)
                             ? "1.5px solid #FF3B30"
                             : ""
                         }
@@ -535,7 +535,8 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                         value={PharmacyData.accountPasswordData ? PharmacyData.accountPasswordData : ""}
                         onChange={(event) => PharmacyData.setAccountPasswordData(event.target.value)}
                         border={
-                          (validateFlag && !PharmacyData.accountPasswordData) || !accountPasswordValidate
+                          (validateFlag && !PharmacyData.accountPasswordData) ||
+                          (validateFlag && !accountPasswordValidate)
                             ? "1.5px solid #FF3B30"
                             : ""
                         }
@@ -584,7 +585,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                           (validateFlag && !PharmacyData.confirmedAccountPasswordData) ||
                           (validateFlag &&
                             PharmacyData.accountPasswordData !== PharmacyData.confirmedAccountPasswordData) ||
-                          !accountPasswordValidate
+                          (validateFlag && !accountPasswordValidate)
                             ? "1.5px solid #FF3B30"
                             : ""
                         }

@@ -479,7 +479,7 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
                         value={HospitalData.accountIDData ? HospitalData.accountIDData : ""}
                         onChange={(event) => HospitalData.setAccountIDData(event.target.value)}
                         border={
-                          (validateFlag && !HospitalData.accountIDData) || !accountIDValidate
+                          (validateFlag && !HospitalData.accountIDData) || (validateFlag && !accountIDValidate)
                             ? "1.5px solid #FF3B30"
                             : ""
                         }
@@ -535,7 +535,8 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
                         value={HospitalData.accountPasswordData ? HospitalData.accountPasswordData : ""}
                         onChange={(event) => HospitalData.setAccountPasswordData(event.target.value)}
                         border={
-                          (validateFlag && !HospitalData.accountPasswordData) || !accountPasswordValidate
+                          (validateFlag && !HospitalData.accountPasswordData) ||
+                          (validateFlag && !accountPasswordValidate)
                             ? "1.5px solid #FF3B30"
                             : ""
                         }
@@ -584,7 +585,7 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
                           (validateFlag && !HospitalData.confirmedAccountPasswordData) ||
                           (validateFlag &&
                             HospitalData.accountPasswordData !== HospitalData.confirmedAccountPasswordData) ||
-                          !accountPasswordValidate
+                          (validateFlag && !accountPasswordValidate)
                             ? "1.5px solid #FF3B30"
                             : ""
                         }
