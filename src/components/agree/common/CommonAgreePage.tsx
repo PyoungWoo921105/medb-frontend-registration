@@ -10,6 +10,8 @@ import onClickCheckedIcon from "../../../assets/icons/onClickCheckedIcon.svg";
 
 import useStore from "../../../data/useStore";
 
+import { PostAuthCertifications } from "../../../services/common/PostAuthCertifications";
+
 interface Props {
   display?: string;
   width?: string;
@@ -306,6 +308,8 @@ const CommonAgreePage = observer((props: any) => {
   console.log(history);
 
   const CommonData = useStore().CommonData;
+  const HospitalData = useStore().HospitalData;
+  const PharmacyData = useStore().PharmacyData;
 
   const onClickSelectHospital = () => {
     if (CommonData.selectType === "hospital") {
@@ -346,12 +350,64 @@ const CommonAgreePage = observer((props: any) => {
     }
   };
 
-  const onClickGoButton = () => {
-    if (CommonData.selectType === "hospital") {
-      history.push({ pathname: "/hospital/join/firstStep" });
-    } else if (CommonData.selectType === "pharmacy") {
-      history.push({ pathname: "/pharmacy/join/firstStep" });
+  function onClickCertification() {
+    /* 1. 가맹점 식별하기 */
+    const { IMP } = window;
+    IMP.init("imp81339950");
+
+    /* 2. 본인인증 데이터 정의하기 */
+    const data = {
+      merchant_uid: `mid_${new Date().getTime()}`, // 주문번호
+      /* company: "주식회사 메디르", // 회사명 또는 URL */
+      /* carrier: "LGU+", // 통신사 */
+      /* name: "박평우", // 이름 */
+      /* phone: "01071493357", // 전화번호 */
+    };
+
+    /* 4. 본인인증 창 호출하기 */
+    IMP.certification(data, callback);
+  }
+
+  /* 3. 콜백 함수 정의하기 */
+  async function callback(response: any) {
+    const { success, /* merchant_uid, */ error_msg, imp_uid } = response;
+    if (success) {
+      // axios로 HTTP 요청
+      let PostAuthCertificationsData = {
+        impUid: imp_uid,
+      };
+      const response = await PostAuthCertifications(PostAuthCertificationsData);
+      if (response.status === 201) {
+        alert("본인인증 성공");
+        if (CommonData.selectType === "hospital") {
+          /*  */
+          HospitalData.setDelegatorNameData(CommonData.certificationData?.name);
+          HospitalData.setDelegatorBirthdayData(CommonData.certificationData?.birthday);
+          HospitalData.setDelegatorPhoneNumberData(CommonData.certificationData?.phoneNum);
+
+          HospitalData.setDelegatorDoctorNameData(CommonData.certificationData?.name);
+          HospitalData.setDelegatorDoctorBirthdayData(CommonData.certificationData?.birthday);
+          HospitalData.setDelegatorDoctorPhoneNumberData(CommonData.certificationData?.phoneNum);
+          /*  */
+          history.push({ pathname: "/hospital/join/firstStep" });
+        } else if (CommonData.selectType === "pharmacy") {
+          /*  */
+          PharmacyData.setDelegatorNameData(CommonData.certificationData?.name);
+          PharmacyData.setDelegatorBirthdayData(CommonData.certificationData?.birthday);
+          PharmacyData.setDelegatorPhoneNumberData(CommonData.certificationData?.phoneNum);
+          /*  */
+          history.push({ pathname: "/pharmacy/join/firstStep" });
+        }
+      } else {
+        window.alert("본인인증 실패: 본인인증 확인 오류");
+      }
+    } else {
+      alert(`본인인증 실패: ${error_msg}`);
     }
+  }
+
+  const onClickGoButton = () => {
+    onClickCertification();
   };
 
   return (
