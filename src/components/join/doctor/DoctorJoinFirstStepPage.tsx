@@ -628,7 +628,7 @@ const DoctorJoinFirstStepPage = observer((props: any) => {
                   <LineCoreFrame className="LineCoreFrame">
                     <PlainTextFrame className="PlainTextFrame" margin="0px 10px 0px 10px">
                       <PlainTextComponent className="PlainTextComponent" designType="title">
-                        대표 원장 정보
+                        의료진 정보
                       </PlainTextComponent>
                     </PlainTextFrame>
                   </LineCoreFrame>
