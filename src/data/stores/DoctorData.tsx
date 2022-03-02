@@ -28,8 +28,8 @@ export interface DoctorDataType {
   companionDoctorLicenseNumberData: undefined | string;
   setCompanionDoctorLicenseNumberData: (e: undefined | string) => void;
   /* Companion Doctor Specialist Flag */
-  companionDoctorSpecialistFlagData: undefined | boolean;
-  setCompanionDoctorSpecialistFlagData: (e: undefined | boolean) => void;
+  companionDoctorSpecialistFlagData: boolean;
+  setCompanionDoctorSpecialistFlagData: (e: boolean) => void;
   /* Companion Doctor Specialist Department */
   companionDoctorSpecialistDepartmentData: undefined | string;
   setCompanionDoctorSpecialistDepartmentData: (e: undefined | string) => void;
@@ -40,16 +40,16 @@ export interface DoctorDataType {
   companionDoctorDiseasesData: { name: string; flag: boolean }[];
   setCompanionDoctorDiseasesData: (e: { name: string; flag: boolean }[]) => void;
   /* Companion Doctor Flag */
-  companionDoctorFlagData: undefined | boolean;
-  setCompanionDoctorFlagData: (e: undefined | boolean) => void;
+  companionDoctorFlagData: boolean;
+  setCompanionDoctorFlagData: (e: boolean) => void;
   /* Companion Doctor Phone Number */
   companionDoctorPhoneNumberListData: string[];
   setCompanionDoctorPhoneNumberListData: (e: string[]) => void;
   pushCompanionDoctorPhoneNumberListData: (e: string) => void;
   spliceCompanionDoctorPhoneNumberListData: (e: number) => void;
   /* Validate Check */
-  joinFourthPageValidateCheckFlagData: undefined | boolean;
-  setJoinFourthPageValidateCheckFlagData: (e: undefined | boolean) => void;
+  joinFourthPageValidateCheckFlagData: boolean;
+  setJoinFourthPageValidateCheckFlagData: (e: boolean) => void;
   /*  */
 }
 
@@ -97,8 +97,8 @@ const DoctorData = observable<DoctorDataType>({
     this.companionDoctorLicenseNumberData = e;
   },
   /* Companion Doctor Specialist Flag */
-  companionDoctorSpecialistFlagData: undefined,
-  setCompanionDoctorSpecialistFlagData(e: undefined | boolean) {
+  companionDoctorSpecialistFlagData: false,
+  setCompanionDoctorSpecialistFlagData(e: boolean) {
     this.companionDoctorSpecialistFlagData = e;
   },
   /* Companion Doctor Specialist Department */
@@ -117,8 +117,8 @@ const DoctorData = observable<DoctorDataType>({
     this.companionDoctorDiseasesData = e;
   },
   /* Companion Doctor Flag */
-  companionDoctorFlagData: undefined,
-  setCompanionDoctorFlagData(e: undefined | boolean) {
+  companionDoctorFlagData: false,
+  setCompanionDoctorFlagData(e: boolean) {
     this.companionDoctorFlagData = e;
   },
   /* Companion Doctor Phone Number */
@@ -133,8 +133,8 @@ const DoctorData = observable<DoctorDataType>({
     this.companionDoctorPhoneNumberListData.splice(e, 1);
   },
   /* Validate Check */
-  joinFourthPageValidateCheckFlagData: undefined,
-  setJoinFourthPageValidateCheckFlagData(e: undefined | boolean) {
+  joinFourthPageValidateCheckFlagData: false,
+  setJoinFourthPageValidateCheckFlagData(e: boolean) {
     this.joinFourthPageValidateCheckFlagData = e;
   },
   /*  */

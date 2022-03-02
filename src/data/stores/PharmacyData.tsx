@@ -45,13 +45,13 @@ export interface PharmacyDataType {
   delegatorEmailData: undefined | string;
   setDelegatorEmailData: (e: undefined | string) => void;
   /* Validate Check */
-  joinFirstPageValidateCheckFlagData: undefined | boolean;
-  setJoinFirstPageValidateCheckFlagData: (e: undefined | boolean) => void;
+  joinFirstPageValidateCheckFlagData: boolean;
+  setJoinFirstPageValidateCheckFlagData: (e: boolean) => void;
   /*  */
   /* Join Second Page */
   /* Manager Exist Check */
-  managerExistData: undefined | boolean;
-  setManagerExistData: (e: undefined | boolean) => void;
+  managerExistData: boolean;
+  setManagerExistData: (e: boolean) => void;
   /* Manager Name */
   managerNameData: undefined | string;
   setManagerNameData: (e: undefined | string) => void;
@@ -93,16 +93,16 @@ export interface PharmacyDataType {
   bankBookImageFileData: undefined | File;
   setBankBookImageFileData: (e: undefined | File) => void;
   /* Validate Check */
-  joinSecondPageValidateCheckFlagData: undefined | boolean;
-  setJoinSecondPageValidateCheckFlagData: (e: undefined | boolean) => void;
+  joinSecondPageValidateCheckFlagData: boolean;
+  setJoinSecondPageValidateCheckFlagData: (e: boolean) => void;
   /*  */
   /* Join Third Page */
   /* Account ID */
   accountIDData: undefined | string;
   setAccountIDData: (e: undefined | string) => void;
   /* Account ID Validate Check*/
-  accountIDDataValidateFlagData: undefined | boolean;
-  setAccountIDDataValidateFlagData: (e: undefined | boolean) => void;
+  accountIDDataValidateFlagData: boolean;
+  setAccountIDDataValidateFlagData: (e: boolean) => void;
   /* Account Password */
   accountPasswordData: undefined | string;
   setAccountPasswordData: (e: undefined | string) => void;
@@ -127,8 +127,8 @@ export interface PharmacyDataType {
   pharmacyCurrentLocationData: undefined | { longitude: number; latitude: number };
   setPharmacyCurrentLocationData: (e: undefined | { longitude: number; latitude: number }) => void;
   /* Validate Check */
-  joinThirdPageValidateCheckFlagData: undefined | boolean;
-  setJoinThirdPageValidateCheckFlagData: (e: undefined | boolean) => void;
+  joinThirdPageValidateCheckFlagData: boolean;
+  setJoinThirdPageValidateCheckFlagData: (e: boolean) => void;
   /*  */
 }
 
@@ -205,15 +205,15 @@ const PharmacyData = observable<PharmacyDataType>({
     this.delegatorEmailData = e;
   },
   /* Validate Check */
-  joinFirstPageValidateCheckFlagData: undefined,
-  setJoinFirstPageValidateCheckFlagData(e: undefined | boolean) {
+  joinFirstPageValidateCheckFlagData: false,
+  setJoinFirstPageValidateCheckFlagData(e: boolean) {
     this.joinFirstPageValidateCheckFlagData = e;
   },
   /*  */
   /* Join Second Page */
   /* Manager Exist Check */
-  managerExistData: undefined,
-  setManagerExistData(e: undefined | boolean) {
+  managerExistData: false,
+  setManagerExistData(e: boolean) {
     this.managerExistData = e;
   },
   /* Manager Name */
@@ -285,8 +285,8 @@ const PharmacyData = observable<PharmacyDataType>({
     this.bankBookImageFileData = e;
   },
   /* Validate Check */
-  joinSecondPageValidateCheckFlagData: undefined,
-  setJoinSecondPageValidateCheckFlagData(e: undefined | boolean) {
+  joinSecondPageValidateCheckFlagData: false,
+  setJoinSecondPageValidateCheckFlagData(e: boolean) {
     this.joinSecondPageValidateCheckFlagData = e;
   },
   /*  */
@@ -297,8 +297,8 @@ const PharmacyData = observable<PharmacyDataType>({
     this.accountIDData = e;
   },
   /* Account ID Validate Check*/
-  accountIDDataValidateFlagData: undefined,
-  setAccountIDDataValidateFlagData(e: undefined | boolean) {
+  accountIDDataValidateFlagData: false,
+  setAccountIDDataValidateFlagData(e: boolean) {
     this.accountIDDataValidateFlagData = e;
   },
   /* Account Password */
@@ -341,8 +341,8 @@ const PharmacyData = observable<PharmacyDataType>({
     this.pharmacyCurrentLocationData = e;
   },
   /* Validate Check */
-  joinThirdPageValidateCheckFlagData: undefined,
-  setJoinThirdPageValidateCheckFlagData(e: undefined | boolean) {
+  joinThirdPageValidateCheckFlagData: false,
+  setJoinThirdPageValidateCheckFlagData(e: boolean) {
     this.joinThirdPageValidateCheckFlagData = e;
   },
   /*  */
