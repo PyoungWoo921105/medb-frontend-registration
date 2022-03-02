@@ -42,6 +42,9 @@ import UrologyIcon from "../../../assets/icons/UrologyIcon.svg";
 
 import useStore from "../../../data/useStore";
 
+import { PostPublicSignupHospital } from "../../../services/hospital/PostPublicSignupHospital";
+import { PostPublicSignupHospitalFiles } from "../../../services/hospital/PostPublicSignupHospitalFiles";
+
 interface Props {
   display?: string;
   width?: string;
@@ -532,11 +535,106 @@ const HospitalJoinFourthStepPage = observer((props: any) => {
   console.log(history);
 
   const HospitalData = useStore().HospitalData;
+  const CommonData = useStore().CommonData;
 
   const onClickGoButton = () => {
-    /* TODO */
-    setValidateFlag(false);
-    history.push({ pathname: "/hospital/join/complete" });
+    const PostPublicSignupHospitalFunction = async () => {
+      let tempDelegatorDoctorDepratmentsData = [];
+      for (let i = 0; i < HospitalData.delegatorDoctorDepratmentsData.length; i++) {
+        if (HospitalData.delegatorDoctorDepratmentsData[i].flag === true) {
+          tempDelegatorDoctorDepratmentsData.push(HospitalData.delegatorDoctorDepratmentsData[i].name);
+        }
+      }
+      let tempDelegatorDoctorDiseasesData = [];
+      for (let i = 0; i < HospitalData.delegatorDoctorDiseasesData.length; i++) {
+        if (HospitalData.delegatorDoctorDiseasesData[i].flag === true) {
+          tempDelegatorDoctorDiseasesData.push(HospitalData.delegatorDoctorDiseasesData[i].name);
+        }
+      }
+      const PostPublicSignupHospitalData = {
+        businessInfo: {
+          businessRegName: HospitalData.businessNameData,
+          businessRegNum: HospitalData.businessLicenseNumberData,
+          businessRegAddress: HospitalData.businessAddressData,
+          businessRegLocation: HospitalData.businessLocationData,
+          corpNum: HospitalData.corporateNumberData,
+          ownerName: HospitalData.delegatorNameData,
+          ownerBirthday: HospitalData.delegatorBirthdayData,
+          ownerPhoneNum: HospitalData.delegatorPhoneNumberData,
+          ownerEmail: HospitalData.delegatorEmailData,
+          ownerCi: CommonData.certificationData?.ci,
+        },
+        manager: {
+          isEmpty: !HospitalData.managerExistData,
+          name: HospitalData.managerNameData,
+          email: HospitalData.managerEmailData,
+          phoneNum: HospitalData.managerPhoneNumberData,
+          dmAddress: HospitalData.managerAddressData,
+          dmLocation: HospitalData.managerLocationData,
+        },
+        settlementInfo: {
+          bankName:
+            HospitalData.bankNameData === "직접입력" || !HospitalData.bankNameData
+              ? HospitalData.customBankNameData
+              : HospitalData.bankNameData,
+          accountNumber: HospitalData.bankAccountNumberData,
+          accountHolderName: HospitalData.bankAccountOwnerNameData,
+          email: HospitalData.settlementEmailData,
+        },
+        operationInfo: {
+          accountId: HospitalData.accountIDData,
+          password: HospitalData.accountPasswordData,
+          name: HospitalData.hospitalNameData,
+          phoneNum: HospitalData.hospitalPhoneNumberData,
+          faxNum: HospitalData.hospitalFaxNumberData,
+          address: HospitalData.hospitalAddressData,
+          location: HospitalData.hospitalLocationData,
+        },
+        doctorInfo: {
+          name: HospitalData.delegatorDoctorNameData,
+          birthday: HospitalData.delegatorBirthdayData,
+          phoneNum: HospitalData.delegatorDoctorPhoneNumberData,
+          email: HospitalData.delegatorDoctorEmailData,
+          licenseNum: HospitalData.delegatorDoctorLicenseNumberData,
+          specialistDepartment: HospitalData.delegatorDoctorSpecialistDepartmentData,
+          departments: tempDelegatorDoctorDepratmentsData,
+          diseases: tempDelegatorDoctorDiseasesData,
+          ci: CommonData.certificationData?.ci,
+          /* code: "", */
+        },
+        doctorPhoneNumList: HospitalData.companionDoctorPhoneNumberListData,
+      };
+
+      const response = await PostPublicSignupHospital(PostPublicSignupHospitalData);
+      if (response.status === 201) {
+        const PostPublicSignupHospitalFilesData = new FormData();
+        PostPublicSignupHospitalFilesData.append(
+          "data",
+          JSON.stringify({
+            settlementImgFiles: [HospitalData.bankBookImageData],
+            businessImgFiles: [HospitalData.businessLicenseImageData],
+          })
+        );
+        if (HospitalData.businessLicenseImageFileData) {
+          PostPublicSignupHospitalFilesData.append("files", HospitalData.businessLicenseImageFileData);
+        }
+        if (HospitalData.bankBookImageFileData) {
+          PostPublicSignupHospitalFilesData.append("files", HospitalData.bankBookImageFileData);
+        }
+        const response = await PostPublicSignupHospitalFiles(PostPublicSignupHospitalFilesData);
+        if (response.status === 201) {
+          setValidateFlag(false);
+          history.push({ pathname: "/hospital/join/complete" });
+        } else {
+          window.alert("병원 회원가입 오류");
+        }
+        return response;
+      } else {
+        window.alert("병원 회원가입 오류");
+      }
+      return response;
+    };
+    PostPublicSignupHospitalFunction();
   };
   const onClickBackButton = () => {
     setValidateFlag(false);
