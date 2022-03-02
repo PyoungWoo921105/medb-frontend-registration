@@ -6,6 +6,8 @@ import LogoImageIcon from "../../../assets/icons/LogoImageIcon.png";
 
 import useStore from "../../../data/useStore";
 
+import { GetAuthAccountIsDuplicated } from "../../../services/common/GetAuthAccountIsDuplicated";
+
 interface Props {
   display?: string;
   width?: string;
@@ -348,8 +350,25 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
   /*  */
 
   const onClickAccountIDCheckButton = () => {
-    /* TODO */
-    PharmacyData.setAccountIDDataValidateFlagData(true);
+    const GetAuthAccountIsDuplicatedFunction = async () => {
+      const GetAuthAccountIsDuplicatedData = {
+        username: PharmacyData.accountIDData,
+        role: "hospital",
+      };
+      const response = await GetAuthAccountIsDuplicated(GetAuthAccountIsDuplicatedData);
+      if (response.status === 200) {
+        if (response.data.isDuplicated === false) {
+          PharmacyData.setAccountIDDataValidateFlagData(true);
+        } else if (response.data.isDuplicated === true) {
+          window.alert("아이디 중복");
+          PharmacyData.setAccountIDDataValidateFlagData(false);
+        }
+      } else {
+        window.alert("아이디 중복 확인 오류");
+      }
+      return response;
+    };
+    GetAuthAccountIsDuplicatedFunction();
   };
 
   /*  */
