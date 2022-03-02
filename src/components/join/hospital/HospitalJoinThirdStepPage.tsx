@@ -378,8 +378,7 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
     if (
       HospitalData.accountPasswordData &&
       HospitalData.accountPasswordData.match(accountPasswordDataValidateFlagData) &&
-      HospitalData.accountPasswordData.length >= 6 &&
-      HospitalData.accountPasswordData.length <= 20
+      HospitalData.accountPasswordData.length >= 8
     ) {
       setAccountPasswordValidate(true);
     } else {

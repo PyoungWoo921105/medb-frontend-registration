@@ -378,8 +378,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
     if (
       PharmacyData.accountPasswordData &&
       PharmacyData.accountPasswordData.match(accountPasswordDataValidateFlagData) &&
-      PharmacyData.accountPasswordData.length >= 6 &&
-      PharmacyData.accountPasswordData.length <= 20
+      PharmacyData.accountPasswordData.length >= 8
     ) {
       setAccountPasswordValidate(true);
     } else {
