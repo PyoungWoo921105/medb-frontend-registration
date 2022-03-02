@@ -377,6 +377,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
   const [accountPasswordValidate, setAccountPasswordValidate] = useState(false);
 
   useEffect(() => {
+    PharmacyData.setAccountIDDataValidateFlagData(false);
     const accountIDDataValidateFlagData = /^(?=.+[a-z])(?=.*[0-9])(?=.{6,20})/;
     if (
       PharmacyData.accountIDData &&
@@ -388,6 +389,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
     } else {
       setAccountIDValidate(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [PharmacyData.accountIDData]);
 
   useEffect(() => {
@@ -508,11 +510,16 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
                       <InputButtonComponent
                         className="InputButtonComponent"
                         margin="0px 0px 0px 5px"
-                        onClick={onClickAccountIDCheckButton}
+                        onClick={!accountIDValidate ? () => {} : onClickAccountIDCheckButton}
+                        cursor={!accountIDValidate ? "" : "pointer"}
                         backgroundColor={"#E1E1E1"}
                         border={
-                          validateFlag && !PharmacyData.accountIDDataValidateFlagData ? "1.5px solid #FF3B30" : ""
+                          (validateFlag && !PharmacyData.accountIDDataValidateFlagData) ||
+                          (validateFlag && !accountIDValidate)
+                            ? "1.5px solid #FF3B30"
+                            : ""
                         }
+                        color={!accountIDValidate ? "white" : "black"}
                       >
                         중복 확인
                       </InputButtonComponent>

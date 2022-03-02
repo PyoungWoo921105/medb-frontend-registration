@@ -377,6 +377,7 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
   const [accountPasswordValidate, setAccountPasswordValidate] = useState(false);
 
   useEffect(() => {
+    HospitalData.setAccountIDDataValidateFlagData(false);
     const accountIDDataValidateFlagData = /^(?=.+[a-z])(?=.*[0-9])(?=.{6,20})/;
     if (
       HospitalData.accountIDData &&
@@ -388,6 +389,7 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
     } else {
       setAccountIDValidate(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [HospitalData.accountIDData]);
 
   useEffect(() => {
@@ -508,11 +510,16 @@ const HospitalJoinThirdStepPage = observer((props: any) => {
                       <InputButtonComponent
                         className="InputButtonComponent"
                         margin="0px 0px 0px 5px"
-                        onClick={onClickAccountIDCheckButton}
+                        onClick={!accountIDValidate ? () => {} : onClickAccountIDCheckButton}
+                        cursor={!accountIDValidate ? "" : "pointer"}
                         backgroundColor={"#E1E1E1"}
                         border={
-                          validateFlag && !HospitalData.accountIDDataValidateFlagData ? "1.5px solid #FF3B30" : ""
+                          (validateFlag && !HospitalData.accountIDDataValidateFlagData) ||
+                          (validateFlag && !accountIDValidate)
+                            ? "1.5px solid #FF3B30"
+                            : ""
                         }
+                        color={!accountIDValidate ? "white" : "black"}
                       >
                         중복 확인
                       </InputButtonComponent>
