@@ -415,6 +415,8 @@ const DoctorJoinFirstStepPage = observer((props: any) => {
   }, [DoctorData.hospitalNameData]);
 
   const onClickGoButton = () => {
+    /* TODO */
+    setValidateFlag(false);
     history.push({ pathname: "/doctor/join/complete" });
   };
   const onClickBackButton = () => {

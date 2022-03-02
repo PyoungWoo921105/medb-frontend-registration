@@ -333,6 +333,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
   const PharmacyData = useStore().PharmacyData;
 
   const onClickGoButton = () => {
+    /* TODO */
     setValidateFlag(false);
     history.push({ pathname: "/pharmacy/join/complete" });
   };

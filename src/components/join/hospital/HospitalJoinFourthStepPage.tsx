@@ -534,6 +534,7 @@ const HospitalJoinFourthStepPage = observer((props: any) => {
   const HospitalData = useStore().HospitalData;
 
   const onClickGoButton = () => {
+    /* TODO */
     setValidateFlag(false);
     history.push({ pathname: "/hospital/join/complete" });
   };

@@ -346,6 +346,7 @@ const PharmacyConsignAgreePage = observer((props: any) => {
       const response = await PostAuthCertifications(PostAuthCertificationsData);
       if (response.status === 201) {
         alert("본인인증 성공");
+        /* TODO */
         history.push({ pathname: "/pharmacy/consign/complete" });
       } else {
         window.alert("본인인증 실패: 본인인증 확인 오류");
