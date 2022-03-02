@@ -290,7 +290,7 @@ const HospitalJoinCompletePage = observer((props: any) => {
                   <AgreementLineComponent
                     className="AgreementLineComponent"
                     margin="10px 0px 10px 0px"
-                    justifyContent="space-between"
+                    justifyContent="center"
                   >
                     <AgreementLineCoreFrame className="AgreementLineCoreFrame">
                       <AgreementCheckboxTextFrame className="AgreementCheckboxTextFrame" flexDirection="row">
