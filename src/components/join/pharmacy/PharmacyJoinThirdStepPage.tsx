@@ -353,7 +353,7 @@ const PharmacyJoinThirdStepPage = observer((props: any) => {
     const GetAuthAccountIsDuplicatedFunction = async () => {
       const GetAuthAccountIsDuplicatedData = {
         username: PharmacyData.accountIDData,
-        role: "hospital",
+        role: "pharmacy",
       };
       const response = await GetAuthAccountIsDuplicated(GetAuthAccountIsDuplicatedData);
       if (response.status === 200) {
